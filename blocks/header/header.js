@@ -197,8 +197,17 @@ function decorateBrandRow(brandSection, toolsSection) {
       if (a) {
         const toolLink = a.cloneNode(true);
         toolLink.className = 'nav-tool-link';
-        const img = toolLink.querySelector('img');
+        const img = toolLink.querySelector('img, picture');
         if (img) img.className = 'nav-tool-icon';
+        // EDS may place label text outside <a> as a sibling in <p>
+        if (!toolLink.textContent.trim() || toolLink.textContent.trim() === (img ? img.alt : '')) {
+          const pText = Array.from(p.childNodes)
+            .filter((n) => n.nodeType === Node.TEXT_NODE)
+            .map((n) => n.textContent.trim())
+            .filter(Boolean)
+            .join(' ');
+          if (pText) toolLink.append(document.createTextNode(pText));
+        }
         toolsWrapper.append(toolLink);
       }
     });
