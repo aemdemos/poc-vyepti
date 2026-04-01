@@ -19,7 +19,7 @@ header nav {
 /* ===== ROW 0: Utility Bar (dark teal) ===== */
 header .nav-utility {
   background-color: var(--brand-teal);
-  color: #fff;
+  color: #e1f0f6;
   font-size: 14px;
   line-height: 1;
 }
@@ -28,17 +28,17 @@ header .nav-utility-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1264px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 12px 32px;
+  padding: 0 32px;
   gap: 16px;
 }
 
 header .nav-utility-tagline {
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 800;
+  font-size: 16px;
   white-space: nowrap;
-  color: #b5d5de;
+  color: #e1f0f6;
 }
 
 header .nav-utility-links {
@@ -57,7 +57,7 @@ header .nav-utility-dropdown-trigger {
   border: none;
   color: #fff;
   font-family: var(--body-font-family);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   padding: 0;
@@ -118,7 +118,7 @@ header .nav-utility-dropdown-menu a:hover {
 /* Utility simple link (HCP) */
 header .nav-utility-link {
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -148,6 +148,12 @@ header .nav-utility-social-link img {
   filter: brightness(0) invert(1);
 }
 
+header .nav-utility-social-link:last-child img {
+  width: 22px;
+  height: 22px;
+  filter:unset;
+}
+
 header .nav-utility-social-link:hover img {
   opacity: 0.8;
 }
@@ -155,14 +161,13 @@ header .nav-utility-social-link:hover img {
 /* ===== ROW 1: Brand + Tools ===== */
 header .nav-brand-row {
   background-color: #fff;
-  border-bottom: 1px solid #eee;
 }
 
 header .nav-brand-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1264px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 12px 32px;
   gap: 24px;
@@ -285,7 +290,7 @@ header .nav-links-row {
 }
 
 header .nav-links-container {
-  max-width: 1264px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -301,7 +306,7 @@ header .nav-links-list {
 
 header .nav-links-list > li {
   position: relative;
-  padding: 14px 18px;
+  padding: 2px 18px 10px 18px;
   font-size: 16px;
   font-weight: 600;
   color: var(--brand-teal);
@@ -329,11 +334,12 @@ header .nav-links-list > li:first-child::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 18px;
+  width: 72%;
+  left: 12px;
   right: 18px;
-  height: 3px;
+  height: 6px;
   background-color: var(--brand-rose);
-  border-radius: 2px;
+  border-radius: 6px 6px 0 0;
 }
 
 /* Dropdown trigger chevron */
