@@ -11,71 +11,76 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  /* brand colors */
+  --brand-teal: #046183;
+  --brand-teal-light: #7ebcc6;
+  --brand-teal-muted: #41748d;
+  --brand-rose: #c02c57;
+  --brand-rose-dark: #9a2346;
+  --accent-bg: #e1f0f6;
+  --card-bg-light: #eff6f9;
+
+  /* semantic colors */
+  --background-color: #fff;
+  --light-color: #e1f0f6;
+  --dark-color: #046183;
+  --text-color: #333;
+  --text-color-light: #666;
+  --link-color: #046183;
+  --link-hover-color: #7ebcc6;
+  --overlay-background-color: #e1f0f6;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
+  --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes (mobile-first) */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 24px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
   /* layout */
-  --max-width-site: 1200px;
+  --max-width-site: 1140px;
 
   /* nav heights */
-  --nav-height: 64px;
+  --nav-height: 200px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
   /* fixed-width / code */
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, monospace;
+  --fixed-font-family: menlo, consolas, monospace;
+
+  /* button tokens */
+  --button-border-radius: 100px;
+  --button-padding: 19px 25px;
+  --button-font-weight: 700;
+  --button-transition: 0.2s ease-in-out;
 }
 
-/* fallback fonts */
+/* fallback font for proxima-nova */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: proxima-nova-fallback;
+  size-adjust: 98%;
   src: local('Arial');
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes scale up on desktop */
+    --heading-font-size-xxl: 56px;
+    --heading-font-size-xl: 24px;
+    --heading-font-size-l: 24px;
+    --heading-font-size-m: 18px;
+    --heading-font-size-s: 18px;
+    --heading-font-size-xs: 16px;
   }
 }
 
@@ -86,7 +91,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 body.appear {
@@ -113,6 +118,7 @@ footer .footer[data-block-status="loaded"] {
   }
 }
 
+/* headings */
 h1,
 h2,
 h3,
@@ -122,17 +128,47 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 800;
+  line-height: 1.2;
   scroll-margin: 40px;
+  color: var(--text-color);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.125;
+  color: var(--brand-teal);
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--brand-rose);
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--brand-teal-muted);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+  font-weight: 700;
+}
 
 p,
 dl,
@@ -173,57 +209,84 @@ button {
 a {
   color: var(--link-color);
   text-decoration: none;
+  font-weight: 700;
   overflow-wrap: break-word;
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* buttons */
+/* buttons - primary (rose) */
 a.button,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: 1px solid var(--brand-rose);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--button-font-weight);
+  font-size: var(--body-font-size-m);
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
+  background-color: var(--brand-rose);
   color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
-a.button:focus,
+a.button:focus {
+  background-color: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
+  color: var(--background-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.button:focus {
+  outline: 0;
+}
+
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
   cursor: pointer;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--text-color-light);
   cursor: unset;
 }
 
+/* buttons - secondary (teal outline / ghost) */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 2px solid var(--brand-teal);
+  color: var(--brand-teal);
+}
+
+a.button.secondary:hover,
+a.button.secondary:focus,
+button.secondary:hover,
+button.secondary:focus {
+  background-color: var(--background-color);
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
 }
 
 main img {
@@ -245,7 +308,7 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
 }
 
 main > .section > div {
@@ -254,20 +317,93 @@ main > .section > div {
   padding: 0 24px;
 }
 
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
   }
 }
 
-/* section metadata */
+/* section metadata - accent (light blue help strip) */
+main .section.accent {
+  background-color: var(--accent-bg);
+  margin: 0;
+  padding: 15px 0;
+}
+
+main .section.accent > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+main .section.accent p {
+  margin: 0;
+}
+
+main .section.accent img {
+  width: 58px;
+  height: 58px;
+}
+
+/* section metadata - light */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
 }
+
+/* section metadata - dark (teal) */
+main .section.dark {
+  background-color: var(--brand-teal);
+  color: var(--background-color);
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--background-color);
+}
+
+main .section.dark a {
+  color: var(--background-color);
+}
+
+main .section.dark a:hover {
+  color: var(--brand-teal-light);
+}
+
+main .section.dark a.button {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+}
+
+main .section.dark a.button:hover,
+main .section.dark a.button:focus {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+  opacity: 0.9;
+}
+
+main .section.dark a.button.secondary {
+  background-color: transparent;
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+main .section.dark a.button.secondary:hover,
+main .section.dark a.button.secondary:focus {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+}
+
+/* ISI styles are now in blocks/isi/isi.css */

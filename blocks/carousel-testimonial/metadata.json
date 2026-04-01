@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-testimonial",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-03-31T18:17:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.vyepti.com/",
+    "originPage": "pharmaceutical homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "patient-testimonial",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "quote + patient-name + disclaimer + CTA + photo",
+    "buttonCount": 1,
+    "imageCount": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "patient testimonial sections",
+      "customer review carousels",
+      "quote carousel with photos"
+    ],
+    "notSuitableFor": [
+      "image-only galleries",
+      "product showcase carousels",
+      "text-only carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-31T18:17:00.000Z"
+  }
+}

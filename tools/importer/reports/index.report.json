@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.vyepti.com/",
+  "path": "index",
+  "timestamp": "2026-03-31T18:44:18.652Z",
+  "title": "VYEPTI® (eptinezumab-jjmr) IV Migraine Prevention Medicine",
+  "template": "homepage",
+  "blocks": [
+    "hero-pharma",
+    "cards-feature",
+    "carousel-testimonial",
+    "columns-cta"
+  ]
+}

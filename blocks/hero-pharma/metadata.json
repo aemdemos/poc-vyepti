@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-pharma",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-03-31T18:17:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.vyepti.com/",
+    "originPage": "pharmaceutical homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "pharma-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background-image + subheading + heading + paragraph + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "pharmaceutical product pages",
+      "healthcare landing pages",
+      "treatment information pages"
+    ],
+    "notSuitableFor": [
+      "blog posts",
+      "text-only hero sections",
+      "e-commerce product pages"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-31T18:17:00.000Z"
+  }
+}
