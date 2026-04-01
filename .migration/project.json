@@ -1,5 +1,6 @@
 {
-    "libraryUrl": "https://main--ise-boilerplate--aemdemos.aem.page/docs/library/blocks.json",
-    "type": "da",
-    "contentHostUrl": "content.da.live"
-  }
+  "type": "da",
+  "libraryUrl": "https://main--poc-vyepti--aemdemos.aem.page/docs/library/blocks.json",
+  "detectedFrom": "User-specified: DA (Document Authoring) project. Boilerplate includes xwalk framework files but project uses DA authoring.",
+  "contentHostUrl": "https://content.da.live/aemdemos/poc-vyepti/"
+}

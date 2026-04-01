@@ -1,0 +1,316 @@
+/* Carousel Testimonial - patient story quotes with image and navigation */
+
+/* Section wrapper spacing */
+main > .section > .carousel-testimonial-wrapper {
+  padding-top: 40px;
+}
+
+.carousel-testimonial .carousel-testimonial-slides-container {
+  position: relative;
+}
+
+.carousel-testimonial .carousel-testimonial-slides,
+.carousel-testimonial .carousel-testimonial-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-testimonial .carousel-testimonial-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-testimonial .carousel-testimonial-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each slide */
+.carousel-testimonial .carousel-testimonial-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  gap: 0;
+  background-color: var(--card-bg-light);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Slide image */
+.carousel-testimonial .carousel-testimonial-slide-image {
+  width: 100%;
+  line-height: 0;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-image p {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 451 / 380;
+  object-fit: cover;
+}
+
+/* Slide content */
+.carousel-testimonial .carousel-testimonial-slide-content {
+  position: relative;
+  z-index: 1;
+  padding: 36px 24px 24px;
+  background-color: transparent;
+  color: var(--text-color);
+  width: auto;
+}
+
+/* Decorative coral quote icon above heading */
+.carousel-testimonial .carousel-testimonial-slide-content h2::before {
+  content: '';
+  display: block;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 20px;
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/icon-quotes-coral-60-desktop.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Quote heading - teal text */
+.carousel-testimonial .carousel-testimonial-slide-content h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 800;
+  color: var(--brand-teal);
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+/* Coral divider after quote */
+.carousel-testimonial .carousel-testimonial-slide-content h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: #f16464;
+  margin-top: 16px;
+}
+
+/* Patient name paragraph (strong name + ", VYEPTI patient") */
+.carousel-testimonial .carousel-testimonial-slide-content > p:nth-child(2) {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.375;
+  margin: 0;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-content > p:nth-child(2) strong {
+  font-weight: 700;
+}
+
+/* Disclaimer text */
+.carousel-testimonial .carousel-testimonial-slide-content > p:nth-child(3) {
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.286;
+  margin: 0;
+  padding-top: 10px;
+}
+
+/* Remove line break in disclaimer to keep it single-line like customer site */
+.carousel-testimonial .carousel-testimonial-slide-content > p:nth-child(3) br {
+  display: none;
+}
+
+/* Watch story link paragraph */
+.carousel-testimonial .carousel-testimonial-slide-content > p:last-child {
+  padding-top: 24px;
+}
+
+/* Watch story link - teal text link */
+.carousel-testimonial .carousel-testimonial-slide-content > p:last-child a {
+  color: var(--link-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--button-transition);
+}
+
+.carousel-testimonial .carousel-testimonial-slide-content > p:last-child a::after {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 9px;
+  margin-left: 10px;
+  vertical-align: middle;
+  background-image: url("https://www.vyepti.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-content > p:last-child a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Override button styling for watch links */
+.carousel-testimonial .carousel-testimonial-slide-content a.button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  color: var(--link-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  white-space: normal;
+  text-align: left;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-content a.button::after {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 9px;
+  margin-left: 10px;
+  vertical-align: middle;
+  background-image: url("https://www.vyepti.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-content a.button:hover,
+.carousel-testimonial .carousel-testimonial-slide-content a.button:focus {
+  background: none;
+  border: none;
+  color: var(--link-hover-color);
+}
+
+/* Slide indicators */
+.carousel-testimonial .carousel-testimonial-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  padding: 16px 12px;
+  line-height: 0;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-indicator button {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--brand-rose);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.carousel-testimonial .carousel-testimonial-slide-indicator button:disabled,
+.carousel-testimonial .carousel-testimonial-slide-indicator button:hover,
+.carousel-testimonial .carousel-testimonial-slide-indicator button:focus-visible {
+  background-color: var(--brand-rose);
+  border-color: var(--brand-rose);
+}
+
+/* Navigation buttons */
+.carousel-testimonial .carousel-testimonial-navigation-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-testimonial .carousel-testimonial-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 38px;
+  margin: 0;
+  border-radius: 4px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  pointer-events: all;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 24px;
+}
+
+/* Previous arrow - coral/red chevron (over light text area) */
+.carousel-testimonial .carousel-testimonial-navigation-buttons button.slide-prev {
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/chevron-quote-left-red-40-desktop.svg");
+}
+
+/* Next arrow - white chevron (over image area) */
+.carousel-testimonial .carousel-testimonial-navigation-buttons button.slide-next {
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/chevron-quote-right-white-40-desktop.svg");
+}
+
+.carousel-testimonial .carousel-testimonial-navigation-buttons button:hover,
+.carousel-testimonial .carousel-testimonial-navigation-buttons button:focus-visible {
+  opacity: 0.7;
+}
+
+@media (width >= 600px) {
+  .carousel-testimonial .carousel-testimonial-navigation-buttons {
+    left: 16px;
+    right: 16px;
+  }
+}
+
+@media (width >= 900px) {
+  main > .section > .carousel-testimonial-wrapper {
+    padding-top: 60px;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-image {
+    flex: 0 0 42%;
+    max-width: 451px;
+    order: 2;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-content {
+    flex: 1;
+    padding: 36px 30px 24px 110px;
+    order: 1;
+  }
+
+  .carousel-testimonial .carousel-testimonial-navigation-buttons {
+    left: 12px;
+    right: 12px;
+  }
+}

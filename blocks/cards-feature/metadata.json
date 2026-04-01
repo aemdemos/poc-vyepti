@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-03-31T18:17:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.vyepti.com/",
+    "originPage": "pharmaceutical homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "feature-cards",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "3x (icon + heading + text + CTA)",
+    "buttonCount": 3,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "feature highlight sections",
+      "service offerings grid",
+      "product benefit cards"
+    ],
+    "notSuitableFor": [
+      "image gallery cards",
+      "blog article cards",
+      "team member cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-31T18:17:00.000Z"
+  }
+}

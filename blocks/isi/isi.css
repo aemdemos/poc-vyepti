@@ -1,0 +1,229 @@
+/* ── In-page inline content (Row 2) ───────────────────────────── */
+main .isi .isi-inline {
+  display: block;
+}
+
+main .isi .isi-inline > div {
+  padding: 0;
+}
+
+main .isi p,
+main .isi li {
+  font-size: var(--body-font-size-s);
+  color: #484848;
+  line-height: 1.5;
+}
+
+main .isi li {
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+main .isi h5 {
+  color: var(--brand-teal-muted, #41748d);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+main .isi a {
+  text-decoration: underline;
+}
+
+main .isi a:hover {
+  text-decoration: underline;
+}
+
+/* ── Fixed bottom bar (abbreviated content – Row 1) ──────────── */
+.isi-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background-color: #fff;
+  border-top: 1px solid #d1d1d1;
+  height: 109px;
+  overflow: hidden;
+  padding: 13px 13px 8px;
+  transition: height 0.3s ease-in-out;
+  color: #484848;
+  cursor: pointer;
+}
+
+.isi-bar.isi-bar-hidden {
+  display: none;
+}
+
+/* Expanded state */
+.isi-bar.full {
+  height: auto;
+  max-height: 70vh;
+  overflow-y: auto;
+  z-index: 10;
+  cursor: default;
+}
+
+/* Inner content wrapper – two-column on desktop */
+.isi-bar-content {
+  max-width: var(--max-width-site, 1140px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
+.isi-bar-col {
+  flex: 1 1 45%;
+  min-width: 0;
+}
+
+.isi-bar-col h5 {
+  color: var(--brand-teal-muted, #41748d);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  padding-bottom: 18px;
+  margin: 0;
+}
+
+.isi-bar-col p {
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 24px;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.isi-bar-col p b,
+.isi-bar-col p strong {
+  font-weight: 700;
+}
+
+.isi-bar-col ul {
+  padding-left: 20px;
+  margin: 0 0 8px;
+}
+
+.isi-bar-col li {
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.isi-bar-col a {
+  color: var(--link-color, #046183);
+  font-weight: 600;
+  font-size: var(--body-font-size-s, 16px);
+  text-decoration: underline;
+}
+
+.isi-bar-col a:hover {
+  color: var(--link-hover-color, #7ebcc6);
+  text-decoration: underline;
+}
+
+/* ── Toggle button (+/−) ─────────────────────────────────────── */
+.isi-bar-toggle {
+  position: absolute;
+  right: 15px;
+  top: 13px;
+  background: none;
+  border: 2px solid var(--brand-teal-muted, #41748d);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-teal-muted, #41748d);
+  transition: color 0.2s, border-color 0.2s;
+  z-index: 2;
+}
+
+.isi-bar-toggle:hover {
+  color: var(--link-hover-color, #7ebcc6);
+  border-color: var(--link-hover-color, #7ebcc6);
+  background: none;
+}
+
+/* Plus icon (collapsed) */
+.isi-bar-toggle-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: relative;
+}
+
+.isi-bar-toggle-icon::before,
+.isi-bar-toggle-icon::after {
+  content: '';
+  position: absolute;
+  background-color: currentcolor;
+  border-radius: 1px;
+}
+
+/* Horizontal bar (always visible) */
+.isi-bar-toggle-icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+/* Vertical bar (hidden when expanded → becomes minus) */
+.isi-bar-toggle-icon::after {
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+  transition: opacity 0.2s;
+}
+
+.isi-bar.full .isi-bar-toggle-icon::after {
+  opacity: 0;
+}
+
+/* ── Mobile ≤ 768px ──────────────────────────────────────────── */
+@media (width <= 768px) {
+  .isi-bar {
+    height: 118px;
+    padding: 13px 0;
+  }
+
+  .isi-bar-content {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+  .isi-bar-col {
+    flex: 1 1 100%;
+  }
+
+  .isi-bar-col h5 {
+    padding-bottom: 8px;
+  }
+
+  .isi-bar-col p {
+    padding-bottom: 16px;
+  }
+
+  .isi-bar-toggle {
+    right: 16px;
+  }
+}
+
+/* ── Desktop ≥ 900px ─────────────────────────────────────────── */
+@media (width >= 900px) {
+  .isi-bar-content {
+    padding: 0 32px;
+  }
+
+  .isi-bar-toggle {
+    right: 32px;
+  }
+}

@@ -1,0 +1,135 @@
+/* Columns CTA - two-column layout with eyebrow, heading, description, and CTA button */
+
+/* Section wrapper spacing */
+main > .section > .columns-cta-wrapper {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.columns-cta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Each column - styled as a shadow card */
+.columns-cta > div > div {
+  order: 1;
+  box-shadow: rgb(46 50 51 / 20%) 0 2px 8px 0;
+  border-radius: 10px;
+  padding: 42px 32px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative border strip at bottom of each card */
+.columns-cta > div > div:not(.columns-cta-img-col)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/half-callout-shape-540-desktop.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.columns-cta > div > .columns-cta-img-col {
+  order: 0;
+}
+
+.columns-cta > div > .columns-cta-img-col img {
+  display: block;
+  width: 100%;
+}
+
+/* Eyebrow heading (h4) - teal */
+.columns-cta h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand-teal);
+  line-height: 1.5;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+/* Main heading (h2) - rose */
+.columns-cta h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--brand-rose);
+  line-height: 1;
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+/* Description paragraph */
+.columns-cta p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.125;
+  margin: 0;
+}
+
+/* CTA link - teal pill button with arrow */
+.columns-cta a,
+.columns-cta a.button {
+  display: inline-block;
+  background-color: var(--brand-teal);
+  color: var(--background-color);
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 19px 25px;
+  margin: 32px 0 0;
+  border: 1px solid var(--brand-teal);
+  border-radius: 30px;
+  transition: var(--button-transition);
+  white-space: nowrap;
+}
+
+.columns-cta a::after,
+.columns-cta a.button::after {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 10px;
+  margin-left: 12px;
+  vertical-align: baseline;
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.columns-cta a:hover,
+.columns-cta a:focus,
+.columns-cta a.button:hover,
+.columns-cta a.button:focus {
+  background-color: var(--brand-teal-dark, #035270);
+  border-color: var(--brand-teal-dark, #035270);
+  color: var(--background-color);
+}
+
+/* Images within columns */
+.columns-cta img {
+  width: 100%;
+}
+
+@media (width >= 900px) {
+  .columns-cta > div {
+    align-items: stretch;
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .columns-cta > div > div {
+    flex: 1;
+    order: unset;
+    padding: 42px 66px 50px;
+  }
+}

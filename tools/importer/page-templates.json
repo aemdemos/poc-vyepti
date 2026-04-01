@@ -1,0 +1,99 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.vyepti.com/"
+      ],
+      "description": "Vyepti homepage - pharmaceutical product landing page for eptinezumab (VYEPTI) migraine prevention treatment",
+      "blocks": [
+        {
+          "name": "hero-pharma",
+          "instances": [
+            ".teaser.homeBanner"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".home-parsys"
+          ]
+        },
+        {
+          "name": "carousel-testimonial",
+          "instances": [
+            ".quotescardcarousel"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            ".columncontainer:has(.bgcardparsys)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Banner",
+          "selector": ".teaser.homeBanner",
+          "style": null,
+          "blocks": [
+            "hero-pharma"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Help Info Strip",
+          "selector": ".vyepti-homepage-call-cta",
+          "style": "accent",
+          "blocks": [],
+          "defaultContent": [
+            ".vyepti-homepage-call-cta"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Feature Cards",
+          "selector": ".home-parsys",
+          "style": null,
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Patient Quote Carousel",
+          "selector": ".quotescardcarousel",
+          "style": null,
+          "blocks": [
+            "carousel-testimonial"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "CTA Cards",
+          "selector": ".columncontainer:has(.bgcardparsys)",
+          "style": null,
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Safety Information",
+          "selector": ".isi",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".isi"
+          ]
+        }
+      ]
+    }
+  ]
+}

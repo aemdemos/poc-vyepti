@@ -1,0 +1,162 @@
+/* Hero Pharma - full-width hero with background image and text overlay */
+
+/* Remove section wrapper constraints so hero is full-bleed */
+.hero-pharma-container .hero-pharma-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-pharma {
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
+}
+
+/* Image row - positioned to fill entire hero as background */
+.hero-pharma > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-pharma > div:first-child > div,
+.hero-pharma > div:first-child p {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.hero-pharma img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Content row - sits above the background image */
+.hero-pharma > div:last-of-type {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  width: 100%;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 350px;
+  box-sizing: border-box;
+}
+
+/* Eyebrow h3 - rose, appears above h1 */
+.hero-pharma h3 {
+  color: var(--brand-rose);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.33;
+  margin: 0 0 4px;
+}
+
+.hero-pharma h1 {
+  color: var(--brand-teal);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 800;
+  line-height: 1.07;
+  margin: 0 0 12px;
+}
+
+/* Bold text in headings is an authoring convention for accent-colored words */
+.hero-pharma .accent-color {
+  color: var(--brand-rose);
+  font-weight: inherit;
+}
+
+.hero-pharma > div:last-of-type p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.22;
+  margin: 0 0 16px;
+}
+
+/* CTA link styled as rose pill button */
+.hero-pharma > div:last-of-type a {
+  display: inline-block;
+  padding: 19px 25px 19px 27px;
+  background-color: var(--brand-rose);
+  color: var(--background-color);
+  border: 1px solid var(--brand-rose);
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--button-transition);
+  margin: 0;
+}
+
+.hero-pharma > div:last-of-type a:hover,
+.hero-pharma > div:last-of-type a:focus {
+  background-color: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
+  color: var(--background-color);
+}
+
+/* "Actor portrayal" caption text - absolutely positioned at bottom right of full hero */
+.hero-pharma .actor-portrayal {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  z-index: 2;
+  font-size: 16px;
+  color: var(--background-color);
+  text-shadow: 0 2px 4px #000;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .hero-pharma {
+    min-height: 400px;
+  }
+
+  .hero-pharma > div:last-of-type {
+    min-height: 400px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-pharma {
+    /* Height scales with viewport width, matching the original image aspect ratio (2880x1116) */
+    min-height: unset;
+    aspect-ratio: 2880 / 1116;
+  }
+
+  .hero-pharma > div:last-of-type {
+    min-height: unset;
+    padding: 60px 32px;
+  }
+
+  /* Constrain content to left portion on desktop (~55% of container) */
+  .hero-pharma h3,
+  .hero-pharma h1,
+  .hero-pharma > div:last-of-type p {
+    max-width: 55%;
+  }
+
+  .hero-pharma h3 {
+    font-size: 24px;
+  }
+
+  .hero-pharma h1 {
+    font-size: 56px;
+    line-height: 1.07;
+  }
+
+  /* Actor portrayal - positioned at bottom right of full hero */
+  .hero-pharma .actor-portrayal {
+    bottom: 34px;
+    right: 67px;
+  }
+}
