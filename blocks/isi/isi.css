@@ -1,6 +1,7 @@
 /* ── In-page inline content (Row 2) ───────────────────────────── */
 main .isi .isi-inline {
   display: block;
+  padding-bottom: 64px;
 }
 
 main .isi .isi-inline > div {
