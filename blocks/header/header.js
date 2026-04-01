@@ -53,13 +53,10 @@ function buildSearchForm() {
   btn.type = 'submit';
   btn.setAttribute('aria-label', 'Search');
 
-  const icon = document.createElement('img');
-  icon.src = '/content/images/search-icon.svg';
-  icon.alt = '';
-  icon.width = 18;
-  icon.height = 18;
-  icon.loading = 'lazy';
-  btn.append(icon);
+  const searchIcon = document.createElement('span');
+  searchIcon.className = 'nav-search-icon';
+  searchIcon.setAttribute('aria-hidden', 'true');
+  btn.append(searchIcon);
 
   form.append(input, btn);
   searchWrapper.append(form);
@@ -105,11 +102,13 @@ function decorateUtilityBar(utilSection) {
         const trigger = document.createElement('button');
         trigger.className = 'nav-utility-dropdown-trigger';
         trigger.setAttribute('aria-expanded', 'false');
+        // EDS wraps text in <p>; check <p> first, then fall back to direct text nodes
+        const labelP = li.querySelector(':scope > p');
         const directText = Array.from(li.childNodes)
           .filter((n) => n.nodeType === Node.TEXT_NODE)
           .map((n) => n.textContent.trim())
           .join('');
-        trigger.textContent = directText;
+        trigger.textContent = (labelP ? labelP.textContent.trim() : '') || directText;
 
         const menu = document.createElement('div');
         menu.className = 'nav-utility-dropdown-menu';
@@ -130,25 +129,31 @@ function decorateUtilityBar(utilSection) {
 
         dropdown.append(trigger, menu);
         utilLinks.append(dropdown);
-      } else if (link) {
-        // Simple link (HCP)
-        const a = link.cloneNode(true);
-        a.className = 'nav-utility-link';
-        utilLinks.append(a);
+      } else {
+        // Simple link (HCP) — may be direct child or wrapped in <p> by EDS
+        const a = link || li.querySelector('a');
+        if (a) {
+          const clone = a.cloneNode(true);
+          clone.className = 'nav-utility-link';
+          utilLinks.append(clone);
+        }
       }
     });
   }
 
-  // Social icons
-  const socialParagraphs = utilSection.querySelectorAll('p');
-  const socialP = [...socialParagraphs].find((p) => p.querySelector('a img'));
-  if (socialP) {
+  // Social icons — EDS may put each social link in its own <p>
+  const socialParagraphs = [...utilSection.querySelectorAll('p')]
+    .filter((p) => p.querySelector('a picture, a img'));
+  if (socialParagraphs.length) {
     const socialLinks = document.createElement('div');
     socialLinks.className = 'nav-utility-social';
-    socialP.querySelectorAll('a').forEach((a) => {
-      const clone = a.cloneNode(true);
-      clone.className = 'nav-utility-social-link';
-      socialLinks.append(clone);
+    socialParagraphs.forEach((p) => {
+      const a = p.querySelector('a');
+      if (a) {
+        const clone = a.cloneNode(true);
+        clone.className = 'nav-utility-social-link';
+        socialLinks.append(clone);
+      }
     });
     utilLinks.append(socialLinks);
   }
