@@ -1,0 +1,53 @@
+{
+  "definitions": [
+    {
+      "title": "Locator",
+      "id": "locator",
+      "model": "locator",
+      "plugins": {
+        "da": {
+          "unsafeHTML": "<div class=\"locator\"><div><div><p>API_KEY</p></div><div><p>25</p></div></div></div>",
+          "fields": [
+            {
+              "name": "apiKey",
+              "selector": "div>div:first-child>p"
+            },
+            {
+              "name": "radius",
+              "selector": "div>div:last-child>p"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "locator",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "apiKey",
+          "label": "Google Maps API Key",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "radius",
+          "label": "Default Search Radius",
+          "value": "25",
+          "options": [
+            { "name": "10 miles", "value": "10" },
+            { "name": "25 miles", "value": "25" },
+            { "name": "50 miles", "value": "50" },
+            { "name": "75 miles", "value": "75" },
+            { "name": "100 miles", "value": "100" }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

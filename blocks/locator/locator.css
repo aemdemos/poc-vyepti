@@ -1,0 +1,189 @@
+/* Locator block — infusion center finder with search, map, and results */
+
+/* Remove section wrapper constraints so locator is full-width */
+.locator-container .locator-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.locator {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  font-family: var(--body-font-family);
+}
+
+/* Search bar */
+.locator-search-bar {
+  margin-bottom: 16px;
+}
+
+.locator-required {
+  font-size: 14px;
+  color: var(--text-color-light);
+  margin: 0 0 8px;
+}
+
+.locator-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.locator-input-wrapper {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.locator-input-wrapper label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.locator-input-wrapper input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+  box-sizing: border-box;
+}
+
+.locator-input-wrapper input:focus {
+  outline: none;
+  border-color: var(--brand-teal);
+  box-shadow: 0 0 0 2px var(--brand-teal-light);
+}
+
+#locator-radius-select {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+  background: var(--background-color);
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.locator-filter-btn {
+  padding: 12px 20px;
+  border: 1px solid var(--brand-teal);
+  border-radius: var(--button-border-radius);
+  background: var(--background-color);
+  color: var(--brand-teal);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  transition: var(--button-transition);
+  white-space: nowrap;
+}
+
+.locator-filter-btn:hover,
+.locator-filter-btn:focus {
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
+}
+
+.locator-search-btn {
+  padding: 12px 32px;
+  border: 1px solid var(--brand-rose);
+  border-radius: var(--button-border-radius);
+  background: var(--brand-rose);
+  color: var(--background-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  transition: var(--button-transition);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.locator-search-btn:hover,
+.locator-search-btn:focus {
+  background: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
+}
+
+/* Filters panel */
+.locator-filters-panel {
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+  margin-bottom: 16px;
+}
+
+.locator-filters-heading {
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 8px;
+}
+
+/* Map + Results layout */
+.locator-map-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.locator-map {
+  width: 100%;
+  height: 400px;
+  background: #f0f0f0;
+}
+
+.locator-results {
+  padding: 24px;
+  min-height: 200px;
+  background: var(--background-color);
+}
+
+.locator-welcome-heading {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand-teal);
+  margin: 0 0 8px;
+}
+
+.locator-welcome-text {
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  color: var(--text-color);
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .locator {
+    padding: 0 32px 40px;
+  }
+
+  .locator-search-row {
+    flex-wrap: nowrap;
+  }
+
+  .locator-map-results {
+    flex-direction: row;
+  }
+
+  .locator-map {
+    flex: 1 1 60%;
+    height: 500px;
+  }
+
+  .locator-results {
+    flex: 1 1 40%;
+    max-height: 500px;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+  }
+}
