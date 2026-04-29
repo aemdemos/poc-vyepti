@@ -75,19 +75,19 @@ main > .section > .columns-cta-wrapper {
   margin: 0;
 }
 
-/* CTA link - teal pill button with arrow */
+/* CTA link - teal outline pill button with arrow (ghost/secondary style) */
 .columns-cta a,
 .columns-cta a.button {
   display: inline-block;
-  background-color: var(--brand-teal);
-  color: var(--background-color);
+  background-color: var(--background-color);
+  color: var(--brand-teal);
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
   padding: 19px 25px;
   margin: 32px 0 0;
-  border: 1px solid var(--brand-teal);
-  border-radius: 30px;
+  border: 2px solid var(--brand-teal);
+  border-radius: 100px;
   transition: var(--button-transition);
   white-space: nowrap;
 }
@@ -96,11 +96,11 @@ main > .section > .columns-cta-wrapper {
 .columns-cta a.button::after {
   content: "";
   display: inline-block;
-  width: 34px;
-  height: 10px;
+  width: 22px;
+  height: 9px;
   margin-left: 12px;
   vertical-align: baseline;
-  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-white.svg");
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -110,9 +110,9 @@ main > .section > .columns-cta-wrapper {
 .columns-cta a:focus,
 .columns-cta a.button:hover,
 .columns-cta a.button:focus {
-  background-color: var(--brand-teal-dark, #035270);
-  border-color: var(--brand-teal-dark, #035270);
-  color: var(--background-color);
+  background-color: var(--background-color);
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
 }
 
 /* Images within columns */

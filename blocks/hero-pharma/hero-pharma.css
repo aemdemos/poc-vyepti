@@ -80,13 +80,13 @@
   margin: 0 0 16px;
 }
 
-/* CTA link styled as rose pill button */
+/* CTA link styled as teal outline pill button with arrow */
 .hero-pharma > div:last-of-type a {
   display: inline-block;
-  padding: 19px 25px 19px 27px;
-  background-color: var(--brand-rose);
-  color: var(--background-color);
-  border: 1px solid var(--brand-rose);
+  padding: 19px 25px;
+  background-color: var(--background-color);
+  color: var(--brand-teal);
+  border: 2px solid var(--brand-teal);
   border-radius: 100px;
   font-size: 18px;
   font-weight: 700;
@@ -95,11 +95,24 @@
   margin: 0;
 }
 
+.hero-pharma > div:last-of-type a::after {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 9px;
+  margin-left: 12px;
+  vertical-align: middle;
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .hero-pharma > div:last-of-type a:hover,
 .hero-pharma > div:last-of-type a:focus {
-  background-color: var(--brand-rose-dark);
-  border-color: var(--brand-rose-dark);
-  color: var(--background-color);
+  background-color: var(--background-color);
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
 }
 
 /* "Actor portrayal" caption text - absolutely positioned at bottom right of full hero */

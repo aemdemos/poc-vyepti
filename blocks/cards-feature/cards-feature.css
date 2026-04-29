@@ -76,12 +76,12 @@ main > .section > .cards-feature-wrapper {
 .cards-feature > ul > li > .cards-feature-card-body:last-child a,
 .cards-feature > ul > li > .cards-feature-card-body:last-child a.button {
   display: inline-block;
-  background-color: var(--background-color);
-  border: 2px solid var(--brand-teal);
-  border-radius: 100px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   color: var(--brand-teal);
-  padding: 19px 27px;
-  font-size: 18px;
+  padding: 8px 20px 8px 0;
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   transition: var(--button-transition);
@@ -93,10 +93,10 @@ main > .section > .cards-feature-wrapper {
 .cards-feature > ul > li > .cards-feature-card-body:last-child a.button::after {
   content: "";
   display: inline-block;
-  width: 22px;
+  width: 18px;
   height: 9px;
-  margin-left: 12px;
-  vertical-align: baseline;
+  margin-left: 8px;
+  vertical-align: middle;
   background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -107,8 +107,6 @@ main > .section > .cards-feature-wrapper {
 .cards-feature > ul > li > .cards-feature-card-body:last-child a:focus,
 .cards-feature > ul > li > .cards-feature-card-body:last-child a.button:hover,
 .cards-feature > ul > li > .cards-feature-card-body:last-child a.button:focus {
-  background-color: var(--background-color);
-  border-color: var(--brand-teal-light);
   color: var(--brand-teal-light);
 }
 
@@ -122,5 +120,13 @@ main > .section > .cards-feature-wrapper {
   .cards-feature > ul {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+  }
+
+  .cards-feature > ul > li {
+    text-align: left;
+  }
+
+  .cards-feature > ul > li > .cards-feature-card-body:last-child {
+    text-align: left;
   }
 }
