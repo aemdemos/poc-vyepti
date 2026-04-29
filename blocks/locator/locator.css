@@ -393,43 +393,40 @@ main .locator .locator-facility-legend {
   color: var(--locator-text);
 }
 
-main .locator .locator-facility-legend .icon,
-main .locator .locator-facility-legend-infusion .icon,
-main .locator .locator-facility-legend-home .icon {
-  width: 50px;
-  height: 50px;
+main .locator .locator-facility-legend .icon {
+  width: auto;
+  height: 60px;
   flex-shrink: 0;
 }
 
-main .locator .locator-facility-legend .icon img,
-main .locator .locator-facility-legend-infusion .icon img,
-main .locator .locator-facility-legend-home .icon img {
-  width: 50px;
-  height: 50px;
+main .locator .locator-facility-legend .icon img {
+  width: auto;
+  height: 60px;
 }
 
 main .locator .locator-facility-pin-wrap .icon {
-  width: 24px;
-  height: 32px;
+  width: 31px;
+  height: auto;
   flex-shrink: 0;
+  margin: 0 0 -3px 15px;
 }
 
 main .locator .locator-facility-pin-wrap .icon img {
-  width: 24px;
-  height: 32px;
+  width: 31px;
+  height: auto;
 }
 
 main .locator .locator-facility-legend-infusion,
 main .locator .locator-facility-legend-home {
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
   text-align: left;
   align-items: center;
 }
 
 main .locator .locator-facility-legend-pin {
   flex-direction: row;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
 }
 
