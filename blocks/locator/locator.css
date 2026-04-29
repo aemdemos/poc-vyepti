@@ -393,19 +393,25 @@ main .locator .locator-facility-legend {
   color: var(--locator-text);
 }
 
-main .locator .locator-facility-legend .icon {
-  width: 40px;
-  height: 40px;
+main .locator .locator-facility-legend .icon,
+main .locator .locator-facility-legend-infusion .icon,
+main .locator .locator-facility-legend-home .icon {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
 }
 
-main .locator .locator-facility-legend .icon img {
-  width: 40px;
-  height: 40px;
+main .locator .locator-facility-legend .icon img,
+main .locator .locator-facility-legend-infusion .icon img,
+main .locator .locator-facility-legend-home .icon img {
+  width: 50px;
+  height: 50px;
 }
 
 main .locator .locator-facility-pin-wrap .icon {
   width: 24px;
   height: 32px;
+  flex-shrink: 0;
 }
 
 main .locator .locator-facility-pin-wrap .icon img {
