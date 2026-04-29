@@ -312,6 +312,7 @@ main img {
 /* sections */
 main > .section {
   margin: 0;
+  padding-bottom: 24px;
 }
 
 main > .section > div {
