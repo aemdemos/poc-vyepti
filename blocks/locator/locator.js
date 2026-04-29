@@ -42,7 +42,7 @@ export default function decorate(block) {
   input.setAttribute('autocomplete', 'off');
   input.setAttribute('aria-required', 'true');
   input.addEventListener('input', () => {
-    addressBlock.classList.toggle('locator-address-block--filled', Boolean(input.value.trim()));
+    addressBlock.classList.toggle('locator-address-block-filled', Boolean(input.value.trim()));
   });
   const inputLabel = document.createElement('label');
   inputLabel.setAttribute('for', 'locator-search-input');
@@ -129,7 +129,7 @@ export default function decorate(block) {
     filtersPanel.hidden = !filtersPanel.hidden;
     const expanded = !filtersPanel.hidden;
     filterBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    filterWrap.classList.toggle('locator-filter-wrap--open', expanded);
+    filterWrap.classList.toggle('locator-filter-wrap-open', expanded);
     const filterIconSpan = filterBtn.querySelector('span.icon');
     if (filterIconSpan) {
       filterIconSpan.replaceChildren();
@@ -146,12 +146,12 @@ export default function decorate(block) {
   const searchBtnDesktop = document.createElement('button');
   searchBtnDesktop.type = 'button';
   searchBtnDesktop.id = 'locator-search-btn';
-  searchBtnDesktop.className = 'locator-search-btn locator-search-btn--desktop';
+  searchBtnDesktop.className = 'locator-search-btn locator-search-btn-desktop';
   searchBtnDesktop.setAttribute('aria-label', 'Search');
 
   const searchBtnMobile = document.createElement('button');
   searchBtnMobile.type = 'button';
-  searchBtnMobile.className = 'locator-search-btn locator-search-btn--mobile';
+  searchBtnMobile.className = 'locator-search-btn locator-search-btn-mobile';
   searchBtnMobile.textContent = 'SEARCH';
 
   searchCol.append(searchBtnDesktop, searchBtnMobile);
@@ -182,7 +182,7 @@ export default function decorate(block) {
   legends.className = 'locator-facility-legends';
 
   const leg1 = document.createElement('div');
-  leg1.className = 'locator-facility-legend locator-facility-legend--infusion';
+  leg1.className = 'locator-facility-legend locator-facility-legend-infusion';
   const leg1Icon = document.createElement('span');
   leg1Icon.className = 'icon icon-locator-service-infusion';
   leg1Icon.setAttribute('aria-hidden', 'true');
@@ -191,7 +191,7 @@ export default function decorate(block) {
   leg1.append(leg1Icon, leg1Text);
 
   const leg2 = document.createElement('div');
-  leg2.className = 'locator-facility-legend locator-facility-legend--home';
+  leg2.className = 'locator-facility-legend locator-facility-legend-home';
   const leg2Icon = document.createElement('span');
   leg2Icon.className = 'icon icon-locator-home-infusion';
   leg2Icon.setAttribute('aria-hidden', 'true');
@@ -204,7 +204,7 @@ export default function decorate(block) {
   leg2.append(leg2Icon, leg2Text);
 
   const leg3 = document.createElement('div');
-  leg3.className = 'locator-facility-legend locator-facility-legend--pin';
+  leg3.className = 'locator-facility-legend locator-facility-legend-pin';
   const leg3Pin = document.createElement('div');
   leg3Pin.className = 'locator-facility-pin-wrap';
   const leg3Icon = document.createElement('span');
@@ -218,7 +218,7 @@ export default function decorate(block) {
   legends.append(leg1, leg2, leg3);
 
   facilityExpand.addEventListener('click', () => {
-    const open = facilityBand.classList.toggle('locator-facility-band--open');
+    const open = facilityBand.classList.toggle('locator-facility-band-open');
     facilityExpand.setAttribute('aria-expanded', open ? 'true' : 'false');
     const expIcon = facilityExpand.querySelector('span.icon');
     if (expIcon) {
@@ -249,7 +249,7 @@ export default function decorate(block) {
   welcome.className = 'locator-welcome';
   const welcomeHeading = document.createElement('p');
   welcomeHeading.className = 'locator-welcome-title';
-  welcomeHeading.textContent = 'Welcome';
+  welcomeHeading.textContent = 'Get Started';
   const welcomeText = document.createElement('p');
   welcomeText.className = 'locator-welcome-subtitle';
   welcomeText.textContent = 'Please enter your information to begin your search.';

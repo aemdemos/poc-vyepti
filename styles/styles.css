@@ -35,7 +35,7 @@
   --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 20px;
+  --body-font-size-m: 24px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
 
@@ -139,6 +139,7 @@ h1 {
   line-height: 1.125;
   color: var(--brand-teal);
   margin-top: 0;
+  max-width: 14em;
 }
 
 h2 {
@@ -150,7 +151,7 @@ h3 {
   font-size: var(--heading-font-size-l);
   font-weight: 700;
   line-height: 1.6;
-  color: var(--brand-teal);
+  color: var(--text-color);
   margin-bottom: 0;
 }
 

@@ -42,7 +42,7 @@ main .locator .locator-required {
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
-  margin: 0 10px 0;
+  margin: 0 10px;
   padding-bottom: 0;
 }
 
@@ -116,7 +116,7 @@ main .locator .locator-address-block label {
 }
 
 main .locator .locator-address-block:focus-within label,
-main .locator .locator-address-block--filled label {
+main .locator .locator-address-block-filled label {
   top: 3px;
   font-size: 10px;
   font-weight: 400;
@@ -224,7 +224,7 @@ main .locator .locator-filter-dd-trigger .icon img {
   height: 22px;
 }
 
-main .locator .locator-filter-wrap--open .locator-filter-dd-trigger {
+main .locator .locator-filter-wrap-open .locator-filter-dd-trigger {
   border-bottom: none;
   border-radius: 10px 10px 0 0;
   box-shadow: none;
@@ -273,7 +273,7 @@ main .locator .locator-filter-checkmark {
   background: var(--background-color);
 }
 
-main .locator .locator-search-btn--desktop {
+main .locator .locator-search-btn-desktop {
   display: none;
   width: 44px;
   height: 44px;
@@ -293,15 +293,15 @@ main .locator .locator-search-btn--desktop {
   transition: background-color 0.15s, border-color 0.15s;
 }
 
-main .locator .locator-search-btn--desktop:hover,
-main .locator .locator-search-btn--desktop:focus-visible {
+main .locator .locator-search-btn-desktop:hover,
+main .locator .locator-search-btn-desktop:focus-visible {
   background-color: #fff;
   background-image: url('../../icons/locator-search-chevron-rose.svg');
   border-color: var(--brand-rose);
   outline: none;
 }
 
-main .locator .locator-search-btn--mobile {
+main .locator .locator-search-btn-mobile {
   display: block;
   width: 100%;
   min-height: 44px;
@@ -318,8 +318,8 @@ main .locator .locator-search-btn--mobile {
   cursor: pointer;
 }
 
-main .locator .locator-search-btn--mobile:hover,
-main .locator .locator-search-btn--mobile:focus-visible {
+main .locator .locator-search-btn-mobile:hover,
+main .locator .locator-search-btn-mobile:focus-visible {
   background-color: #fff;
   color: var(--brand-rose);
   outline: none;
@@ -378,7 +378,7 @@ main .locator .locator-facility-legends {
   text-align: center;
 }
 
-main .locator .locator-facility-band--open .locator-facility-legends {
+main .locator .locator-facility-band-open .locator-facility-legends {
   display: flex;
 }
 
@@ -393,9 +393,19 @@ main .locator .locator-facility-legend {
   color: var(--locator-text);
 }
 
+main .locator .locator-facility-legend .icon {
+  width: 40px;
+  height: 40px;
+}
+
 main .locator .locator-facility-legend .icon img {
   width: 40px;
   height: 40px;
+}
+
+main .locator .locator-facility-pin-wrap .icon {
+  width: 24px;
+  height: 32px;
 }
 
 main .locator .locator-facility-pin-wrap .icon img {
@@ -403,15 +413,15 @@ main .locator .locator-facility-pin-wrap .icon img {
   height: 32px;
 }
 
-main .locator .locator-facility-legend--infusion,
-main .locator .locator-facility-legend--home {
+main .locator .locator-facility-legend-infusion,
+main .locator .locator-facility-legend-home {
   flex-direction: row;
   gap: 8px;
   text-align: left;
   align-items: center;
 }
 
-main .locator .locator-facility-legend--pin {
+main .locator .locator-facility-legend-pin {
   flex-direction: row;
   gap: 8px;
   align-items: center;
@@ -512,7 +522,7 @@ main .locator .locator-welcome-subtitle {
   main .locator .locator-field-address {
     flex: 0 0 41.666%;
     max-width: 41.666%;
-    padding: 0 0 0;
+    padding: 0;
     padding-right: 13px;
   }
 
@@ -539,11 +549,11 @@ main .locator .locator-welcome-subtitle {
     left: 15px;
   }
 
-  main .locator .locator-search-btn--desktop {
+  main .locator .locator-search-btn-desktop {
     display: flex;
   }
 
-  main .locator .locator-search-btn--mobile {
+  main .locator .locator-search-btn-mobile {
     display: none !important;
   }
 
