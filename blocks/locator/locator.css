@@ -1,189 +1,656 @@
-/* Locator block — infusion center finder with search, map, and results */
+/* Locator block — PICL (vyepti.com infusion locator) layout and visual parity */
 
-/* Remove section wrapper constraints so locator is full-width */
-.locator-container .locator-wrapper {
-  max-width: unset;
-  padding: 0;
-}
+main .locator {
+  --locator-border: #484848;
+  --locator-border-muted: #979797;
+  --locator-powder: #eff6f9;
+  --locator-mile-arrow: #3c7790;
+  --locator-text: #484848;
+  --locator-scrollbar-track: #f5f5f5;
+  --locator-scrollbar-thumb: #ccc;
 
-.locator {
-  max-width: var(--max-width-site);
-  margin: 0 auto;
-  padding: 0 24px 40px;
-  font-family: var(--body-font-family);
-}
-
-/* Search bar */
-.locator-search-bar {
-  margin-bottom: 16px;
-}
-
-.locator-required {
-  font-size: 14px;
-  color: var(--text-color-light);
-  margin: 0 0 8px;
-}
-
-.locator-search-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.locator-input-wrapper {
-  flex: 1 1 200px;
-  min-width: 200px;
-}
-
-.locator-input-wrapper label {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 4px;
-}
-
-.locator-input-wrapper input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: var(--body-font-size-s);
+  max-width: none;
+  margin: 0 auto 24px;
+  padding: 0 16px;
   font-family: var(--body-font-family);
   box-sizing: border-box;
 }
 
-.locator-input-wrapper input:focus {
-  outline: none;
-  border-color: var(--brand-teal);
-  box-shadow: 0 0 0 2px var(--brand-teal-light);
+main .locator *,
+main .locator *::before,
+main .locator *::after {
+  box-sizing: border-box;
 }
 
-#locator-radius-select {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: var(--body-font-size-s);
-  font-family: var(--body-font-family);
-  background: var(--background-color);
-  cursor: pointer;
-  min-width: 120px;
-}
-
-.locator-filter-btn {
-  padding: 12px 20px;
-  border: 1px solid var(--brand-teal);
-  border-radius: var(--button-border-radius);
-  background: var(--background-color);
-  color: var(--brand-teal);
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  font-family: var(--body-font-family);
-  cursor: pointer;
-  transition: var(--button-transition);
-  white-space: nowrap;
-}
-
-.locator-filter-btn:hover,
-.locator-filter-btn:focus {
-  border-color: var(--brand-teal-light);
-  color: var(--brand-teal-light);
-}
-
-.locator-search-btn {
-  padding: 12px 32px;
-  border: 1px solid var(--brand-rose);
-  border-radius: var(--button-border-radius);
-  background: var(--brand-rose);
-  color: var(--background-color);
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  font-family: var(--body-font-family);
-  cursor: pointer;
-  transition: var(--button-transition);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.locator-search-btn:hover,
-.locator-search-btn:focus {
-  background: var(--brand-rose-dark);
-  border-color: var(--brand-rose-dark);
-}
-
-/* Filters panel */
-.locator-filters-panel {
-  padding: 16px 0;
-  border-top: 1px solid #eee;
-  margin-bottom: 16px;
-}
-
-.locator-filters-heading {
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  color: var(--text-color);
-  margin: 0 0 8px;
-}
-
-/* Map + Results layout */
-.locator-map-results {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+main .locator .locator-shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  border: 1px solid var(--locator-border);
+  border-radius: 10px;
+  padding: 35px 0 0;
   overflow: hidden;
-}
-
-.locator-map {
-  width: 100%;
-  height: 400px;
-  background: #f0f0f0;
-}
-
-.locator-results {
-  padding: 24px;
-  min-height: 200px;
   background: var(--background-color);
 }
 
-.locator-welcome-heading {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--brand-teal);
-  margin: 0 0 8px;
-}
-
-.locator-welcome-text {
-  font-size: var(--body-font-size-m);
-  font-weight: 400;
-  color: var(--text-color);
+main .locator .locator-search-section {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  .locator {
-    padding: 0 32px 40px;
+main .locator .locator-required {
+  text-align: center;
+  color: var(--locator-text);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  margin: 0 10px 0;
+  padding-bottom: 0;
+}
+
+main .locator .locator-form {
+  margin: 0 0 56px;
+  margin-left: 0;
+  padding: 26px 15px 0;
+}
+
+main .locator .locator-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: flex-end;
+}
+
+main .locator .locator-field-address {
+  flex: 1 1 100%;
+  padding: 0 0 16px;
+}
+
+main .locator .locator-field-mile {
+  flex: 0 0 100%;
+  padding: 0 15px 16px;
+}
+
+main .locator .locator-field-filter {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 15px 16px;
+}
+
+main .locator .locator-field-search {
+  flex: 0 0 auto;
+  padding: 0 15px 16px;
+  display: flex;
+  align-items: flex-end;
+}
+
+main .locator .locator-address-block {
+  position: relative;
+  height: 48px;
+}
+
+main .locator .locator-address-block input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--locator-border);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 20px 16px 8px;
+  margin: 0;
+  color: var(--locator-text);
+  background: transparent;
+  font-family: var(--body-font-family);
+}
+
+main .locator .locator-address-block label {
+  position: absolute;
+  left: 16px;
+  top: 10px;
+  z-index: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--locator-text);
+  pointer-events: none;
+  transition: top 0.2s, font-size 0.2s, font-weight 0.2s;
+}
+
+main .locator .locator-address-block:focus-within label,
+main .locator .locator-address-block--filled label {
+  top: 3px;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+main .locator .locator-address-block input:focus {
+  outline: none;
+}
+
+main .locator .locator-mile-block {
+  position: relative;
+  height: 48px;
+}
+
+main .locator #locator-radius-select {
+  appearance: none;
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--locator-border);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 14px 52px 14px 16px;
+  color: var(--locator-text);
+  background-color: var(--background-color);
+  font-family: var(--body-font-family);
+  cursor: pointer;
+}
+
+main .locator .locator-mile-block::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  background-color: var(--locator-mile-arrow);
+  border: 1px solid var(--locator-border);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  pointer-events: none;
+}
+
+main .locator .locator-mile-block::before {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+main .locator .locator-filter-wrap {
+  position: relative;
+  height: 48px;
+}
+
+main .locator .locator-filter-dd-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  padding: 14px 44px 14px 16px;
+  border: 1px solid var(--locator-border);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--locator-text);
+  background: var(--background-color);
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  box-shadow: 0 2px 15px rgb(0 0 0 / 50%);
+  text-align: left;
+}
+
+main .locator .locator-filter-dd-meta {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+main .locator .locator-filter-dd-trigger .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+}
+
+main .locator .locator-filter-dd-trigger .icon img {
+  width: 22px;
+  height: 22px;
+}
+
+main .locator .locator-filter-wrap--open .locator-filter-dd-trigger {
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  box-shadow: none;
+}
+
+main .locator .locator-filters-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 3;
+  margin-top: -1px;
+  padding: 5px 20px 15px 16px;
+  border: 1px solid var(--locator-border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background: var(--background-color);
+}
+
+main .locator .locator-filter-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 12px 0 0;
+  cursor: default;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  color: var(--locator-text);
+}
+
+main .locator .locator-filter-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+main .locator .locator-filter-checkmark {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1px solid var(--locator-border);
+  border-radius: 2px;
+  background: var(--background-color);
+}
+
+main .locator .locator-search-btn--desktop {
+  display: none;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-rose);
+  border-radius: 0;
+  background-color: var(--brand-rose);
+  background-image: url('../../icons/locator-search-chevron.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 17px;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+main .locator .locator-search-btn--desktop:hover,
+main .locator .locator-search-btn--desktop:focus-visible {
+  background-color: #fff;
+  background-image: url('../../icons/locator-search-chevron-rose.svg');
+  border-color: var(--brand-rose);
+  outline: none;
+}
+
+main .locator .locator-search-btn--mobile {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 16px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  background-color: var(--brand-rose);
+  border: 1px solid var(--brand-rose);
+  font-family: var(--body-font-family);
+  cursor: pointer;
+}
+
+main .locator .locator-search-btn--mobile:hover,
+main .locator .locator-search-btn--mobile:focus-visible {
+  background-color: #fff;
+  color: var(--brand-rose);
+  outline: none;
+}
+
+main .locator .locator-facility-band {
+  background: var(--locator-powder);
+  padding: 14px 0 25px;
+}
+
+main .locator .locator-facility-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 15px;
+  text-align: center;
+}
+
+main .locator .locator-facility-heading p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--locator-text);
+  font-family: var(--body-font-family);
+}
+
+main .locator .locator-facility-expand {
+  position: absolute;
+  top: 2px;
+  right: 18%;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+main .locator .locator-facility-expand .icon img {
+  width: 22px;
+  height: 22px;
+}
+
+main .locator .locator-facility-legends {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px 40px;
+  padding: 20px 13px 16px;
+  text-align: center;
+}
+
+main .locator .locator-facility-band--open .locator-facility-legends {
+  display: flex;
+}
+
+main .locator .locator-facility-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--locator-text);
+}
+
+main .locator .locator-facility-legend .icon img {
+  width: 40px;
+  height: 40px;
+}
+
+main .locator .locator-facility-pin-wrap .icon img {
+  width: 24px;
+  height: 32px;
+}
+
+main .locator .locator-facility-legend--infusion,
+main .locator .locator-facility-legend--home {
+  flex-direction: row;
+  gap: 8px;
+  text-align: left;
+  align-items: center;
+}
+
+main .locator .locator-facility-legend--pin {
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+main .locator .locator-map-results {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-top: 1px solid var(--locator-border-muted);
+}
+
+main .locator .locator-map {
+  width: 100%;
+  min-height: 400px;
+  height: 400px;
+  background: #e8e8e8;
+  border: none;
+  border-bottom: 1px solid var(--locator-border-muted);
+}
+
+main .locator .locator-results {
+  padding: 40px 20px;
+  min-height: 200px;
+  max-height: 600px;
+  overflow-y: auto;
+  background: var(--background-color);
+}
+
+main .locator .locator-results::-webkit-scrollbar {
+  width: 14px;
+  height: 12px;
+}
+
+main .locator .locator-results::-webkit-scrollbar-track {
+  background: var(--locator-scrollbar-track);
+  border-radius: 10px;
+}
+
+main .locator .locator-results::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--locator-scrollbar-thumb);
+}
+
+main .locator .locator-results::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+main .locator .locator-welcome {
+  text-align: center;
+  padding-top: 35px;
+}
+
+main .locator .locator-welcome-title {
+  margin: 0;
+  padding: 0 30px 8px;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--locator-text);
+  font-family: var(--body-font-family);
+}
+
+main .locator .locator-welcome-subtitle {
+  margin: 0;
+  padding: 0 30px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--locator-text);
+  font-family: var(--body-font-family);
+}
+
+@media (width >= 992px) {
+  main .locator {
+    padding: 0 24px;
   }
 
-  .locator-search-row {
-    flex-wrap: nowrap;
+  main .locator .locator-shell {
+    padding-top: 35px;
   }
 
-  .locator-map-results {
+  main .locator .locator-required {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  main .locator .locator-form {
+    margin-left: 25px;
+    margin-bottom: 56px;
+    padding-top: 26px;
+    padding-left: 15px;
+    padding-right: 0;
+  }
+
+  main .locator .locator-field-address {
+    flex: 0 0 41.666%;
+    max-width: 41.666%;
+    padding: 0 0 0;
+    padding-right: 13px;
+  }
+
+  main .locator .locator-field-mile {
+    flex: 0 0 16.666%;
+    max-width: 16.666%;
+    padding: 0 13px 0 0;
+  }
+
+  main .locator .locator-field-filter {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 0 13px 0 0;
+  }
+
+  main .locator .locator-field-search {
+    flex: 0 0 8.333%;
+    max-width: 8.333%;
+    padding: 0 0 0 3px;
+    justify-content: flex-start;
+  }
+
+  main .locator .locator-address-block label {
+    left: 15px;
+  }
+
+  main .locator .locator-search-btn--desktop {
+    display: flex;
+  }
+
+  main .locator .locator-search-btn--mobile {
+    display: none !important;
+  }
+
+  main .locator .locator-map-results {
     flex-direction: row;
+    align-items: stretch;
+    border-top: none;
   }
 
-  .locator-map {
-    flex: 1 1 60%;
-    height: 500px;
+  main .locator .locator-map {
+    flex: 1 1 50%;
+    min-height: 692px;
+    height: auto;
+    border: none;
+    border-right: 1px solid var(--locator-border-muted);
+    border-bottom: none;
+    border-radius: 0 0 0 10px;
   }
 
-  .locator-results {
-    flex: 1 1 40%;
-    max-height: 500px;
-    overflow-y: auto;
-    border-left: 1px solid #ddd;
+  main .locator .locator-results {
+    flex: 1 1 50%;
+    max-height: 692px;
+    border: none;
+    border-radius: 0 0 10px;
+  }
+
+  main .locator .locator-facility-expand {
+    display: none;
+  }
+
+  main .locator .locator-facility-legends {
+    display: flex;
+    padding-top: 25px;
+  }
+
+  main .locator .locator-facility-heading {
+    padding-top: 0;
+  }
+
+  main .locator .locator-welcome-title {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  main .locator .locator-welcome-subtitle {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+
+@media (width >= 992px) and (width <= 1200px) {
+  main .locator .locator-form {
+    margin-left: 0;
+  }
+
+  main .locator .locator-field-mile {
+    padding-left: 7px;
+  }
+
+  main .locator #locator-radius-select {
+    padding-left: 11px;
+  }
+
+  main .locator .locator-mile-block::after {
+    width: 44px;
+  }
+}
+
+@media (width <= 991px) {
+  main .locator .locator-shell {
+    margin: 0 0 24px;
+    padding-top: 24px;
+    border-radius: 10px;
+  }
+
+  main .locator .locator-required {
+    font-size: 18px;
+    line-height: 18px;
+    margin-right: 0;
+    padding-bottom: 28px;
+  }
+
+  main .locator .locator-form {
+    padding-top: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 48px;
+    margin-left: 0;
+  }
+
+  main .locator .locator-field-mile {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  main .locator .locator-field-filter {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  main .locator .locator-field-search {
+    flex: 1 1 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  main .locator .locator-facility-heading p {
+    padding: 12px 90px 16px 0;
   }
 }
