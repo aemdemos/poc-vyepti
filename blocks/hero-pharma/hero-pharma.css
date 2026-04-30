@@ -205,6 +205,7 @@
 /* Dark panel — white Nunito-style stack (#split-image-col-wrapper-1) */
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p {
   color: #fff;
+  font-family: nunito, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
@@ -277,6 +278,7 @@
 /* Light panel — teal headline + centered subcopy (#split-image-col-wrapper-2) */
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p {
   color: var(--brand-teal);
+  font-family: nunito, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
