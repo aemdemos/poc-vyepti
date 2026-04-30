@@ -444,9 +444,9 @@ main > .section.hero-pharma-container {
 
 @media (width >= 1600px) {
   .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
   }
 }
 
