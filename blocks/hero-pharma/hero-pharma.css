@@ -77,7 +77,7 @@ main > .section.hero-pharma-container {
 
 .hero-pharma-panel {
   position: relative;
-  min-height: 480px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   display: flex;
   align-items: stretch;
