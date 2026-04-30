@@ -103,6 +103,11 @@
   object-position: center;
 }
 
+/* Light panel image - show the patient (positioned right in the source image) */
+.hero-pharma-panel-light .hero-pharma-panel-bg img {
+  object-position: 75% center;
+}
+
 /* Panel text content */
 .hero-pharma-panel-content {
   position: relative;
