@@ -51,7 +51,7 @@
   --max-width-site: 1140px;
 
   /* nav heights */
-  --nav-height: 110px;
+  --nav-height: 200px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
