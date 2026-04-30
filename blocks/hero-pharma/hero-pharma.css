@@ -505,9 +505,9 @@ main > .section.hero-pharma-container {
 }
 
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-cta-wrap a {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 280px;
+  margin: 0;
+  width: auto;
+  max-width: none;
 }
 
 .hero-pharma:not(.hero-pharma-dual) > div:last-of-type a::after,
