@@ -3,8 +3,9 @@
 /* Supports single-panel (legacy) and dual-panel (two-slide split) modes */
 
 /* Remove section wrapper constraints so hero is full-bleed */
-.hero-pharma-container {
+main > .section.hero-pharma-container {
   padding-bottom: 0;
+  margin: 0;
 }
 
 .hero-pharma-container .hero-pharma-wrapper {
