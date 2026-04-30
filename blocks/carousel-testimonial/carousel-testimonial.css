@@ -286,11 +286,12 @@ main > .section > .carousel-testimonial-wrapper {
 }
 
 @media (width <= 767px) {
+  .carousel-testimonial .carousel-testimonial-slides {
+    padding: 0 24px;
+  }
+
   .carousel-testimonial .carousel-testimonial-slide {
     flex-direction: column-reverse;
-    margin: 0 24px;
-    width: auto;
-    flex: 0 0 calc(100% - 48px);
   }
 
   .carousel-testimonial .carousel-testimonial-slide-image img {
