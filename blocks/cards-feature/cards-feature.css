@@ -116,6 +116,25 @@ main > .section > .cards-feature-wrapper {
   }
 }
 
+@media (width <= 767px) {
+  .cards-feature > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-feature > ul > li img {
+    width: 120px;
+    height: 112px;
+  }
+
+  .cards-feature > ul > li > .cards-feature-card-body:last-child a,
+  .cards-feature > ul > li > .cards-feature-card-body:last-child a.button {
+    font-size: 18px;
+    border: 1px solid var(--brand-teal);
+    border-radius: 100px;
+    padding: 19px 25px;
+  }
+}
+
 @media (width >= 900px) {
   .cards-feature > ul {
     grid-template-columns: repeat(3, 1fr);
