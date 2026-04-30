@@ -625,7 +625,7 @@
   .hero-pharma-panels {
     flex-direction: row;
     width: 100%;
-    height: calc(100vw * 1116 / 2880);
+    height: clamp(280px, 30vw, 420px);
   }
 
   .hero-pharma-panel {
