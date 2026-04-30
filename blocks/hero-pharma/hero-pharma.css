@@ -72,10 +72,10 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: 280px;
+  min-height: 400px;
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* Panel background image */
@@ -103,9 +103,9 @@
   object-position: center;
 }
 
-/* Light panel image - show the patient (positioned right in the source image) */
+/* Light panel image - show the patient (bottom-right in the source image) */
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
-  object-position: 75% center;
+  object-position: right bottom;
 }
 
 /* Panel text content */
@@ -115,18 +115,24 @@
   padding: 24px;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Dark panel text - centered horizontally, near top */
+/* Dark panel text - centered both ways */
 .hero-pharma-panel-dark .hero-pharma-panel-content {
   text-align: center;
-  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
 }
 
-/* Light panel text - right-aligned, near top */
+/* Light panel text - top-right, CTA pushed to bottom-right */
 .hero-pharma-panel-light .hero-pharma-panel-content {
   text-align: right;
-  padding-top: 30px;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 100%;
 }
 
 /* Dark panel (panel 1 - "nope") - white text */
@@ -307,18 +313,20 @@
 
   .hero-pharma-panel {
     flex: 1 1 50%;
-    min-height: unset;
-    aspect-ratio: 1440 / 780;
+    min-height: 500px;
+    aspect-ratio: auto;
   }
 
   .hero-pharma-panel-dark .hero-pharma-panel-content {
-    padding: 40px;
+    padding: 50px 40px;
     text-align: center;
+    justify-content: center;
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-content {
-    padding: 40px;
+    padding: 30px 40px 40px;
     text-align: right;
+    justify-content: space-between;
   }
 
   /* Dark panel desktop text */
