@@ -108,14 +108,6 @@ main > .section.hero-pharma-container {
   object-position: center;
 }
 
-/* Mobile: images stretch to fill (matches original's object-fit: fill at 767px) */
-@media (width <= 767px) {
-  .hero-pharma-panel-bg img {
-    object-fit: fill;
-    object-position: 50% 50%;
-  }
-}
-
 /* Default for tablet+ before desktop override */
 .hero-pharma-panel-dark .hero-pharma-panel-bg img {
   object-position: 50% 12%;
@@ -123,6 +115,19 @@ main > .section.hero-pharma-container {
 
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
   object-position: 55% bottom;
+}
+
+/* Mobile: dark panel stretches to fill, light panel uses cover to preserve proportions */
+@media (width <= 767px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-bg img {
+    object-fit: fill;
+    object-position: 50% 50%;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-bg img {
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
 }
 
 @media (width >= 900px) {
@@ -453,6 +458,15 @@ main > .section.hero-pharma-container {
 @media (width <= 768px) {
   .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
     bottom: 35px;
+  }
+}
+
+@media (width <= 767px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    text-align: center;
   }
 }
 
