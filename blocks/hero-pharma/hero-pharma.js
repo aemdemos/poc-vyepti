@@ -52,6 +52,25 @@ function decorateDualPanel(block, rows) {
         }
       });
 
+      // CTA row: sole link in a paragraph — matches vyepti split-banner absolute CTA band
+      contentDiv.querySelectorAll('p').forEach((p) => {
+        const a = p.querySelector(':scope > a[href]');
+        if (a && p.childElementCount === 1 && p.firstElementChild === a) {
+          p.classList.add('hero-pharma-panel-cta-wrap');
+        }
+      });
+
+      // Group headline/body copy for vyepti-style margin-left/right at wide breakpoints
+      const toWrap = [...contentDiv.children].filter(
+        (el) => !el.classList.contains('hero-pharma-panel-cta-wrap'),
+      );
+      if (toWrap.length) {
+        const desc = document.createElement('div');
+        desc.className = 'hero-pharma-panel-description';
+        toWrap.forEach((el) => desc.append(el));
+        contentDiv.prepend(desc);
+      }
+
       panel.appendChild(contentDiv);
     }
 
