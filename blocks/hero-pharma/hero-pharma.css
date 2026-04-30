@@ -72,7 +72,7 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: clamp(250px, 38vw, 340px);
+  min-height: clamp(220px, 36vw, 300px);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -103,29 +103,29 @@
   object-position: center;
 }
 
-/* Dark half: keep upper auditorium / ceiling in frame so copy can sit above crowd */
+/* Dark half: bias crop toward ceiling / upper dark so headline sits in open area */
 .hero-pharma-panel-dark .hero-pharma-panel-bg img {
-  object-position: 50% 22%;
+  object-position: 50% 12%;
 }
 
-/* Light half: show patient on right side of the image */
+/* Light half: bias LEFT so subject + chair stay in frame (higher % was anchoring wrong and clipped the right) */
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
-  object-position: 70% center;
+  object-position: 30% center;
 }
 
 @media (width >= 900px) {
   .hero-pharma-panel-dark .hero-pharma-panel-bg img {
-    object-position: 50% 20%;
+    object-position: 50% 10%;
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 65% center;
+    object-position: 34% center;
   }
 }
 
 @media (width >= 1200px) {
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 60% center;
+    object-position: 36% center;
   }
 }
 
@@ -144,12 +144,12 @@
   text-align: center;
 }
 
-/* Dark: centered copy in upper area (vyepti keeps headline centered above the audience) */
+/* Dark: horizontally centered, anchored high (vyepti.com split left column) */
 .hero-pharma-panel-dark .hero-pharma-panel-content {
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: clamp(16px, 4vw, 28px) clamp(16px, 3vw, 28px) 30px;
+  padding: clamp(10px, 2.2vw, 20px) clamp(16px, 3vw, 28px) 20px;
 }
 
 .hero-pharma-panel-light .hero-pharma-panel-content {
@@ -621,20 +621,22 @@
     right: 67px;
   }
 
-  /* Dual-panel desktop — one row height = full vyepti banner (2880×1116) */
+  /* Dual-panel desktop — height = vyepti banner 2880×1116 (explicit + aspect fallback) */
   .hero-pharma-panels {
     flex-direction: row;
-    aspect-ratio: 2880 / 1116;
+    width: 100%;
+    height: calc(100vw * 1116 / 2880);
   }
 
   .hero-pharma-panel {
     flex: 1 1 50%;
     min-height: 0;
+    height: 100%;
     align-self: stretch;
   }
 
   .hero-pharma-panel-dark .hero-pharma-panel-content {
-    padding: clamp(18px, 2.5vw, 32px) clamp(20px, 2.5vw, 40px) 24px;
+    padding: clamp(14px, 2vw, 28px) clamp(20px, 2.5vw, 40px) 20px;
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-content {
