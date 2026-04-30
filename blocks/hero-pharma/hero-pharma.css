@@ -162,6 +162,7 @@ main > .section.hero-pharma-container {
   justify-content: center;
   text-align: center;
   padding: 30px clamp(16px, 3vw, 28px);
+  margin-bottom: 20%;
 }
 
 .hero-pharma-panel-light .hero-pharma-panel-content {
