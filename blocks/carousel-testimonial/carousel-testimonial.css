@@ -293,6 +293,44 @@ main > .section > .carousel-testimonial-wrapper {
   .carousel-testimonial .carousel-testimonial-slide-image img {
     aspect-ratio: auto;
   }
+
+  .carousel-testimonial .carousel-testimonial-slide-content {
+    text-align: center;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-content h2::before {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-content h2::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-content > p:last-child a {
+    justify-content: center;
+  }
+
+  .carousel-testimonial .carousel-testimonial-navigation-buttons {
+    position: relative;
+    top: auto;
+    transform: none;
+    left: 0;
+    right: 0;
+    padding: 12px 24px;
+    pointer-events: all;
+  }
+
+  .carousel-testimonial .carousel-testimonial-navigation-buttons button.slide-prev,
+  .carousel-testimonial .carousel-testimonial-navigation-buttons button.slide-next {
+    background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/chevron-quote-left-red-40-desktop.svg");
+    pointer-events: all;
+  }
+
+  .carousel-testimonial .carousel-testimonial-navigation-buttons button.slide-next {
+    transform: rotate(180deg);
+  }
 }
 
 /* Swipe hint - mobile only */
