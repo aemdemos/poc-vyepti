@@ -1,32 +1,38 @@
 /* Hero Pharma - full-width hero with background image and text overlay */
 
+/* Supports single-panel (legacy) and dual-panel (two-slide split) modes */
+
 /* Remove section wrapper constraints so hero is full-bleed */
 .hero-pharma-container .hero-pharma-wrapper {
   max-width: unset;
   padding: 0;
 }
 
-.hero-pharma {
+/* ═══════════════════════════════════════════════════
+   SINGLE-PANEL MODE (legacy — 1 image row + 1 text row)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma:not(.hero-pharma-dual) {
   position: relative;
   min-height: 350px;
   overflow: hidden;
 }
 
 /* Image row - positioned to fill entire hero as background */
-.hero-pharma > div:first-child {
+.hero-pharma:not(.hero-pharma-dual) > div:first-child {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.hero-pharma > div:first-child > div,
-.hero-pharma > div:first-child p {
+.hero-pharma:not(.hero-pharma-dual) > div:first-child > div,
+.hero-pharma:not(.hero-pharma-dual) > div:first-child p {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.hero-pharma img {
+.hero-pharma:not(.hero-pharma-dual) img {
   display: block;
   width: 100%;
   height: 100%;
@@ -35,7 +41,7 @@
 }
 
 /* Content row - sits above the background image */
-.hero-pharma > div:last-of-type {
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
   position: relative;
   z-index: 1;
   max-width: var(--max-width-site);
@@ -49,7 +55,98 @@
   box-sizing: border-box;
 }
 
-/* Eyebrow h3 - rose, appears above h1 */
+/* ═══════════════════════════════════════════════════
+   DUAL-PANEL MODE (two-slide split hero)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma-dual {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pharma-panels {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-pharma-panel {
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Panel background image */
+.hero-pharma-panel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-pharma-panel-bg picture,
+.hero-pharma-panel-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-pharma-panel-bg p {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Panel text content */
+.hero-pharma-panel-content {
+  position: relative;
+  z-index: 1;
+  padding: 32px 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Dark panel (panel 1 - "nope") - white text */
+.hero-pharma-panel-dark .hero-pharma-panel-content p {
+  color: var(--background-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+
+.hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+/* Light panel (panel 2 - "yep") - teal/rose text */
+.hero-pharma-panel-light .hero-pharma-panel-content p {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.22;
+  margin: 0 0 8px;
+}
+
+.hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
+.hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
+  color: var(--brand-teal);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* ═══════════════════════════════════════════════════
+   SHARED STYLES (both modes)
+   ═══════════════════════════════════════════════════ */
+
+/* Eyebrow h3 - rose */
 .hero-pharma h3 {
   color: var(--brand-rose);
   font-size: 20px;
@@ -66,13 +163,14 @@
   margin: 0 0 12px;
 }
 
-/* Bold text in headings is an authoring convention for accent-colored words */
+/* Bold text in headings → accent color */
 .hero-pharma .accent-color {
   color: var(--brand-rose);
   font-weight: inherit;
 }
 
-.hero-pharma > div:last-of-type p {
+.hero-pharma > div:last-of-type p,
+.hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(3) {
   color: var(--text-color);
   font-size: var(--body-font-size-m);
   font-weight: 400;
@@ -80,8 +178,9 @@
   margin: 0 0 16px;
 }
 
-/* CTA link styled as teal outline pill button with arrow */
-.hero-pharma > div:last-of-type a {
+/* CTA link - teal outline pill button with arrow */
+.hero-pharma > div:last-of-type a,
+.hero-pharma-panel-light a {
   display: inline-block;
   padding: 19px 25px;
   background-color: var(--background-color);
@@ -92,10 +191,11 @@
   font-weight: 700;
   text-decoration: none;
   transition: var(--button-transition);
-  margin: 0;
+  margin: 16px 0 0;
 }
 
-.hero-pharma > div:last-of-type a::after {
+.hero-pharma > div:last-of-type a::after,
+.hero-pharma-panel-light a::after {
   content: "";
   display: inline-block;
   width: 22px;
@@ -109,13 +209,15 @@
 }
 
 .hero-pharma > div:last-of-type a:hover,
-.hero-pharma > div:last-of-type a:focus {
+.hero-pharma > div:last-of-type a:focus,
+.hero-pharma-panel-light a:hover,
+.hero-pharma-panel-light a:focus {
   background-color: var(--background-color);
   border-color: var(--brand-teal-light);
   color: var(--brand-teal-light);
 }
 
-/* "Actor portrayal" caption text - absolutely positioned at bottom right of full hero */
+/* "Actor portrayal" caption */
 .hero-pharma .actor-portrayal {
   position: absolute;
   bottom: 16px;
@@ -123,38 +225,45 @@
   z-index: 2;
   font-size: 16px;
   color: var(--background-color);
-  text-shadow: 0 2px 4px #000;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
   font-style: normal;
   font-weight: 400;
   margin: 0;
 }
 
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — TABLET+
+   ═══════════════════════════════════════════════════ */
+
 @media (width >= 600px) {
-  .hero-pharma {
+  .hero-pharma:not(.hero-pharma-dual) {
     min-height: 400px;
   }
 
-  .hero-pharma > div:last-of-type {
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
     min-height: 400px;
   }
 }
 
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — DESKTOP
+   ═══════════════════════════════════════════════════ */
+
 @media (width >= 900px) {
-  .hero-pharma {
-    /* Height scales with viewport width, matching the original image aspect ratio (2880x1116) */
+  /* Single-panel desktop */
+  .hero-pharma:not(.hero-pharma-dual) {
     min-height: unset;
     aspect-ratio: 2880 / 1116;
   }
 
-  .hero-pharma > div:last-of-type {
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
     min-height: unset;
     padding: 60px 32px;
   }
 
-  /* Constrain content to left portion on desktop (~55% of container) */
-  .hero-pharma h3,
-  .hero-pharma h1,
-  .hero-pharma > div:last-of-type p {
+  .hero-pharma:not(.hero-pharma-dual) h3,
+  .hero-pharma:not(.hero-pharma-dual) h1,
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type p {
     max-width: 55%;
   }
 
@@ -167,9 +276,49 @@
     line-height: 1.07;
   }
 
-  /* Actor portrayal - positioned at bottom right of full hero */
-  .hero-pharma .actor-portrayal {
+  .hero-pharma:not(.hero-pharma-dual) .actor-portrayal {
     bottom: 34px;
     right: 67px;
+  }
+
+  /* Dual-panel desktop — side by side 50/50 */
+  .hero-pharma-panels {
+    flex-direction: row;
+  }
+
+  .hero-pharma-panel {
+    flex: 1 1 50%;
+    min-height: unset;
+    aspect-ratio: 1440 / 1116;
+  }
+
+  .hero-pharma-panel-content {
+    padding: 60px 40px;
+  }
+
+  /* Dark panel desktop text */
+  .hero-pharma-panel-dark .hero-pharma-panel-content p {
+    font-size: 24px;
+  }
+
+  .hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
+    font-size: 72px;
+  }
+
+  /* Light panel desktop text */
+  .hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
+  .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
+    font-size: 40px;
+    line-height: 1.05;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(3) {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  .hero-pharma-panel .actor-portrayal {
+    bottom: 20px;
+    right: 20px;
   }
 }
