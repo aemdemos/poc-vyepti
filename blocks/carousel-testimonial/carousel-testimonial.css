@@ -302,15 +302,15 @@ main > .section > .carousel-testimonial-wrapper {
   }
 
   .carousel-testimonial .carousel-testimonial-slide-image {
-    max-height: 350px;
+    max-height: 300px;
     overflow: hidden;
   }
 
   .carousel-testimonial .carousel-testimonial-slide-image img {
     aspect-ratio: auto;
-    height: 350px;
+    height: 300px;
     object-fit: cover;
-    object-position: center top;
+    object-position: 30% 85%;
   }
 
   .carousel-testimonial .carousel-testimonial-slide-content {
