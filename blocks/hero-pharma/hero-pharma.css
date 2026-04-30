@@ -410,8 +410,8 @@ main > .section.hero-pharma-container {
   right: 0;
   bottom: 80px;
   margin: 0;
-  padding: 0;
-  text-align: center;
+  padding: 0 30px;
+  text-align: left;
 }
 
 @media (width >= 576px) {
