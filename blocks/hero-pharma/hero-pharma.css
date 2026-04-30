@@ -77,7 +77,7 @@ main > .section.hero-pharma-container {
 
 .hero-pharma-panel {
   position: relative;
-  aspect-ratio: 1 / 1;
+  height: 700px;
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -108,12 +108,19 @@ main > .section.hero-pharma-container {
   object-position: center;
 }
 
-/* Dark half: bias crop toward ceiling / upper dark so headline sits in open area */
+/* Mobile: images stretch to fill (matches original's object-fit: fill at 767px) */
+@media (width <= 767px) {
+  .hero-pharma-panel-bg img {
+    object-fit: fill;
+    object-position: 50% 50%;
+  }
+}
+
+/* Default for tablet+ before desktop override */
 .hero-pharma-panel-dark .hero-pharma-panel-bg img {
   object-position: 50% 12%;
 }
 
-/* Light half: show patient on right — she sits in the right portion of the source image */
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
   object-position: 55% bottom;
 }
@@ -372,7 +379,7 @@ main > .section.hero-pharma-container {
 
 @media (width <= 991px) {
   .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(3) {
-    font-size: 12px;
+    font-size: 16px;
     padding-top: 4px;
   }
 }

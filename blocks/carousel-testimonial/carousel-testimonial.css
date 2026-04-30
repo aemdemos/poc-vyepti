@@ -285,7 +285,20 @@ main > .section > .carousel-testimonial-wrapper {
   }
 }
 
+/* Swipe hint - mobile only */
+.carousel-testimonial .carousel-testimonial-swipe-hint {
+  text-align: center;
+  font-size: var(--body-font-size-xs);
+  color: var(--text-color-light);
+  margin: 0;
+  padding-bottom: 16px;
+}
+
 @media (width >= 900px) {
+  .carousel-testimonial .carousel-testimonial-swipe-hint {
+    display: none;
+  }
+
   main > .section > .carousel-testimonial-wrapper {
     padding-top: 60px;
   }
