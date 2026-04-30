@@ -406,12 +406,13 @@ main > .section.hero-pharma-container {
 /* CTA band — absolute bottom, centered (vyepti #split-image-col-wrapper-2 .cmp-teaser__action-container) */
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
   position: absolute;
-  left: 30px;
-  right: auto;
+  left: 0;
+  right: 0;
   bottom: 80px;
   margin: 0;
-  padding: 0;
-  text-align: center;
+  padding: 0 30px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 @media (width >= 576px) {
