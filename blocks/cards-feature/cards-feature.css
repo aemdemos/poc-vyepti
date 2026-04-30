@@ -129,6 +129,9 @@ main > .section > .cards-feature-wrapper {
   .cards-feature > ul > li > .cards-feature-card-body:last-child a,
   .cards-feature > ul > li > .cards-feature-card-body:last-child a.button {
     font-size: 18px;
+    border: 1px solid var(--brand-teal);
+    border-radius: 100px;
+    padding: 19px 25px;
   }
 }
 
