@@ -72,7 +72,7 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: clamp(280px, 52vw, 380px);
+  min-height: clamp(250px, 38vw, 340px);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -108,9 +108,9 @@
   object-position: 50% 22%;
 }
 
-/* Light half: shift focal point left so subject + chair are not clipped on the right */
+/* Light half: show patient on right side of the image */
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
-  object-position: 38% center;
+  object-position: 70% center;
 }
 
 @media (width >= 900px) {
@@ -119,13 +119,13 @@
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 40% center;
+    object-position: 65% center;
   }
 }
 
 @media (width >= 1200px) {
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 42% center;
+    object-position: 60% center;
   }
 }
 
@@ -144,11 +144,11 @@
   text-align: center;
 }
 
-/* Dark: top-left copy block (vyepti keeps headline in the open upper area, not over faces) */
+/* Dark: centered copy in upper area (vyepti keeps headline centered above the audience) */
 .hero-pharma-panel-dark .hero-pharma-panel-content {
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: left;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: clamp(16px, 4vw, 28px) clamp(16px, 3vw, 28px) 30px;
 }
 
@@ -184,13 +184,13 @@
 }
 
 .hero-pharma-panel-dark .hero-pharma-panel-description {
-  text-align: left;
-  max-width: 92%;
+  text-align: center;
+  max-width: 100%;
 }
 
 @media (width >= 900px) {
   .hero-pharma-panel-dark .hero-pharma-panel-description {
-    max-width: 88%;
+    max-width: 100%;
   }
 }
 
