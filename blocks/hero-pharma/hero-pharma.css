@@ -72,7 +72,7 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: clamp(220px, 36vw, 300px);
+  min-height: clamp(200px, 28vw, 280px);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -108,9 +108,9 @@
   object-position: 50% 12%;
 }
 
-/* Light half: bias LEFT so subject + chair stay in frame (higher % was anchoring wrong and clipped the right) */
+/* Light half: show patient on right — she sits in the right portion of the source image */
 .hero-pharma-panel-light .hero-pharma-panel-bg img {
-  object-position: 30% center;
+  object-position: 68% center;
 }
 
 @media (width >= 900px) {
@@ -119,13 +119,13 @@
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 34% center;
+    object-position: 62% center;
   }
 }
 
 @media (width >= 1200px) {
   .hero-pharma-panel-light .hero-pharma-panel-bg img {
-    object-position: 36% center;
+    object-position: 58% center;
   }
 }
 
