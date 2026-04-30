@@ -291,16 +291,26 @@ main > .section > .carousel-testimonial-wrapper {
   }
 
   .carousel-testimonial .carousel-testimonial-slides {
-    padding: 0 48px;
+    max-width: 80%;
+    margin: 0 auto;
     overflow: hidden;
+    scroll-snap-type: none;
   }
 
   .carousel-testimonial .carousel-testimonial-slide {
     flex-direction: column-reverse;
   }
 
+  .carousel-testimonial .carousel-testimonial-slide-image {
+    max-height: 350px;
+    overflow: hidden;
+  }
+
   .carousel-testimonial .carousel-testimonial-slide-image img {
     aspect-ratio: auto;
+    height: 350px;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .carousel-testimonial .carousel-testimonial-slide-content {
