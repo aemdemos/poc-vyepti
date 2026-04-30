@@ -301,16 +301,11 @@ main > .section > .carousel-testimonial-wrapper {
     flex-direction: column-reverse;
   }
 
-  .carousel-testimonial .carousel-testimonial-slide-image {
-    max-height: 300px;
-    overflow: hidden;
-  }
-
   .carousel-testimonial .carousel-testimonial-slide-image img {
     aspect-ratio: auto;
-    height: 300px;
-    object-fit: cover;
-    object-position: 30% 85%;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .carousel-testimonial .carousel-testimonial-slide-content {
