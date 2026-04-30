@@ -165,6 +165,18 @@ main > .section.hero-pharma-container {
   margin-bottom: 20%;
 }
 
+@media (width <= 767px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-content {
+    display: block;
+    text-align: left;
+    padding: 24px 30px 30px;
+  }
+
+  .hero-pharma-panel-dark .hero-pharma-panel-description {
+    text-align: left;
+  }
+}
+
 .hero-pharma-panel-light .hero-pharma-panel-content {
   justify-content: flex-start;
   padding: 20px;
@@ -507,6 +519,13 @@ main > .section.hero-pharma-container {
   margin: 0;
   width: auto;
   max-width: none;
+}
+
+@media (width <= 767px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light a {
+    border: none;
+    padding: 19px 23px 19px 32px;
+  }
 }
 
 .hero-pharma:not(.hero-pharma-dual) > div:last-of-type a::after,

@@ -120,6 +120,13 @@ main > .section > .columns-cta-wrapper {
   width: 100%;
 }
 
+@media (width <= 767px) {
+  .columns-cta a,
+  .columns-cta a.button {
+    border-width: 1px;
+  }
+}
+
 @media (width >= 900px) {
   .columns-cta > div {
     align-items: stretch;
