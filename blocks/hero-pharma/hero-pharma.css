@@ -72,7 +72,7 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: clamp(200px, 28vw, 280px);
+  min-height: clamp(220px, 31vw, 308px);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -627,7 +627,7 @@
   .hero-pharma-panels {
     flex-direction: row;
     width: 100%;
-    height: clamp(280px, 30vw, 420px);
+    height: clamp(308px, 33vw, 462px);
   }
 
   .hero-pharma-panel {
