@@ -1,5 +1,5 @@
 function applyAccentColor(block) {
-  block.querySelectorAll('h1 strong, h2 strong, h3 strong').forEach((strong) => {
+  block.querySelectorAll('h1 strong, h2 strong, h3 strong, p strong').forEach((strong) => {
     const span = document.createElement('span');
     span.className = 'accent-color';
     span.textContent = strong.textContent;

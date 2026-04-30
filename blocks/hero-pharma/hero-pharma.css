@@ -85,19 +85,22 @@
   z-index: 0;
 }
 
-.hero-pharma-panel-bg picture,
+.hero-pharma-panel-bg,
+.hero-pharma-panel-bg p,
+.hero-pharma-panel-bg picture {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
 .hero-pharma-panel-bg img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-.hero-pharma-panel-bg p {
-  margin: 0;
-  width: 100%;
-  height: 100%;
 }
 
 /* Panel text content */
@@ -110,15 +113,15 @@
 }
 
 /* Dark panel (panel 1 - "nope") - white text */
-.hero-pharma-panel-dark .hero-pharma-panel-content p {
-  color: var(--background-color);
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-content p {
+  color: #fff;
   font-size: 20px;
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0 4px;
 }
 
-.hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
   font-size: 56px;
   font-weight: 800;
   line-height: 1;
@@ -126,16 +129,16 @@
 }
 
 /* Light panel (panel 2 - "yep") - teal/rose text */
-.hero-pharma-panel-light .hero-pharma-panel-content p {
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p {
   color: var(--text-color);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.22;
+  line-height: 1.4;
   margin: 0 0 8px;
 }
 
-.hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
-.hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
   color: var(--brand-teal);
   font-size: 24px;
   font-weight: 800;
@@ -169,8 +172,7 @@
   font-weight: inherit;
 }
 
-.hero-pharma > div:last-of-type p,
-.hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(3) {
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type p {
   color: var(--text-color);
   font-size: var(--body-font-size-m);
   font-weight: 400;
@@ -179,8 +181,8 @@
 }
 
 /* CTA link - teal outline pill button with arrow */
-.hero-pharma > div:last-of-type a,
-.hero-pharma-panel-light a {
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a {
   display: inline-block;
   padding: 19px 25px;
   background-color: var(--background-color);
@@ -194,8 +196,8 @@
   margin: 16px 0 0;
 }
 
-.hero-pharma > div:last-of-type a::after,
-.hero-pharma-panel-light a::after {
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a::after,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a::after {
   content: "";
   display: inline-block;
   width: 22px;
@@ -208,10 +210,10 @@
   background-position: center;
 }
 
-.hero-pharma > div:last-of-type a:hover,
-.hero-pharma > div:last-of-type a:focus,
-.hero-pharma-panel-light a:hover,
-.hero-pharma-panel-light a:focus {
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a:hover,
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a:focus,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a:hover,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a:focus {
   background-color: var(--background-color);
   border-color: var(--brand-teal-light);
   color: var(--brand-teal-light);
@@ -297,22 +299,22 @@
   }
 
   /* Dark panel desktop text */
-  .hero-pharma-panel-dark .hero-pharma-panel-content p {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-content p {
     font-size: 24px;
   }
 
-  .hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-content p:last-child {
     font-size: 72px;
   }
 
   /* Light panel desktop text */
-  .hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
-  .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p:first-child,
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(2) {
     font-size: 40px;
     line-height: 1.05;
   }
 
-  .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(3) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-content p:nth-child(3) {
     font-size: 18px;
     margin-top: 12px;
   }
