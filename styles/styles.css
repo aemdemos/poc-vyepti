@@ -35,7 +35,7 @@
   --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 18px;
+  --body-font-size-m: 24px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
 
@@ -91,7 +91,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 body.appear {
@@ -138,6 +138,8 @@ h1 {
   font-size: var(--heading-font-size-xxl);
   line-height: 1.125;
   color: var(--brand-teal);
+  margin-top: 0;
+  max-width: 14em;
 }
 
 h2 {
@@ -149,7 +151,8 @@ h3 {
   font-size: var(--heading-font-size-l);
   font-weight: 700;
   line-height: 1.6;
-  color: var(--brand-rose);
+  color: var(--text-color);
+  margin-bottom: 0;
 }
 
 h4 {
@@ -309,6 +312,7 @@ main img {
 /* sections */
 main > .section {
   margin: 0;
+  padding-bottom: 24px;
 }
 
 main > .section > div {
