@@ -285,6 +285,16 @@ main > .section > .carousel-testimonial-wrapper {
   }
 }
 
+@media (width <= 767px) {
+  .carousel-testimonial .carousel-testimonial-slide {
+    flex-direction: column-reverse;
+  }
+
+  .carousel-testimonial .carousel-testimonial-slide-image img {
+    aspect-ratio: auto;
+  }
+}
+
 /* Swipe hint - mobile only */
 .carousel-testimonial .carousel-testimonial-swipe-hint {
   text-align: center;
