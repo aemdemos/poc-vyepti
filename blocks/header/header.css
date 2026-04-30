@@ -482,7 +482,6 @@ header .nav-brand-tagline {
     width: 28px;
     height: 3px;
     background: var(--brand-teal);
-    border-radius: 2px;
     position: relative;
   }
 
@@ -493,7 +492,6 @@ header .nav-brand-tagline {
     width: 28px;
     height: 3px;
     background: var(--brand-teal);
-    border-radius: 2px;
     position: absolute;
     left: 0;
   }
