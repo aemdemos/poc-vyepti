@@ -299,6 +299,7 @@ main > .section > .carousel-testimonial-wrapper {
 
   .carousel-testimonial .carousel-testimonial-slide {
     flex-direction: column-reverse;
+    overflow: hidden;
   }
 
   .carousel-testimonial .carousel-testimonial-slide-image img {
