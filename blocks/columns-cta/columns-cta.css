@@ -134,7 +134,13 @@ main > .section > .columns-cta-wrapper {
 
   .columns-cta a::after,
   .columns-cta a.button::after {
-    background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-white.svg");
+    background-image: none;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg);
+    margin-left: 14px;
   }
 
   .columns-cta a:hover,
