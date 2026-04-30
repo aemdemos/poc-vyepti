@@ -155,6 +155,10 @@ export default async function decorate(block) {
   block.prepend(container);
 
   if (!isSingleSlide) {
+    const swipeHint = document.createElement('p');
+    swipeHint.className = `${BLOCK}-swipe-hint`;
+    swipeHint.textContent = 'Swipe for more';
+    block.append(swipeHint);
     bindEvents(block);
   }
 }

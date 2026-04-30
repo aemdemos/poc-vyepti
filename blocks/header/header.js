@@ -185,7 +185,26 @@ function decorateBrandRow(brandSection, toolsSection) {
     clone.className = 'nav-brand-link';
     logoWrapper.append(clone);
   }
+  // Brand tagline (visible on mobile next to logo)
+  const brandTagline = document.createElement('span');
+  brandTagline.className = 'nav-brand-tagline';
+  brandTagline.textContent = 'For the preventive treatment of migraine in adults.';
+  logoWrapper.append(brandTagline);
+
   container.append(logoWrapper);
+
+  // Hamburger menu button (mobile)
+  const hamburger = document.createElement('button');
+  hamburger.className = 'nav-hamburger';
+  hamburger.setAttribute('aria-label', 'Toggle Menu');
+  hamburger.setAttribute('aria-expanded', 'false');
+  const hamburgerIcon = document.createElement('span');
+  hamburgerIcon.className = 'nav-hamburger-icon';
+  const hamburgerText = document.createElement('span');
+  hamburgerText.className = 'nav-hamburger-text';
+  hamburgerText.textContent = 'Menu';
+  hamburger.append(hamburgerIcon, hamburgerText);
+  container.append(hamburger);
 
   // Tools (icon links)
   const toolsWrapper = document.createElement('div');
@@ -315,4 +334,24 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // Hide header on scroll down, show on scroll up
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          navWrapper.classList.add('nav-hidden');
+        } else {
+          navWrapper.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
 }
