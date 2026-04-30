@@ -122,7 +122,7 @@ main > .section > .columns-cta-wrapper {
 
 @media (width <= 767px) {
   .columns-cta > div > div {
-    margin: 0 24px;
+    margin: 0 48px;
   }
 
   .columns-cta a,
@@ -130,6 +130,11 @@ main > .section > .columns-cta-wrapper {
     background-color: var(--brand-teal);
     border-color: var(--brand-teal);
     color: #fff;
+  }
+
+  .columns-cta a::after,
+  .columns-cta a.button::after {
+    background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-white.svg");
   }
 
   .columns-cta a:hover,
