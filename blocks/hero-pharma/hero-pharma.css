@@ -72,7 +72,7 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: 400px;
+  min-height: clamp(280px, 52vw, 380px);
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -103,6 +103,32 @@
   object-position: center;
 }
 
+/* Dark half: keep upper auditorium / ceiling in frame so copy can sit above crowd */
+.hero-pharma-panel-dark .hero-pharma-panel-bg img {
+  object-position: 50% 22%;
+}
+
+/* Light half: shift focal point left so subject + chair are not clipped on the right */
+.hero-pharma-panel-light .hero-pharma-panel-bg img {
+  object-position: 38% center;
+}
+
+@media (width >= 900px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-bg img {
+    object-position: 50% 20%;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-bg img {
+    object-position: 40% center;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-pharma-panel-light .hero-pharma-panel-bg img {
+    object-position: 42% center;
+  }
+}
+
 /* Panel text overlay — matches #split-image-col-wrapper-* .cmp-teaser__content */
 .hero-pharma-panel-content {
   position: absolute;
@@ -118,26 +144,12 @@
   text-align: center;
 }
 
+/* Dark: top-left copy block (vyepti keeps headline in the open upper area, not over faces) */
 .hero-pharma-panel-dark .hero-pharma-panel-content {
-  padding: 30px;
-}
-
-@media (width <= 767px) {
-  .hero-pharma-panel-dark .hero-pharma-panel-content {
-    padding-top: 24px;
-  }
-}
-
-@media (width >= 768px) and (width <= 991px) {
-  .hero-pharma-panel-dark .hero-pharma-panel-content {
-    padding-top: 20px;
-  }
-}
-
-@media (width >= 1440px) {
-  .hero-pharma-panel-dark .hero-pharma-panel-content {
-    padding-top: 38px;
-  }
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: clamp(16px, 4vw, 28px) clamp(16px, 3vw, 28px) 30px;
 }
 
 .hero-pharma-panel-light .hero-pharma-panel-content {
@@ -165,19 +177,24 @@
   }
 }
 
-/* Copy block — vyepti .cmp-teaser__description width/margins at 1600px+ */
+/* Copy block — light column stays centered; dark stays left */
 .hero-pharma-panel-description {
   width: 100%;
   text-align: center;
 }
 
-@media (width >= 1600px) {
-  .hero-pharma-panel-dark .hero-pharma-panel-description {
-    width: 75%;
-    margin-left: 25%;
-    margin-right: 0;
-  }
+.hero-pharma-panel-dark .hero-pharma-panel-description {
+  text-align: left;
+  max-width: 92%;
+}
 
+@media (width >= 900px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-description {
+    max-width: 88%;
+  }
+}
+
+@media (width >= 1600px) {
   .hero-pharma-panel-light .hero-pharma-panel-description {
     width: 75%;
     margin-right: 25%;
@@ -604,23 +621,24 @@
     right: 67px;
   }
 
-  /* Dual-panel desktop — side by side 50/50 (vyepti split columns) */
+  /* Dual-panel desktop — one row height = full vyepti banner (2880×1116) */
   .hero-pharma-panels {
     flex-direction: row;
+    aspect-ratio: 2880 / 1116;
   }
 
   .hero-pharma-panel {
     flex: 1 1 50%;
-    min-height: unset;
-    aspect-ratio: 720 / 560;
+    min-height: 0;
+    align-self: stretch;
   }
 
-  .hero-pharma-panel-dark .hero-pharma-panel-content,
+  .hero-pharma-panel-dark .hero-pharma-panel-content {
+    padding: clamp(18px, 2.5vw, 32px) clamp(20px, 2.5vw, 40px) 24px;
+  }
+
   .hero-pharma-panel-light .hero-pharma-panel-content {
     padding: 30px;
-  }
-
-  .hero-pharma-panel-light .hero-pharma-panel-content {
     padding-bottom: 120px;
   }
 }
