@@ -72,10 +72,10 @@
 
 .hero-pharma-panel {
   position: relative;
-  min-height: 350px;
+  min-height: 280px;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 /* Panel background image */
@@ -112,9 +112,21 @@
 .hero-pharma-panel-content {
   position: relative;
   z-index: 1;
-  padding: 32px 24px;
+  padding: 24px;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Dark panel text - centered horizontally, near top */
+.hero-pharma-panel-dark .hero-pharma-panel-content {
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* Light panel text - right-aligned, near top */
+.hero-pharma-panel-light .hero-pharma-panel-content {
+  text-align: right;
+  padding-top: 30px;
 }
 
 /* Dark panel (panel 1 - "nope") - white text */
@@ -296,11 +308,17 @@
   .hero-pharma-panel {
     flex: 1 1 50%;
     min-height: unset;
-    aspect-ratio: 1440 / 1116;
+    aspect-ratio: 1440 / 780;
   }
 
-  .hero-pharma-panel-content {
-    padding: 60px 40px;
+  .hero-pharma-panel-dark .hero-pharma-panel-content {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-content {
+    padding: 40px;
+    text-align: right;
   }
 
   /* Dark panel desktop text */
