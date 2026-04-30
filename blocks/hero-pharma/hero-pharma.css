@@ -406,7 +406,7 @@ main > .section.hero-pharma-container {
 /* CTA band — absolute bottom, centered (vyepti #split-image-col-wrapper-2 .cmp-teaser__action-container) */
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
   position: absolute;
-  left: 30px;
+  left: 50px;
   right: auto;
   bottom: 80px;
   margin: 0;
