@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+
 function applyAccentColor(block) {
   block.querySelectorAll('h1 strong, h2 strong, h3 strong, p strong').forEach((strong) => {
     const span = document.createElement('span');
@@ -18,6 +20,138 @@ function decorateSinglePanel(block) {
   }
 }
 
+/** Default breakpoints for single hero image (same defaults as `createOptimizedPicture` in aem.js). */
+const HERO_PHARMA_SINGLE_PICTURE_BREAKPOINTS = [
+  { media: '(min-width: 600px)', width: '2000' },
+  { width: '750' },
+];
+
+/**
+ * `media` for image index 1..4 (image 0 is the &lt;768px default on &lt;img&gt;). Matches `createOptimizedPicture` ordering: highest `min-width` first.
+ * @type {string[]}
+ */
+const HERO_PHARMA_ART_DIRECTION_MEDIA = [
+  '(min-width: 1600px)',
+  '(min-width: 1200px)',
+  '(min-width: 992px)',
+  '(min-width: 768px)',
+];
+
+/** CDN width hints per slot index 0..4 (aligned to layout tiers). */
+const HERO_PHARMA_ART_DIRECTION_WIDTHS = ['750', '992', '1200', '2000', '2560'];
+
+/**
+ * Walks the image cell in document order and collects up to 5 distinct hero images.
+ * @param {HTMLElement} imgCell
+ * @returns {{ src: string, alt: string }[]}
+ */
+function collectHeroPharmaImageSources(imgCell) {
+  const out = [];
+  const walk = (root) => {
+    if (out.length >= 5) return;
+    [...root.children].forEach((el) => {
+      if (out.length >= 5) return;
+      if (el.matches('picture')) {
+        const img = el.querySelector('img[src]');
+        if (img) {
+          out.push({ src: img.src, alt: img.getAttribute('alt') ?? '' });
+        }
+      } else if (el.matches('img[src]')) {
+        if (!el.closest('picture')) {
+          out.push({ src: el.src, alt: el.getAttribute('alt') ?? '' });
+        }
+      } else {
+        walk(el);
+      }
+    });
+  };
+  walk(imgCell);
+  return out;
+}
+
+/**
+ * One &lt;picture&gt; with art-direction sources (different assets per viewport), same URL pattern as `createOptimizedPicture`.
+ * @param {{ src: string, alt: string }[]} sources 2–5 entries
+ * @returns {HTMLPictureElement}
+ */
+function createHeroPharmaArtDirectionPicture(sources) {
+  const capped = sources.slice(0, 5);
+  const picture = document.createElement('picture');
+  const eager = true;
+
+  for (let i = capped.length - 1; i >= 1; i -= 1) {
+    const { src } = capped[i];
+    const url = !src.startsWith('http') ? new URL(src, window.location.href) : new URL(src);
+    const { origin, pathname } = url;
+    const ext = pathname.split('.').pop();
+    const width = HERO_PHARMA_ART_DIRECTION_WIDTHS[i] ?? '2000';
+    const media = HERO_PHARMA_ART_DIRECTION_MEDIA[4 - i];
+
+    const webp = document.createElement('source');
+    webp.setAttribute('media', media);
+    webp.setAttribute('type', 'image/webp');
+    webp.setAttribute('srcset', `${origin}${pathname}?width=${width}&format=webply&optimize=medium`);
+    picture.append(webp);
+
+    const fallback = document.createElement('source');
+    fallback.setAttribute('media', media);
+    fallback.setAttribute(
+      'srcset',
+      `${origin}${pathname}?width=${width}&format=${ext}&optimize=medium`,
+    );
+    picture.append(fallback);
+  }
+
+  const defaultSrc = capped[0].src;
+  const defaultAlt = capped[0].alt;
+  const url0 = !defaultSrc.startsWith('http')
+    ? new URL(defaultSrc, window.location.href)
+    : new URL(defaultSrc);
+  const { origin, pathname } = url0;
+  const ext = pathname.split('.').pop();
+  const width0 = HERO_PHARMA_ART_DIRECTION_WIDTHS[0] ?? '750';
+
+  const img = document.createElement('img');
+  img.setAttribute('loading', eager ? 'eager' : 'lazy');
+  img.setAttribute('alt', defaultAlt);
+  img.setAttribute(
+    'src',
+    `${origin}${pathname}?width=${width0}&format=${ext}&optimize=medium`,
+  );
+  picture.append(img);
+
+  return picture;
+}
+
+/**
+ * @param {HTMLElement} imgCell
+ * @returns {DocumentFragment|HTMLPictureElement|HTMLElement}
+ */
+function buildHeroPharmaPanelBackgroundContent(imgCell) {
+  const sources = collectHeroPharmaImageSources(imgCell);
+  const frag = document.createDocumentFragment();
+
+  if (sources.length === 0) {
+    frag.append(...imgCell.childNodes);
+    return frag;
+  }
+
+  if (sources.length === 1) {
+    frag.append(
+      createOptimizedPicture(
+        sources[0].src,
+        sources[0].alt,
+        true,
+        HERO_PHARMA_SINGLE_PICTURE_BREAKPOINTS,
+      ),
+    );
+    return frag;
+  }
+
+  frag.append(createHeroPharmaArtDirectionPicture(sources));
+  return frag;
+}
+
 function decorateDualPanel(block, rows) {
   block.classList.add('hero-pharma-dual');
   const panels = [];
@@ -32,7 +166,9 @@ function decorateDualPanel(block, rows) {
     if (imgCell) {
       const bgDiv = document.createElement('div');
       bgDiv.className = 'hero-pharma-panel-bg';
-      bgDiv.append(...imgCell.childNodes);
+      const bgContent = buildHeroPharmaPanelBackgroundContent(imgCell);
+      imgCell.replaceChildren();
+      bgDiv.append(bgContent);
       panel.appendChild(bgDiv);
     }
 
