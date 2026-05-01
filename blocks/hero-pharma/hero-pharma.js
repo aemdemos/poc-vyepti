@@ -26,19 +26,28 @@ const HERO_PHARMA_SINGLE_PICTURE_BREAKPOINTS = [
   { width: '750' },
 ];
 
-/**
- * `media` for image index 1..4 (image 0 is the &lt;768px default on &lt;img&gt;). Matches `createOptimizedPicture` ordering: highest `min-width` first.
- * @type {string[]}
- */
-const HERO_PHARMA_ART_DIRECTION_MEDIA = [
-  '(min-width: 1600px)',
-  '(min-width: 1200px)',
-  '(min-width: 992px)',
-  '(min-width: 768px)',
-];
+/** Default &lt;img&gt; CDN width (first art-direction asset, viewports &lt; 768px). */
+const HERO_PHARMA_ART_DIRECTION_DEFAULT_WIDTH = '750';
 
-/** CDN width hints per slot index 0..4 (aligned to layout tiers). */
-const HERO_PHARMA_ART_DIRECTION_WIDTHS = ['750', '992', '1200', '2000', '2560'];
+/**
+ * Art-direction `media` + `width` for source index 1..4 (whitelist — avoids computed array keys).
+ * @param {number} imageIndex
+ * @returns {{ media: string, width: string }}
+ */
+function getHeroPharmaArtDirectionSourceMeta(imageIndex) {
+  switch (imageIndex) {
+    case 1:
+      return { media: '(min-width: 768px)', width: '992' };
+    case 2:
+      return { media: '(min-width: 992px)', width: '1200' };
+    case 3:
+      return { media: '(min-width: 1200px)', width: '2000' };
+    case 4:
+      return { media: '(min-width: 1600px)', width: '2560' };
+    default:
+      return { media: '(min-width: 768px)', width: '750' };
+  }
+}
 
 /**
  * Walks the image cell in document order and collects up to 5 distinct hero images.
@@ -84,8 +93,7 @@ function createHeroPharmaArtDirectionPicture(sources) {
     const url = !src.startsWith('http') ? new URL(src, window.location.href) : new URL(src);
     const { origin, pathname } = url;
     const ext = pathname.split('.').pop();
-    const width = HERO_PHARMA_ART_DIRECTION_WIDTHS[i] ?? '2000';
-    const media = HERO_PHARMA_ART_DIRECTION_MEDIA[4 - i];
+    const { media, width } = getHeroPharmaArtDirectionSourceMeta(i);
 
     const webp = document.createElement('source');
     webp.setAttribute('media', media);
@@ -109,7 +117,7 @@ function createHeroPharmaArtDirectionPicture(sources) {
     : new URL(defaultSrc);
   const { origin, pathname } = url0;
   const ext = pathname.split('.').pop();
-  const width0 = HERO_PHARMA_ART_DIRECTION_WIDTHS[0] ?? '750';
+  const width0 = HERO_PHARMA_ART_DIRECTION_DEFAULT_WIDTH;
 
   const img = document.createElement('img');
   img.setAttribute('loading', eager ? 'eager' : 'lazy');

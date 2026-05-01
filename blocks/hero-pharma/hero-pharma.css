@@ -117,7 +117,7 @@ main > .section.hero-pharma-container {
 .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(2) {
   font-size: 37px !important;
   padding-bottom: 16px;
-  font-family: "nunito", sans-serif;
+  font-family: nunito, sans-serif;
 }
 
 /* Mobile: dark panel stretches to fill, light panel uses cover to preserve proportions */
@@ -274,7 +274,7 @@ main > .section.hero-pharma-container {
   }
 
   .hero-pharma-panel-light .hero-pharma-panel-content {
-    padding: 20px 20px;
+    padding: 20px;
 }
 
   .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
@@ -315,7 +315,6 @@ main > .section.hero-pharma-container {
 }
 
 @media (width >= 991px) {
-
   .hero-pharma-panel-content {
     padding-top: 30px;
   }
