@@ -52,6 +52,7 @@
 
   /* nav heights */
   --nav-height: 200px;
+  --nav-brand-row-height-mobile: 90px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
@@ -417,4 +418,5 @@ main .section.dark a.button.secondary:focus {
     gap: 30px;
   }
 }
+
 /* ISI styles are now in blocks/isi/isi.css */
