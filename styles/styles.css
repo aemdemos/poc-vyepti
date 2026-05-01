@@ -331,23 +331,25 @@ main > .section > div {
 main .section.accent {
   background-color: var(--accent-bg);
   margin: 0;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 
 main .section.accent > div {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 12px;
 }
 
 main .section.accent p {
   margin: 0;
+  font-size: 18px;
 }
 
 main .section.accent img {
-  width: 58px;
-  height: 58px;
+  max-width: unset;
+  width: 54px;
+  height: 54px;
 }
 
 /* section metadata - light */
@@ -410,4 +412,9 @@ main .section.dark a.button.secondary:focus {
   color: var(--brand-teal);
 }
 
+@media (width >= 991px) {
+  main .section.accent > div {
+    gap: 30px;
+  }
+}
 /* ISI styles are now in blocks/isi/isi.css */
