@@ -101,6 +101,10 @@ main > .section.hero-pharma-container {
   object-position: center;
 }
 
+.hero-pharma-panel-light .hero-pharma-panel-content {
+  padding: 10px 20px;
+}
+
 /* Default for tablet+ before desktop override */
 .hero-pharma-panel-dark .hero-pharma-panel-bg img {
   object-position: 50% 12%;
@@ -140,12 +144,6 @@ main > .section.hero-pharma-container {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-@media (width <= 767px) {
-  .hero-pharma-panel-light .hero-pharma-panel-content {
-    padding-top: 10px;
-  }
 }
 
 /* Copy block — light column stays centered; dark stays left */
@@ -274,6 +272,10 @@ main > .section.hero-pharma-container {
     font-size: 56px;
     line-height: 1.07;
   }
+
+  .hero-pharma-panel-light .hero-pharma-panel-content {
+    padding: 20px 20px;
+}
 
   .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
     bottom: 50px;
