@@ -2,7 +2,7 @@
 
 /* Section-level spacing */
 main > .section > .cards-feature-wrapper {
-  padding-top: 40px;
+  margin-top: 24px;
 }
 
 .cards-feature > ul {
@@ -11,7 +11,7 @@ main > .section > .cards-feature-wrapper {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 16px;
 }
 
 .cards-feature > ul > li {
@@ -42,23 +42,23 @@ main > .section > .cards-feature-wrapper {
 }
 
 /* Card text body - second div, flex to fill remaining space */
-.cards-feature > ul > li > .cards-feature-card-body:last-child {
-  padding: 16px 0 0;
+.cards-feature > ul > li > .cards-feature-card-body {
+  padding: 10px 16px;
   display: flex;
   flex-direction: column;
   flex: 1;
   text-align: center;
 }
 
-.cards-feature > ul > li > .cards-feature-card-body:last-child h2 {
+.cards-feature > ul > li > .cards-feature-card-body h2 {
   font-size: 24px;
   font-weight: 800;
-  color: var(--text-color);
+  color: var(--brand-teal);
   line-height: 1.21;
   margin: 0 0 8px;
 }
 
-.cards-feature > ul > li > .cards-feature-card-body:last-child p {
+.cards-feature > ul > li > .cards-feature-card-body p {
   font-size: 16px;
   color: var(--text-color);
   line-height: 1.375;
@@ -67,85 +67,49 @@ main > .section > .cards-feature-wrapper {
 }
 
 /* Card CTA - anchored to bottom of card */
-.cards-feature > ul > li > .cards-feature-card-body:last-child p:last-child {
+.cards-feature > ul > li > .cards-feature-card-body p:last-child {
   margin-top: auto;
   padding-top: 24px;
   flex: 0 0 auto;
 }
 
-.cards-feature > ul > li > .cards-feature-card-body:last-child a,
-.cards-feature > ul > li > .cards-feature-card-body:last-child a.button {
-  display: inline-block;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  color: var(--brand-teal);
-  padding: 8px 20px 8px 0;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: var(--button-transition);
-  margin: 0;
-  white-space: nowrap;
-}
+@media (width >= 768px) {
+  main > .section > .cards-feature-wrapper {
+    margin: 40px auto;
+    max-width: 720px;
+  }
 
-.cards-feature > ul > li > .cards-feature-card-body:last-child a::after,
-.cards-feature > ul > li > .cards-feature-card-body:last-child a.button::after {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 9px;
-  margin-left: 8px;
-  vertical-align: middle;
-  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .cards-feature > ul > li {
+    flex-direction: row;
+  }
 
-.cards-feature > ul > li > .cards-feature-card-body:last-child a:hover,
-.cards-feature > ul > li > .cards-feature-card-body:last-child a:focus,
-.cards-feature > ul > li > .cards-feature-card-body:last-child a.button:hover,
-.cards-feature > ul > li > .cards-feature-card-body:last-child a.button:focus {
-  color: var(--brand-teal-light);
-}
-
-@media (width >= 600px) {
-  .cards-feature > ul {
-    grid-template-columns: repeat(2, 1fr);
+  .cards-feature > ul > li > .cards-feature-card-body {
+    text-align: left;
   }
 }
 
-@media (width <= 767px) {
-  .cards-feature > ul {
-    grid-template-columns: 1fr;
+@media (width >= 991px) {
+  main > .section > .cards-feature-wrapper {
+    max-width: 920px;
   }
 
-  .cards-feature > ul > li img {
-    width: 120px;
-    height: 112px;
-  }
-
-  .cards-feature > ul > li > .cards-feature-card-body:last-child a,
-  .cards-feature > ul > li > .cards-feature-card-body:last-child a.button {
-    font-size: 18px;
-    border: 1px solid var(--brand-teal);
-    border-radius: 100px;
-    padding: 19px 25px;
-  }
-}
-
-@media (width >= 900px) {
   .cards-feature > ul {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
 
   .cards-feature > ul > li {
-    text-align: left;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .cards-feature > ul > li > .cards-feature-card-body:last-child {
-    text-align: left;
+  .cards-feature > ul > li > .cards-feature-card-body {
+    text-align: center;
+  }
+}
+
+@media (width >= 1200px) {
+  main > .section > .cards-feature-wrapper {
+    max-width: var(--max-width-site);
   }
 }

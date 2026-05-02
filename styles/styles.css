@@ -226,33 +226,32 @@ a:hover {
 a.button,
 button {
   box-sizing: border-box;
-  display: inline-block;
   max-width: 100%;
-  margin: 12px 0;
-  border: 1px solid var(--brand-rose);
-  border-radius: var(--button-border-radius);
-  padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: var(--button-font-weight);
-  font-size: var(--body-font-size-m);
   line-height: 1.25;
   text-align: center;
-  text-decoration: none;
-  background-color: var(--brand-rose);
-  color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: inline-block;
+  background-color: transparent;
+  color: var(--brand-teal);
+  font-weight: 700;
+  text-decoration: none;
   transition: var(--button-transition);
+  margin: 0;
+  white-space: nowrap;
+  font-size: 18px;
+  border: 2px solid var(--brand-teal);
+  border-radius: 100px;
+  padding: 19px 25px;
 }
 
 a.button:hover,
 a.button:focus {
-  background-color: var(--brand-rose-dark);
-  border-color: var(--brand-rose-dark);
-  color: var(--background-color);
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
   text-decoration: none;
   cursor: pointer;
 }
@@ -274,6 +273,25 @@ button:disabled:hover {
   border-color: var(--light-color);
   color: var(--text-color-light);
   cursor: unset;
+}
+
+a.button::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 9px;
+  margin-left: 8px;
+  vertical-align: middle;
+  background-image: url("/icons/arrow-right.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: var(--button-transition);
+}
+
+a.button:hover::after,
+a.button:focus::after {
+  opacity: 0.5;
 }
 
 /* buttons - secondary (teal outline / ghost) */
@@ -319,7 +337,7 @@ main > .section {
 main > .section > div {
   max-width: var(--max-width-site);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 15px;
 }
 
 @media (width >= 900px) {
@@ -418,5 +436,3 @@ main .section.dark a.button.secondary:focus {
     gap: 30px;
   }
 }
-
-/* ISI styles are now in blocks/isi/isi.css */
