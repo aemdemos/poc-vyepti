@@ -52,6 +52,7 @@
 
   /* nav heights */
   --nav-height: 200px;
+  --nav-brand-row-height-mobile: 90px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
