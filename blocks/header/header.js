@@ -153,6 +153,20 @@ function decorateUtilityBar(utilSection) {
           }
         });
 
+        dropdown.addEventListener('mouseenter', () => {
+          if (window.matchMedia('(min-width: 900px)').matches) {
+            dropdown.closest('.nav-utility-links')
+              .querySelectorAll('.nav-utility-dropdown-trigger[aria-expanded="true"]')
+              .forEach((t) => t.setAttribute('aria-expanded', 'false'));
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+        dropdown.addEventListener('mouseleave', () => {
+          if (window.matchMedia('(min-width: 900px)').matches) {
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+
         dropdown.append(trigger, menu);
         utilLinks.append(dropdown);
       } else {
