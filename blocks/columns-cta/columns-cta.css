@@ -47,7 +47,7 @@ main > .section > .columns-cta-wrapper {
 }
 
 /* Eyebrow heading (h4) - teal */
-.columns-cta h4 {
+.columns-cta p strong:first-child {
   font-size: 18px;
   font-weight: 700;
   color: var(--brand-teal);
@@ -63,7 +63,7 @@ main > .section > .columns-cta-wrapper {
   color: var(--brand-rose);
   line-height: 1;
   margin: 0;
-  padding-bottom: 16px;
+  padding: 16px 0;
 }
 
 /* Description paragraph */

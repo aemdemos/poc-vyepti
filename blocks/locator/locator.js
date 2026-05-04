@@ -239,7 +239,6 @@ export default function decorate(block) {
   mapContainer.id = 'locator-map';
   mapContainer.className = 'locator-map';
   mapContainer.setAttribute('role', 'presentation');
-  mapContainer.setAttribute('aria-label', 'Map area');
 
   const resultsContainer = document.createElement('div');
   resultsContainer.id = 'locator-results';

@@ -22,7 +22,7 @@ footer .footer p {
 /* === Section 0: Teal Legal Links Strip === */
 footer .footer .footer-legal-strip {
   background-color: var(--brand-teal);
-  padding: 20px 0 22px;
+  padding: 10px 0;
   text-align: center;
   line-height: 0;
 }
@@ -41,8 +41,10 @@ footer .footer .footer-legal-strip a {
   font-weight: 600;
   line-height: 22px;
   font-family: var(--body-font-family);
-  margin-right: 40px;
   transition: color 0.2s ease;
+  margin: 8px 0;
+  padding-right: 40px;
+  display: inline-block;
 }
 
 footer .footer .footer-legal-strip a:last-child {
