@@ -11,7 +11,7 @@ async function fetchFooterFragment() {
     ? new URL(footerMeta, window.location).pathname
     : '/footer';
 
-  let resp = await fetch('/content/footer.plain.html');
+  let resp = await fetch('/footer.plain.html');
   if (!resp.ok) {
     resp = await fetch(`${footerPath}.plain.html`);
   }
