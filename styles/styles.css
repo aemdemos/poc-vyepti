@@ -340,6 +340,24 @@ main > .section > div {
   padding: 0 15px;
 }
 
+.section.center {
+  text-align: center;
+  padding-top: 20px;
+
+  h1 {
+    font-size: 32px;
+    max-width: unset;
+  }
+
+  p {
+    font-size: 20px;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
 @media (width >= 768px) {
   main > .section > div {
     max-width: 720px;
@@ -350,6 +368,18 @@ main > .section > div {
   main > .section > div {
     max-width: var(--max-width-site);
     padding: 0 32px;
+  }
+
+  .section.center {
+    text-align: left;
+
+    h1 {
+      font-size: 56px;
+    }
+
+    p {
+      font-size: 22px;
+    }
   }
 }
 
@@ -445,6 +475,14 @@ main .section.dark a.button.secondary:focus {
 
   main .section.accent > div {
     gap: 30px;
+  }
+
+  .section.center {
+    text-align: left;
+
+    h1 {
+      max-width: 14em;
+    }
   }
 }
 

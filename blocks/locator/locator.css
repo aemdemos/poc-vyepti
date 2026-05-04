@@ -502,7 +502,7 @@ main .locator .locator-welcome-subtitle {
 
 @media (width >= 992px) {
   main .locator {
-    padding: 0 24px;
+    padding: 0;
   }
 
   main .locator .locator-shell {
