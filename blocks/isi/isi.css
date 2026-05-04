@@ -20,7 +20,7 @@ main .isi li {
   margin-bottom: 10px;
 }
 
-main .isi h4 {
+main .isi h3 {
   color: var(--brand-teal-muted, #41748d);
   font-size: 18px;
   font-weight: 700;
@@ -80,7 +80,7 @@ main .isi a:hover {
   min-width: 0;
 }
 
-.isi-bar-col h5 {
+.isi-bar-col h3 {
   color: var(--brand-teal-muted, #41748d);
   font-size: 18px;
   font-weight: 700;
@@ -192,8 +192,8 @@ main .isi a:hover {
 /* ── Mobile ≤ 768px ──────────────────────────────────────────── */
 @media (width <= 768px) {
   .isi-bar {
-    height: 118px;
-    padding: 13px 0;
+    height: 109px;
+    padding: 0;
   }
 
   .isi-bar-content {
@@ -205,8 +205,10 @@ main .isi a:hover {
     flex: 1 1 100%;
   }
 
-  .isi-bar-col h4 {
+  .isi-bar-col h3 {
     padding-bottom: 8px;
+    color: var(--brand-teal);
+    font-size: 18px;
   }
 
   .isi-bar-col p {
