@@ -23,13 +23,13 @@ main > .section > .columns-cta-wrapper {
   overflow: hidden;
 }
 
-/* Decorative border strip at bottom of each card */
+
 .columns-cta > div > div:not(.columns-cta-img-col)::after {
   content: '';
   display: block;
   width: 100%;
   height: 10px;
-  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/half-callout-shape-540-desktop.svg");
+  background-image: url("/icons/half-callout.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
@@ -79,8 +79,8 @@ main > .section > .columns-cta-wrapper {
 .columns-cta a,
 .columns-cta a.button {
   display: inline-block;
-  background-color: var(--background-color);
-  color: var(--brand-teal);
+  background-color: var(--brand-teal);
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -94,6 +94,18 @@ main > .section > .columns-cta-wrapper {
 
 .columns-cta a::after,
 .columns-cta a.button::after {
+  background-image: none;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  width: 10px;
+  height: 10px;
+  transform: rotate(-45deg);
+  margin-left: 14px;
+}
+
+/*
+.columns-cta a::after,
+.columns-cta a.button::after {
   content: "";
   display: inline-block;
   width: 22px;
@@ -103,16 +115,15 @@ main > .section > .columns-cta-wrapper {
   background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-}
+  ba
+  */
 
 .columns-cta a:hover,
 .columns-cta a:focus,
 .columns-cta a.button:hover,
 .columns-cta a.button:focus {
-  background-color: var(--background-color);
+  background-color: var(--brand-teal-light);
   border-color: var(--brand-teal-light);
-  color: var(--brand-teal-light);
 }
 
 /* Images within columns */
@@ -120,40 +131,7 @@ main > .section > .columns-cta-wrapper {
   width: 100%;
 }
 
-@media (width <= 767px) {
-  .columns-cta > div > div {
-    margin: 0 48px;
-  }
-
-  .columns-cta a,
-  .columns-cta a.button {
-    background-color: var(--brand-teal);
-    border-color: var(--brand-teal);
-    color: #fff;
-  }
-
-  .columns-cta a::after,
-  .columns-cta a.button::after {
-    background-image: none;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    width: 10px;
-    height: 10px;
-    transform: rotate(-45deg);
-    margin-left: 14px;
-  }
-
-  .columns-cta a:hover,
-  .columns-cta a.button:hover,
-  .columns-cta a:focus,
-  .columns-cta a.button:focus {
-    background-color: var(--brand-teal-light);
-    border-color: var(--brand-teal-light);
-    color: #fff;
-  }
-}
-
-@media (width >= 900px) {
+@media (width >= 992px) {
   .columns-cta > div {
     align-items: stretch;
     flex-direction: row;
