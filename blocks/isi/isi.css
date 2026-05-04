@@ -45,7 +45,7 @@ main .isi a:hover {
   z-index: 5;
   background-color: #fff;
   border-top: 1px solid #d1d1d1;
-  height: 109px;
+  height: 90px;
   overflow: hidden;
   padding: 13px 13px 8px;
   transition: height 0.3s ease-in-out;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Toggles</title>
+    <g id="Size-Examples" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.0_Results_Quote1_Tablet" transform="translate(-1.000000, -164.000000)" fill="#C02C57">
+            <g id="Group-2" transform="translate(1.000000, 164.000000)">
+                <g id="dripIcons-/-chevron-right-Copy" transform="translate(13.200119, 8.400046)">
+                    <path d="M13.1088,20.4467073 C13.7456,21.0591073 13.7656,22.0719073 13.1532,22.7091073 C12.8392,23.0355073 12.4196,23.1999073 11.9996,23.1999073 C11.6004,23.1999073 11.2012,23.0519073 10.8908,22.7535073 L0.4908,12.7535073 C0.1772,12.4519073 0,12.0351073 0,11.5999073 C0,11.1651073 0.1772,10.7483073 0.4908,10.4467073 L10.8908,0.446707268 C11.5276,-0.165692732 12.5408,-0.146092732 13.1532,0.491107268 C13.7656,1.12830727 13.7456,2.14110727 13.1088,2.75350727 L3.9084,11.5999073 L13.1088,20.4467073 Z" id="chevron-left"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -52,7 +52,7 @@
 
   /* nav heights */
   --nav-height: 200px;
-  --nav-brand-row-height-mobile: 90px;
+  --nav-brand-row-height-mobile: 97px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
@@ -91,7 +91,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   line-height: 1.4;
 }
 
@@ -146,6 +146,7 @@ h1 {
 h2 {
   font-size: var(--heading-font-size-xl);
   line-height: 1.2;
+  color: var(--brand-teal);
 }
 
 h3 {
@@ -260,8 +261,7 @@ a.button:focus {
   outline: 0;
 }
 
-button:hover,
-button:focus {
+button:hover {
   background-color: var(--brand-rose-dark);
   border-color: var(--brand-rose-dark);
   cursor: pointer;
@@ -335,13 +335,20 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: var(--max-width-site);
+  max-width: 540px;
   margin: auto;
   padding: 0 15px;
 }
 
-@media (width >= 900px) {
+@media (width >= 768px) {
   main > .section > div {
+    max-width: 720px;
+  }
+}
+
+@media (width >= 992px) {
+  main > .section > div {
+    max-width: var(--max-width-site);
     padding: 0 32px;
   }
 }
@@ -431,8 +438,18 @@ main .section.dark a.button.secondary:focus {
   color: var(--brand-teal);
 }
 
-@media (width >= 991px) {
+@media (width >= 992px) {
+  header {
+    height: calc(var(--nav-height) + 23px);
+}
+
   main .section.accent > div {
     gap: 30px;
+  }
+}
+
+@media (width >= 1180px) {
+  header {
+    height: var(--nav-height);
   }
 }

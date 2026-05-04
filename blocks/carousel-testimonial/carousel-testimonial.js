@@ -1,4 +1,5 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import { buildPictureContentFromImageCell } from '../../scripts/utils.js';
 
 const BLOCK = 'carousel-testimonial';
 
@@ -34,7 +35,9 @@ export function showSlide(block, slideIndex = 0, behavior = 'smooth') {
   const slides = block.querySelectorAll(`.${BLOCK}-slide`);
   let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
   if (slideIndex >= slides.length) realSlideIndex = 0;
-  const activeSlide = slides[realSlideIndex];
+  const slideList = [...slides];
+  const activeSlide = slideList.find((_, idx) => idx === realSlideIndex);
+  if (!activeSlide) return;
 
   activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
   block.querySelector(`.${BLOCK}-slides`).scrollTo({
@@ -80,6 +83,14 @@ function createSlide(row, slideIndex, id) {
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`${BLOCK}-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    if (colIdx === 0) {
+      const pictureContent = buildPictureContentFromImageCell(column, {
+        eagerSingle: slideIndex === 0,
+        eagerArtDirection: slideIndex === 0,
+      });
+      column.replaceChildren();
+      column.append(pictureContent);
+    }
     slide.append(column);
   });
 
