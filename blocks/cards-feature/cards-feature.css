@@ -11,7 +11,7 @@ main > .section > .cards-feature-wrapper {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 32px;
 }
 
 .cards-feature > ul > li {
@@ -43,7 +43,6 @@ main > .section > .cards-feature-wrapper {
 
 /* Card text body - second div, flex to fill remaining space */
 .cards-feature > ul > li > .cards-feature-card-body {
-  padding: 10px 16px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -51,10 +50,6 @@ main > .section > .cards-feature-wrapper {
 }
 
 .cards-feature > ul > li > .cards-feature-card-body h2 {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--brand-teal);
-  line-height: 1.21;
   margin: 0 0 8px;
 }
 

@@ -63,9 +63,9 @@ footer .footer .footer-main {
 footer .footer .footer-main-inner {
   max-width: var(--footer-max-width);
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 16px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   gap: 0;
 }
@@ -105,7 +105,7 @@ footer .footer .footer-phone-row {
 }
 
 footer .footer .footer-phone-label {
-  font-size: 17px;
+  font-size: var(--body-font-size-s);
   font-weight: 700;
   color: rgb(72 72 72);
   line-height: 21px;
@@ -184,4 +184,10 @@ footer .footer .footer-brand-logo {
 footer .footer .footer-brand-logo img {
   width: 160px;
   height: auto;
+}
+
+@media (width >= 768px) {
+  footer .footer .footer-main-inner {
+    flex-direction: row;
+  }
 }
