@@ -499,3 +499,59 @@ main > .section.hero-pharma-container {
 /* ═══════════════════════════════════════════════════
    RESPONSIVE — DESKTOP
    ═══════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════
+   VYEPTIHCP VARIANT — dark-photo overlay + white text
+   (scoped variant; does not change the shared default
+   used by other hero-pharma instances/pages)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma.vyeptihcp:not(.hero-pharma-dual) {
+  min-height: 336px;
+}
+
+.hero-pharma.vyeptihcp:not(.hero-pharma-dual) > div:last-of-type {
+  min-height: 336px;
+  position: relative;
+}
+
+/* horizontal scrim: photo visible on the left, solid navy where the text sits */
+.hero-pharma.vyeptihcp:not(.hero-pharma-dual) > div:last-of-type::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(7 51 72 / 10%) 0%,
+    rgb(7 51 72 / 55%) 35%,
+    rgb(7 51 72 / 90%) 65%,
+    var(--brand-navy) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-pharma.vyeptihcp:not(.hero-pharma-dual) > div:last-of-type > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-pharma.vyeptihcp h1 {
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.hero-pharma.vyeptihcp h3 {
+  display: inline-block;
+  color: var(--brand-navy);
+  font-style: italic;
+  background: linear-gradient(
+    100deg,
+    rgb(150 180 190 / 55%) 0%,
+    rgb(255 255 255 / 92%) 55%,
+    rgb(255 255 255 / 92%) 100%
+  );
+  border-radius: 0 100px 100px 0;
+  padding: 10px 40px 10px 24px;
+  margin-bottom: 16px;
+}

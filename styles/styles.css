@@ -17,6 +17,7 @@
   --brand-teal-muted: #41748d;
   --brand-rose: #c02c57;
   --brand-rose-dark: #9a2346;
+  --brand-navy: #073348;
   --accent-bg: #e1f0f6;
   --card-bg-light: #eff6f9;
 
@@ -309,6 +310,25 @@ button.secondary:focus {
   background-color: var(--background-color);
   border-color: var(--brand-teal-light);
   color: var(--brand-teal-light);
+}
+
+/* buttons - accent (rose fill) — the site's single reserved action color;
+   author with <strong><em> (or <em><strong>) to get this "high-impact" class */
+a.button.accent {
+  background-color: var(--brand-rose);
+  border-color: var(--brand-rose);
+  color: #fff;
+}
+
+a.button.accent::after {
+  display: none;
+}
+
+a.button.accent:hover,
+a.button.accent:focus {
+  background-color: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
+  color: #fff;
 }
 
 main img {

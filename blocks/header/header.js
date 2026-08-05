@@ -68,6 +68,47 @@ function buildSearchForm() {
  * @param {Element} utilSection The utility bar section from nav fragment
  * @returns {HTMLElement} decorated utility bar
  */
+/**
+ * Builds the audience-gate banner ("This website is intended for US
+ * healthcare professionals only." + acknowledge/patient-site links) from an
+ * optional leading <div> inside the utility section. Returns null when the
+ * section carries no such marker div, so pages/nav fragments without an
+ * audience gate are unaffected.
+ * @param {Element} utilSection The utility section
+ * @returns {HTMLElement|null} decorated audience bar, or null
+ */
+function decorateAudienceBar(utilSection) {
+  const marker = utilSection.querySelector(':scope > div');
+  if (!marker) return null;
+
+  const bar = document.createElement('div');
+  bar.className = 'nav-audience';
+
+  const container = document.createElement('div');
+  container.className = 'nav-audience-container';
+
+  const paragraphs = [...marker.querySelectorAll(':scope > p')];
+  paragraphs.forEach((p) => {
+    const link = p.querySelector(':scope > a');
+    if (link) {
+      const clone = link.cloneNode(true);
+      clone.className = link.textContent.trim().toLowerCase() === 'continue'
+        ? 'nav-audience-continue'
+        : 'nav-audience-link';
+      container.append(clone);
+    } else if (p.textContent.trim()) {
+      const notice = document.createElement('span');
+      notice.className = 'nav-audience-notice';
+      notice.textContent = p.textContent.trim();
+      container.prepend(notice);
+    }
+  });
+
+  marker.remove();
+  bar.append(container);
+  return bar;
+}
+
 function decorateUtilityBar(utilSection) {
   const utilBar = document.createElement('div');
   utilBar.className = 'nav-utility';
@@ -443,8 +484,12 @@ export default async function decorate(block) {
 
   const [brandSection, sectionsEl, toolsSection, utilitySection] = sections;
 
-  // Build 3-row header: utility (top), brand+tools (middle), nav links (bottom)
-  if (utilitySection) nav.append(decorateUtilityBar(utilitySection));
+  // Build header rows: audience gate (optional, top) — utility — brand+tools — nav links
+  if (utilitySection) {
+    const audienceBar = decorateAudienceBar(utilitySection);
+    if (audienceBar) nav.append(audienceBar);
+    nav.append(decorateUtilityBar(utilitySection));
+  }
   if (brandSection) nav.append(decorateBrandRow(brandSection, toolsSection));
   if (sectionsEl) nav.append(decorateNavLinks(sectionsEl));
 

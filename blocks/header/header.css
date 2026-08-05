@@ -17,6 +17,45 @@ header nav {
   font-family: var(--body-font-family);
 }
 
+/* ===== ROW -1: Audience gate (optional; white, above the utility bar) ===== */
+header .nav-audience {
+  background-color: var(--background-color);
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 13px;
+}
+
+header .nav-audience-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 10px 24px;
+}
+
+header .nav-audience-notice {
+  color: var(--text-color);
+}
+
+header .nav-audience-continue,
+header .nav-audience-link {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--brand-teal);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header .nav-audience-continue {
+  border: 2px solid var(--brand-teal);
+  border-radius: 100px;
+  padding: 6px 20px;
+  margin-right: 16px;
+}
+
 /* ===== ROW 0: Utility Bar (dark teal) ===== */
 header .nav-utility {
   background-color: var(--brand-teal);
@@ -983,5 +1022,49 @@ header .nav-utility-social-link:last-child img {
 
 header .nav-utility-social-link:hover img {
   opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════
+   VYEPTIHCP THEME — page-metadata "theme: vyeptihcp" adds
+   this class to <body> (scripts/aem.js decorateTemplateAndTheme);
+   scoped so the sibling vyepti.com page's header is untouched.
+   ═══════════════════════════════════════════════════ */
+
+body.vyeptihcp header .nav-brand-row,
+body.vyeptihcp header .nav-links-row {
+  background-color: var(--brand-teal-muted);
+}
+
+body.vyeptihcp header .nav-brand-tagline,
+body.vyeptihcp header .nav-links-list > li,
+body.vyeptihcp header .nav-links-list > li > a {
+  color: #fff;
+}
+
+body.vyeptihcp header .nav-hamburger-icon,
+body.vyeptihcp header .nav-hamburger-icon::before,
+body.vyeptihcp header .nav-hamburger-icon::after {
+  background-color: #fff;
+}
+
+body.vyeptihcp header .nav-hamburger-text {
+  color: #fff;
+}
+
+/* icon-less tool links = the CTA pills (Infusion Locator / Check Coverage /
+   Request a Rep) — white-outline pill, distinct from the icon+label utility
+   links this block was originally built for */
+body.vyeptihcp header .nav-tool-link:not(:has(.nav-tool-icon)) {
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-size: 13px;
+  gap: 0;
+}
+
+body.vyeptihcp header .nav-tool-link:not(:has(.nav-tool-icon)):hover {
+  background-color: rgb(255 255 255 / 15%);
+  color: #fff;
 }
 }
