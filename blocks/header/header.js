@@ -64,22 +64,25 @@ function buildSearchForm() {
 }
 
 /**
- * Decorates the utility bar section (top teal bar)
- * @param {Element} utilSection The utility bar section from nav fragment
- * @returns {HTMLElement} decorated utility bar
- */
-/**
  * Builds the audience-gate banner ("This website is intended for US
  * healthcare professionals only." + acknowledge/patient-site links) from an
- * optional leading <div> inside the utility section. Returns null when the
- * section carries no such marker div, so pages/nav fragments without an
+ * optional, dedicated top-level fragment section. Returns null when the
+ * fragment carries no such section, so pages/nav fragments without an
  * audience gate are unaffected.
- * @param {Element} utilSection The utility section
+ *
+ * This must be its own top-level section (a direct child of the fragment's
+ * <main>), not a <div> nested inside another section: DA's content model
+ * only reliably preserves nesting one level deep (section > paragraphs/
+ * lists); a plain <div> wrapper nested inside a section gets flattened away
+ * on save, merging its children into the parent and silently dropping
+ * anything that was scoped to it.
+ * @param {Element} audienceSection The audience-gate section, if present
  * @returns {HTMLElement|null} decorated audience bar, or null
  */
-function decorateAudienceBar(utilSection) {
-  const marker = utilSection.querySelector(':scope > div');
-  if (!marker) return null;
+function decorateAudienceBar(audienceSection) {
+  if (!audienceSection) return null;
+  const paragraphs = [...audienceSection.querySelectorAll(':scope > p')];
+  if (!paragraphs.length) return null;
 
   const bar = document.createElement('div');
   bar.className = 'nav-audience';
@@ -87,7 +90,6 @@ function decorateAudienceBar(utilSection) {
   const container = document.createElement('div');
   container.className = 'nav-audience-container';
 
-  const paragraphs = [...marker.querySelectorAll(':scope > p')];
   paragraphs.forEach((p) => {
     const link = p.querySelector(':scope > a');
     if (link) {
@@ -104,7 +106,6 @@ function decorateAudienceBar(utilSection) {
     }
   });
 
-  marker.remove();
   bar.append(container);
   return bar;
 }
@@ -479,17 +480,17 @@ export default async function decorate(block) {
   nav.id = 'nav';
   nav.setAttribute('aria-label', 'Main navigation');
 
-  // Collect sections from fragment: brand, sections, tools, utility
+  // Collect sections from fragment: brand, sections, tools, utility, audience (optional, 5th)
   const sections = [...fragment.children];
 
-  const [brandSection, sectionsEl, toolsSection, utilitySection] = sections;
+  const [
+    brandSection, sectionsEl, toolsSection, utilitySection, audienceSection,
+  ] = sections;
 
   // Build header rows: audience gate (optional, top) — utility — brand+tools — nav links
-  if (utilitySection) {
-    const audienceBar = decorateAudienceBar(utilitySection);
-    if (audienceBar) nav.append(audienceBar);
-    nav.append(decorateUtilityBar(utilitySection));
-  }
+  const audienceBar = decorateAudienceBar(audienceSection);
+  if (audienceBar) nav.append(audienceBar);
+  if (utilitySection) nav.append(decorateUtilityBar(utilitySection));
   if (brandSection) nav.append(decorateBrandRow(brandSection, toolsSection));
   if (sectionsEl) nav.append(decorateNavLinks(sectionsEl));
 

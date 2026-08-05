@@ -1023,6 +1023,7 @@ header .nav-utility-social-link:last-child img {
 header .nav-utility-social-link:hover img {
   opacity: 0.8;
 }
+}
 
 /* ═══════════════════════════════════════════════════
    VYEPTIHCP THEME — page-metadata "theme: vyeptihcp" adds
@@ -1066,5 +1067,4 @@ body.vyeptihcp header .nav-tool-link:not(:has(.nav-tool-icon)) {
 body.vyeptihcp header .nav-tool-link:not(:has(.nav-tool-icon)):hover {
   background-color: rgb(255 255 255 / 15%);
   color: #fff;
-}
 }
