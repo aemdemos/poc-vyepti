@@ -159,7 +159,7 @@
 }
 
 .tabs.hero-tabs [data-layout="stat-grid"] h4 {
-  color: var(--brand-teal-muted);
+  color: var(--brand-teal);
   font-size: 20px;
   margin: 0 0 4px;
 }
