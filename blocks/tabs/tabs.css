@@ -113,6 +113,23 @@
   border-radius: 0 0 20px 20px;
 }
 
+/* panel-level heading, e.g. "Pivotal trial results" */
+.tabs.hero-tabs .tabs-panel > h3 {
+  color: var(--brand-teal-muted);
+  font-size: 25.2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+
+/* the tab strip visually overlaps the bottom of the preceding hero-pharma
+   section (matches the captured design's absolutely-positioned tab strip) */
+.tabs.hero-tabs {
+  position: relative;
+  z-index: 2;
+  margin-top: -70px;
+}
+
 @media (width <= 767px) {
   .tabs.hero-tabs .tabs-list {
     flex-direction: column;
