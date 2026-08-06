@@ -83,3 +83,70 @@ source and re-sanitised it alone; re-ran `davids-model-lint.mjs drafts/` to conf
 
 `--brand-navy: #073348` — used once, for the hero eyebrow line only (not previously
 in `styles.css`'s token set).
+
+---
+
+# coverage-reimbursement page (stardust:replica, 2026-08-06)
+
+Source: `stardust/prototypes/coverage-reimbursement-proposed.html` — gated against
+`https://www.vyeptihcp.com/coverage-reimbursement` with the strongest source-fidelity
+result of this batch (content-diff and visual-diff both fully clean). Target content
+path `/coverage-reimbursement`.
+
+## Section → block mapping
+
+| Prototype section | Block | Notes |
+|---|---|---|
+| `.cr-hero` (photo banner + h1) | `hero-pharma` (existing, `.page-title` variant) | Reused as-is, no new CSS |
+| Anchor-jump nav card (Coverage / PA resources / Reimbursement) | default content, `data-layout="jump-nav"` | Plain `<a href="#...">` pills — not `tabs` (no panel-switching JS in source) |
+| `#coverage` (VYEPTI Coverage Finder) | `columns-cta` (existing, 2-col) | Callout box (`data-layout="callout-box"`) is new page-scoped CSS for the highlighted stat line |
+| `#vyepti-connect-help` | `columns-cta` (existing, 2-col) | `Style: light` section-metadata for the soft-teal band |
+| `#pa-resources` top (text+CTA / image) | `columns-cta` (existing, 2-col) | |
+| `#pa-resources` quicklinks (3 icon-links) | `columns resource-list` (existing variant) | Direct fit, no new CSS |
+| Contact-a-rep band | default content, `data-layout="contact-a-rep"` (existing, reused from vyepti-resources) | Source has a rose arrow-circle button this shared pattern doesn't render; accepted as a minor fidelity gap rather than edit the shared pattern |
+| `#reimbursement` NDC/HCPCS billing table | real semantic `<table class="cr-drug-table">` in default content (decision already made — no bespoke block) | Exact CSS values from source (`border:1px solid teal`, `th{background:teal;padding:4px 60px}`, `td{padding:8px 20px;width:50%}`) added as page-scoped rules |
+| `#resources` quicklinks (4 icon-links) | `columns resource-list` (existing variant) | Direct fit, no new CSS |
+| Explore-links teal band (2 icon-arrow links) | default content, `data-layout="arrow-nav"` (existing, reused from vyepti-resources) | Direct fit, no new CSS |
+| Fixed/inline ISI | `isi` (existing) | See scroll-behavior note below |
+
+## Page-scoped CSS addition (`styles/styles.css`)
+
+Per this page's specific instructions, avoided touching shared blocks and used
+distinctly-named, additive-only rules (`[data-layout="jump-nav"]`, `[data-layout="callout-box"]`,
+`.cr-drug-table`, `.cr-jcode-row`, `.cr-jcode-badge`), all scoped under `body.vyeptihcp main`,
+appended at the end of the file after the existing vyepti-resources block — same established
+convention already used by that page. This was a deliberate, scoped exception to the general
+"don't touch shared files" rule for this batch, made because (a) this codebase's own convention
+already puts page-scoped default-content CSS in `styles.css` (see the vyepti-resources
+`[data-layout="resource-link-row"]` etc. rules), and (b) the class/attribute names chosen are
+unique to this page and unlikely to collide with concurrent sibling-page edits to the same file.
+**Diff was purely additive** (142 new lines at EOF, nothing else touched) — flagging here in
+case it needs reconciling against a sibling agent's own `styles.css` additions.
+
+## ISI scroll-behavior finding (no code change needed)
+
+This page's source ISI bar converts from `position:fixed` to a static in-flow block once
+scrolled past `<main>` (rather than the homepage's simpler always-fixed treatment). Read
+`blocks/isi/isi.js`: it already implements the equivalent end-to-end behavior via an
+`IntersectionObserver` on the block's parent `.section` — the fixed abbreviated bar hides
+and the full inline content (already in normal document flow, row 2) is revealed exactly
+when the ISI section scrolls into view, and a click-to-expand toggle covers the pre-scroll
+"+/−" behavior too. Confirmed working as-is; no changes made to the shared `isi` block.
+
+## Known fidelity gaps (accepted, not fixed, to stay in scope)
+
+- `columns-cta`'s CTA styling renders pills in **teal**, not this page's source **rose/magenta**
+  (`btn-pill-primary`) — same accepted deviation already baked into the homepage's use of this
+  block; not re-litigated here.
+- `contact-a-rep` (reused as-is) has no rose arrow-circle button, unlike this page's source.
+- The coverage-finder image cell keeps its caption paragraph inside the same cell as the
+  `<picture>`, which prevents `columns-cta.js`'s auto img-col detection (picture must be the
+  *sole* child) — minor mobile stacking-order difference only (image doesn't jump above text
+  on narrow viewports); desktop layout unaffected.
+
+## David's Model lint
+
+`PASS — 0 🔴, 3 🟡` — the 3 yellow flags are the same categories already justified elsewhere
+in this log: `hero-pharma`/`isi` default-content-candidate (both genuine bespoke widgets, see
+above), and 8 authored SVGs batch-flagged for the #99 trap (all verified pure-vector via direct
+`curl | grep -c data:image` → 0, safe as authored).
