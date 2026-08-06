@@ -635,3 +635,145 @@ body.vyeptihcp main [data-layout="resources-heading"] h3 {
   font-size: 28px;
   margin: 0 0 24px;
 }
+
+/* ═══════════════════════════════════════════════════
+   VYEPTIHCP COVERAGE-REIMBURSEMENT PAGE DEFAULT CONTENT —
+   plain content (not blocks, per David's Model D1), scoped to
+   body.vyeptihcp so it never leaks into other pages. Uses
+   distinctly-named classes/data-layout keys (cr-*, jump-nav,
+   callout-box) not used by any other page's additions, to avoid
+   colliding with concurrent edits from sibling page conversions.
+   ═══════════════════════════════════════════════════ */
+
+body.vyeptihcp main [data-layout="jump-nav"] {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+  overflow: hidden;
+  margin: -40px 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+body.vyeptihcp main [data-layout="jump-nav"] p {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+body.vyeptihcp main [data-layout="jump-nav"] p:last-child {
+  border-bottom: none;
+}
+
+body.vyeptihcp main [data-layout="jump-nav"] a {
+  color: var(--brand-teal);
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+body.vyeptihcp main [data-layout="jump-nav"] a::after {
+  content: "\2192";
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand-rose);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+@media (width >= 900px) {
+  body.vyeptihcp main [data-layout="jump-nav"] {
+    flex-direction: row;
+  }
+
+  body.vyeptihcp main [data-layout="jump-nav"] p {
+    border-bottom: none;
+    border-right: 1px solid #e2e2e2;
+  }
+
+  body.vyeptihcp main [data-layout="jump-nav"] p:last-child {
+    border-right: none;
+  }
+}
+
+body.vyeptihcp main [data-layout="callout-box"] p {
+  background: var(--card-bg-light);
+  color: var(--brand-rose);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 16px 25px;
+  border-radius: 10px;
+  margin: 0 0 16px;
+}
+
+/* NDC/HCPCS billing table — exact values lifted from the live site's own
+   CSS (replica methodology; literal "teal" keyword matches source exactly) */
+body.vyeptihcp main .cr-drug-table {
+  width: 100%;
+  border: 1px solid teal;
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+
+body.vyeptihcp main .cr-drug-table th {
+  background: teal;
+  color: #fff;
+  text-align: center;
+  padding: 4px 60px;
+}
+
+body.vyeptihcp main .cr-drug-table td {
+  text-align: center;
+  padding: 8px 20px;
+  width: 50%;
+}
+
+body.vyeptihcp main .cr-jcode-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 20px;
+}
+
+body.vyeptihcp main .cr-jcode-badge {
+  display: inline-block;
+  border: 1px solid teal;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: teal;
+  background: #fff;
+}
+
+@media (width <= 767px) {
+  body.vyeptihcp main .cr-drug-table th,
+  body.vyeptihcp main .cr-drug-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  body.vyeptihcp main .cr-jcode-row {
+    flex-wrap: wrap;
+  }
+}
