@@ -150,3 +150,71 @@ when the ISI section scrolls into view, and a click-to-expand toggle covers the 
 in this log: `hero-pharma`/`isi` default-content-candidate (both genuine bespoke widgets, see
 above), and 8 authored SVGs batch-flagged for the #99 trap (all verified pure-vector via direct
 `curl | grep -c data:image` → 0, safe as authored).
+
+---
+
+# infusion-information page (stardust:replica, 2026-08-06)
+
+Source: `stardust/prototypes/infusion-information-proposed.html` (+ `.css`). Target
+path `/infusion-information` (new page, created fresh). Converted concurrently with
+`copay-support` and `coverage-reimbursement` — only files specific to this page were
+touched, per the batch's file-ownership rule.
+
+## Section → block mapping
+
+| Prototype section | Block | Notes |
+|---|---|---|
+| Page hero (h1 only, teal/gradient band, no photo) | `hero-pharma.page-title` (existing) | Added a one-line additive fallback `background: var(--brand-teal)` to `.page-title` in `hero-pharma.css` — a no-op for any other page-title instance that supplies a photo (the photo is `position:absolute` and covers it), needed here because this page's hero has no image row |
+| In-page jump-link pill row under the hero | `page-subnav` (**new**) | 4 anchor pills → real `id` attributes on the target headings (`#referring-out`, `#ordering-vyepti`, `#starting-vyepti`, `#resources`) |
+| Referring-out intro (heading + "Including:" list + paragraph) | default content | Plain prose + one native `<ul>` — D1, no repeating card/link structure |
+| VYEPTI Infusion Network callout (3 icon+text items) | `icon-feature-list.callout` (**new**) | Magenta-box variant |
+| Referral forms grid (8 logo + download-link items) | `partner-referral-grid` (**new**) | Bordered grid, distinct from `columns.resource-list` because each item pairs one large logo with one link (not a vertical stack of many links) |
+| Referring-delays 3-step list | default content | Native `<ol>`, no block — one-off list, not a repeating card pattern |
+| Additional infusion site options (3 icon+text items, one with a nested list) | `icon-feature-list` (default variant) (**new**) | Same block as the callout above, plain variant |
+| Infusion Locator / Starting VYEPTI / Access Guide banners (image + heading + text + CTA) | `columns-cta` (existing, reused as-is) | Reused without CSS changes; the source banners have flat/soft-blue/gradient backgrounds rather than `columns-cta`'s default shadow-card treatment — accepted this divergence rather than editing the shared block file. Also: `columns-cta.css` styles **every** `<a>` inside the block (not just the CTA) as a filled pill — de-linked one inline sentence in the Infusion Locator banner (kept the real CTA button) to avoid a broken-looking giant-pill render |
+| Ordering VYEPTI NDC code display | `ndc-table` (**new**) | Authors block-table rows; `decorate()` builds a real semantic `<table>`/`<caption>`/`<td>` at render time (satisfies "real `<table>` in delivered content, no bespoke div-table"). Class name `ndc-table`, deliberately distinct from coverage-reimbursement's drug-code table class to avoid any CSS collision |
+| Specialty distributors / specialty pharmacy accordion | `accordion` (existing, reused as-is) | 2 items. The distributor/pharmacy logo+link sub-grids inside each panel are rendered as simple stacked `<p>` blocks (logo, then links) rather than a 2-col CSS grid — avoided adding a grid variant to the shared `accordion.css`; documented simplification |
+| Office-manager webinar video + 4 chapters | `video-with-chapters` (existing, reused as-is) | Row 1 = poster picture only (no link — the source only exposes a poster image, not a direct video URL/embed target, so the play button has no click handler; same class of gap as this batch's other deferred third-party-embed items) |
+| Resources grid (9 icon+link items) | `columns.resource-list` (existing, reused as-is) | Split into 3 columns × 3 items (the variant lays out N flex columns of stacked links; the source's 4-col CSS grid has no direct authoring equivalent without editing `columns.css`) |
+| Rep-contact banner | `[data-layout="contact-a-rep"]` default content (existing, zero CSS changes) | Reused the exact pattern already established on `vyepti-resources` |
+| Explore-links divider band | `[data-layout="arrow-nav"]` default content (existing, zero CSS changes) | Authored with the same arrow-icon image `vyepti-resources` uses (the source itself uses a plain "→" glyph, not an image; swapped to reuse the existing CSS without modification) |
+| ISI (contextual teaser + full ISI + fixed bottom bar) | `isi` (existing, reused as-is) | One block near the end of the page (row 1 = abbreviated/fixed-bar content, row 2 = full inline content) — consistent with how `isi` was placed on other VyeptiHCP pages this batch; the mid-page fading teaser box is not reproduced separately (the block's own fixed-bar behavior covers that role) |
+
+## New blocks (unique to this page)
+
+- `blocks/page-subnav/` — pill row of in-page jump links.
+- `blocks/icon-feature-list/` — repeating icon+text items; `.callout` variant for the
+  magenta Infusion Network band, default variant for Additional Options. Also carries
+  a `body.vyeptihcp main .note-box` rule (lifted from the prototype's `.note-box`) —
+  placed here rather than in `styles.css` since this block is guaranteed to load on
+  this page, avoiding any shared-file edit.
+- `blocks/partner-referral-grid/` — bordered logo + download-link grid.
+- `blocks/ndc-table/` — renders a real `<table>` for the NDC code display.
+
+## Shared-file touch (disclosed)
+
+`blocks/hero-pharma/hero-pharma.css` — one additive line (`background: var(--brand-teal)`
+fallback on `.page-title:not(.hero-pharma-dual)`), needed because this is the first
+`page-title` instance with no photo row. Verified it cannot affect any page-title
+instance that does supply a photo (the photo layer is `position:absolute` on top of it).
+
+## David's Model lint
+
+`PASS — 0 🔴, 4 🟡`:
+- `hero-pharma` single-row/prose default-content-candidate — genuine bespoke widget (see
+  homepage log entry above), same justification.
+- `ndc-table` and `video-with-chapters` differing-cell-count-per-row flags — by design
+  (a 1-cell title/poster row followed by 2-cell data rows); `video-with-chapters` already
+  carries this shape in its established content model.
+- 16 authored SVG references, all the same already-verified pure-vector download-icon SVG
+  reused across the page (`curl … | grep -c data:image` → 0).
+
+## Verification
+
+- `sanitise.js` run once on `drafts/infusion-information.html` alone — no non-ASCII chars
+  present (entities used throughout), file unchanged.
+- All authored raster image URLs (referral-partner logos, distributor/pharmacy logos,
+  network-callout icons, video poster, access-guide cover, VYEPTI CONNECT logo, map image,
+  arrow-nav icon) spot-checked via `curl -s -o /dev/null -w '%{http_code}'` → 200.
+- Both authored SVGs (download icon, and the rep-cta icon reused from `vyepti-resources`)
+  re-verified `grep -c "data:image"` → 0 (the #99 trap).
