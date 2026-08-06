@@ -1,0 +1,73 @@
+/* Page subnav — pill row of in-page jump links under a page-title hero
+   (infusion-information only). Lifted verbatim from the prototype's
+   .page-hero__subnav treatment. */
+
+main .page-subnav {
+  max-width: var(--max-width-site);
+  margin: -32px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+main .page-subnav > div {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+  overflow: hidden;
+}
+
+main .page-subnav-item {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+main .page-subnav-item:last-child {
+  border-bottom: none;
+}
+
+main .page-subnav-item p {
+  margin: 0;
+}
+
+main .page-subnav-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 28px;
+  color: var(--brand-teal-muted);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+main .page-subnav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--brand-rose);
+  color: #fff;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+@media (width >= 900px) {
+  main .page-subnav > div {
+    flex-direction: row;
+  }
+
+  main .page-subnav-item {
+    flex: 1;
+    border-bottom: none;
+    border-right: 1px solid #e2e2e2;
+  }
+
+  main .page-subnav-item:last-child {
+    border-right: none;
+  }
+}

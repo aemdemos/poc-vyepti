@@ -1,0 +1,98 @@
+/* Icon feature list — repeating icon+text items (infusion-information only).
+   Default variant: "Additional infusion site options" (soft-teal circle icon,
+   centered, stacked on mobile / row on desktop).
+   .callout variant: VYEPTI Infusion Network band (magenta rounded box, white
+   circle icon, bold white text). */
+
+main .icon-feature-list > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+main .icon-feature-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+main .icon-feature-list-icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--card-bg-light);
+  padding: 12px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+main .icon-feature-list-text p {
+  margin: 4px 0;
+  font-weight: 700;
+}
+
+main .icon-feature-list-text ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (width >= 900px) {
+  main .icon-feature-list > div {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+}
+
+/* ---- callout variant (VYEPTI Infusion Network band) ---- */
+main .icon-feature-list.callout {
+  background: var(--brand-rose);
+  color: #fff;
+  border-radius: 20px;
+  padding: 32px;
+}
+
+main .icon-feature-list.callout > div {
+  gap: 20px;
+}
+
+main .icon-feature-list.callout .icon-feature-list-icon img {
+  width: 52px;
+  height: 52px;
+  background: #fff;
+}
+
+main .icon-feature-list.callout .icon-feature-list-text p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+@media (width >= 900px) {
+  main .icon-feature-list.callout > div {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  main .icon-feature-list.callout .icon-feature-list-item {
+    flex: 1;
+  }
+}
+
+/* ---- shared default-content adornment (infusion-information only) ----
+   Lifted from the prototype's .note-box. Placed here (rather than in
+   styles.css) because this block is guaranteed to load on this page, and
+   this avoids editing the shared global stylesheet. */
+body.vyeptihcp main .note-box {
+  border: 1px solid #d8d8d8;
+  border-radius: 40px;
+  padding: 20px 32px;
+  margin: 24px 0;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+}
