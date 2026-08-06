@@ -553,77 +553,6 @@ body.vyeptihcp main hr.rule {
   margin: 32px 0;
 }
 
-body.vyeptihcp main [data-layout="contact-a-rep"] {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  border: 1px solid #d8d8d8;
-  padding: 26px 20px;
-  margin: 40px 0;
-}
-
-@media (width >= 600px) {
-  body.vyeptihcp main [data-layout="contact-a-rep"] {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-body.vyeptihcp main [data-layout="contact-a-rep"] img {
-  width: 93px;
-  height: 93px;
-  flex-shrink: 0;
-}
-
-body.vyeptihcp main [data-layout="contact-a-rep"] > p {
-  flex: 1;
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 0 8px;
-}
-
-body.vyeptihcp main [data-layout="contact-a-rep"] a {
-  color: var(--brand-rose);
-  font-weight: 700;
-  font-size: 15px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-body.vyeptihcp main [data-layout="arrow-nav"] {
-  background: var(--brand-teal-muted);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 34px 0;
-}
-
-@media (width >= 600px) {
-  body.vyeptihcp main [data-layout="arrow-nav"] {
-    flex-direction: row;
-    gap: 40px;
-  }
-}
-
-body.vyeptihcp main [data-layout="arrow-nav"] a {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-body.vyeptihcp main [data-layout="arrow-nav"] img {
-  width: 24px;
-  height: 24px;
-}
-
 body.vyeptihcp main [data-layout="resources-heading"] h2 {
   color: var(--brand-teal-muted);
   font-size: 34px;
@@ -644,74 +573,6 @@ body.vyeptihcp main [data-layout="resources-heading"] h3 {
    callout-box) not used by any other page's additions, to avoid
    colliding with concurrent edits from sibling page conversions.
    ═══════════════════════════════════════════════════ */
-
-body.vyeptihcp main [data-layout="jump-nav"] {
-  display: flex;
-  flex-direction: column;
-  background: var(--background-color);
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
-  overflow: hidden;
-  margin: -40px 0 32px;
-  position: relative;
-  z-index: 1;
-}
-
-body.vyeptihcp main [data-layout="jump-nav"] p {
-  margin: 0;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid #e2e2e2;
-}
-
-body.vyeptihcp main [data-layout="jump-nav"] p:last-child {
-  border-bottom: none;
-}
-
-body.vyeptihcp main [data-layout="jump-nav"] a {
-  color: var(--brand-teal);
-  font-weight: 700;
-  font-size: 18px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-body.vyeptihcp main [data-layout="jump-nav"] a::after {
-  content: "\2192";
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--brand-rose);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-left: 16px;
-}
-
-@media (width >= 900px) {
-  body.vyeptihcp main [data-layout="jump-nav"] {
-    flex-direction: row;
-  }
-
-  body.vyeptihcp main [data-layout="jump-nav"] p {
-    border-bottom: none;
-    border-right: 1px solid #e2e2e2;
-  }
-
-  body.vyeptihcp main [data-layout="jump-nav"] p:last-child {
-    border-right: none;
-  }
-}
 
 body.vyeptihcp main [data-layout="callout-box"] p {
   background: var(--card-bg-light);
@@ -775,5 +636,25 @@ body.vyeptihcp main .cr-jcode-badge {
 
   body.vyeptihcp main .cr-jcode-row {
     flex-wrap: wrap;
+  }
+}
+
+body.vyeptihcp main [data-layout="back-to-top"] a {
+  position: fixed;
+  top: 140px;
+  right: 25px;
+  width: 56px;
+  z-index: 5;
+  display: block;
+}
+
+body.vyeptihcp main [data-layout="back-to-top"] img {
+  display: block;
+  width: 100%;
+}
+
+@media (width <= 767px) {
+  body.vyeptihcp main [data-layout="back-to-top"] a {
+    display: none;
   }
 }

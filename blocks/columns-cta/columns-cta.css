@@ -144,3 +144,124 @@ main > .section > .columns-cta-wrapper {
     padding: 42px 66px 50px;
   }
 }
+
+/* contact-rep variant — plain bordered card (no shadow, no rounded corners,
+   no half-callout arc), icon + text + a plain uppercase text link (not a
+   filled pill). Consolidates the bare data-layout="contact-a-rep" default
+   content used on vyepti-resources/infusion-information/coverage-reimbursement. */
+.columns-cta.contact-rep > div {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border: 1px solid #d8d8d8;
+  padding: 26px 20px;
+}
+
+@media (width >= 600px) {
+  .columns-cta.contact-rep > div {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.columns-cta.contact-rep > div > div {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  text-align: left;
+  overflow: visible;
+}
+
+.columns-cta.contact-rep > div > div::after {
+  display: none;
+}
+
+.columns-cta.contact-rep .columns-cta-img-col {
+  flex: 0 0 auto;
+}
+
+.columns-cta.contact-rep .columns-cta-img-col img {
+  width: 93px;
+  height: 93px;
+}
+
+.columns-cta.contact-rep p {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.columns-cta.contact-rep a,
+.columns-cta.contact-rep a.button {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--brand-rose);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.columns-cta.contact-rep a::after,
+.columns-cta.contact-rep a.button::after {
+  display: none;
+}
+
+.columns-cta.contact-rep a:hover,
+.columns-cta.contact-rep a.button:hover {
+  background: none;
+  color: var(--brand-rose-dark);
+}
+
+/* flat-band variant — one solid teal rounded band, image + copy + a filled
+   accent CTA (not the default per-column shadow-card + ghost CTA).
+   Consolidates the cta-band block (copay-support's "download the brochure"
+   banner). */
+.columns-cta.flat-band > div {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: var(--brand-teal-muted);
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.columns-cta.flat-band > div > div {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.columns-cta.flat-band > div > div::after {
+  display: none;
+}
+
+.columns-cta.flat-band .columns-cta-img-col img {
+  width: 140px;
+  border-radius: 12px;
+}
+
+.columns-cta.flat-band p {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.columns-cta.flat-band a,
+.columns-cta.flat-band a.button {
+  margin-top: 16px;
+}
+
+@media (width >= 768px) {
+  .columns-cta.flat-band > div {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 32px;
+  }
+}
