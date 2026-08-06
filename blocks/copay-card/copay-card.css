@@ -1,6 +1,6 @@
-/* Copay card — teal rounded card containing the embedded mini-ISI, an
-   image+bullets grid, and a callout box. Values lifted from the prototype's
-   .cs-copay-card__inner / .cs-isi / .cs-copay-card__grid / .cs-callout. */
+/* Copay card — teal rounded card containing a heading, an image+bullets
+   grid, and a callout box. Values lifted from the prototype's
+   .cs-copay-card__inner / .cs-copay-card__grid / .cs-callout. */
 
 main .copay-card-inner {
   background: var(--brand-teal-muted);
@@ -16,66 +16,6 @@ main .copay-card-heading {
   text-align: center;
   color: #fff;
   margin: 0 0 24px;
-}
-
-/* mini ISI — collapsed by default; the toggle reveals `.copay-card-isi-more` */
-main .copay-card-isi {
-  background: #fff;
-  color: var(--text-color);
-  border-radius: 8px;
-  padding: 16px;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  position: relative;
-}
-
-main .copay-card-isi-title {
-  color: var(--brand-teal-muted);
-  font-size: 18px;
-  margin: 0 0 8px;
-  padding-right: 40px;
-}
-
-main .copay-card-isi h5 {
-  color: var(--brand-teal-muted);
-  font-size: 15px;
-  margin: 12px 0 4px;
-}
-
-main .copay-card-isi p {
-  margin: 0 0 8px;
-}
-
-main .copay-card-isi a {
-  color: var(--link-color);
-  text-decoration: underline;
-}
-
-main .copay-card-isi-toggle {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid var(--brand-teal-muted);
-  background: none;
-  color: var(--brand-teal-muted);
-  font-size: 14px;
-  cursor: pointer;
-}
-
-main .copay-card-isi-toggle::before {
-  content: "+";
-}
-
-main .copay-card-isi:not(.copay-card-isi-collapsed) .copay-card-isi-toggle::before {
-  content: "\2212";
-}
-
-main .copay-card-isi-more[hidden] {
-  display: none;
 }
 
 /* image + bullets grid */

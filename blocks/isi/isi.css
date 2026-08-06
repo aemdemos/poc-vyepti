@@ -1,7 +1,14 @@
+@import url('./isi-tokens.css');
+
+/* ── In-page ISI section (matches vyepti.com full-width divider) ─ */
+main .section.isi-container {
+  border-top: var(--isi-section-border-width) solid var(--isi-section-border-color);
+}
+
 /* ── In-page inline content (Row 2) ───────────────────────────── */
 main .isi .isi-inline {
   display: block;
-  padding-bottom: 64px;
+  padding-bottom: var(--isi-inline-padding-bottom);
 }
 
 main .isi .isi-inline > div {
@@ -10,22 +17,24 @@ main .isi .isi-inline > div {
 
 main .isi p,
 main .isi li {
-  font-size: var(--body-font-size-s);
-  color: #484848;
-  line-height: 1.5;
+  font-size: var(--isi-body-font-size);
+  color: var(--isi-text-color);
+  line-height: var(--isi-line-height);
 }
 
 main .isi li {
-  line-height: 1.7;
-  margin-bottom: 10px;
+  line-height: var(--isi-list-line-height);
+  margin-bottom: var(--isi-list-item-margin-bottom);
+  padding-top: var(--isi-list-item-padding-y);
+  padding-bottom: var(--isi-list-item-padding-y);
 }
 
 main .isi h3 {
-  color: var(--brand-teal-muted, #41748d);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 22px;
-  margin-bottom: 0;
+  color: var(--isi-heading-color);
+  font-size: var(--isi-heading-font-size);
+  font-weight: var(--isi-heading-font-weight);
+  line-height: var(--isi-heading-line-height);
+  margin-bottom: var(--isi-heading-margin-bottom);
 }
 
 main .isi a {
@@ -42,14 +51,14 @@ main .isi a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 5;
-  background-color: #fff;
-  border-top: 1px solid #d1d1d1;
-  height: 90px;
+  z-index: var(--isi-bar-z-index);
+  background-color: var(--isi-bar-background);
+  border-top: var(--isi-bar-border-width) solid var(--isi-bar-border-color);
+  height: var(--isi-bar-height);
   overflow: hidden;
-  padding: 13px 13px 8px;
-  transition: height 0.3s ease-in-out;
-  color: #484848;
+  padding: var(--isi-bar-padding);
+  transition: height var(--isi-bar-height-transition-duration) var(--isi-bar-height-transition-easing);
+  color: var(--isi-text-color);
   cursor: pointer;
 }
 
@@ -60,101 +69,101 @@ main .isi a:hover {
 /* Expanded state */
 .isi-bar.full {
   height: auto;
-  max-height: 70vh;
+  max-height: var(--isi-bar-expanded-max-height);
   overflow-y: auto;
-  z-index: 10;
+  z-index: var(--isi-bar-expanded-z-index);
   cursor: default;
 }
 
 /* Inner content wrapper – two-column on desktop */
 .isi-bar-content {
-  max-width: var(--max-width-site, 1140px);
+  max-width: var(--isi-content-max-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 0 24px;
+  gap: var(--isi-bar-content-gap);
 }
 
 .isi-bar-col {
-  flex: 1 1 45%;
+  flex: 1 1 var(--isi-bar-col-flex-basis);
   min-width: 0;
 }
 
 .isi-bar-col h3 {
-  color: var(--brand-teal-muted, #41748d);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 22px;
-  padding-bottom: 18px;
+  color: var(--isi-bar-heading-color, var(--isi-heading-color));
+  font-size: var(--isi-heading-font-size);
+  font-weight: var(--isi-heading-font-weight);
+  line-height: var(--isi-heading-line-height);
+  padding-bottom: var(--isi-bar-heading-padding-bottom);
   margin: 0;
 }
 
 .isi-bar-col p {
-  font-size: var(--body-font-size-s, 16px);
-  line-height: 24px;
-  padding-bottom: 8px;
+  font-size: var(--body-font-size-s);
+  line-height: var(--isi-bar-paragraph-line-height);
+  padding-bottom: var(--isi-bar-paragraph-padding-bottom);
   margin: 0;
 }
 
 .isi-bar-col p b,
 .isi-bar-col p strong {
-  font-weight: 700;
+  font-weight: var(--isi-heading-font-weight);
 }
 
 .isi-bar-col ul {
-  padding-left: 20px;
-  margin: 0 0 8px;
+  padding-left: var(--isi-bar-list-padding-left);
+  margin: 0 0 var(--isi-bar-list-margin-bottom);
 }
 
 .isi-bar-col li {
-  font-size: var(--body-font-size-s, 16px);
-  line-height: 1.7;
-  margin-bottom: 10px;
+  font-size: var(--body-font-size-s);
+  line-height: var(--isi-list-line-height);
+  margin-bottom: var(--isi-list-item-margin-bottom);
 }
 
 .isi-bar-col a {
-  color: var(--link-color, #046183);
-  font-weight: 600;
-  font-size: var(--body-font-size-s, 16px);
+  color: var(--link-color);
+  font-weight: var(--isi-bar-link-font-weight);
+  font-size: var(--body-font-size-s);
   text-decoration: underline;
 }
 
 .isi-bar-col a:hover {
-  color: var(--link-hover-color, #7ebcc6);
+  color: var(--link-hover-color);
   text-decoration: underline;
 }
 
 /* ── Toggle button (+/−) ─────────────────────────────────────── */
 .isi-bar-toggle {
   position: absolute;
-  right: 15px;
-  top: 13px;
+  right: var(--isi-toggle-right);
+  top: var(--isi-toggle-top);
   background: none;
-  border: 2px solid var(--brand-teal-muted, #41748d);
+  border: var(--isi-toggle-border-width) solid var(--isi-toggle-color);
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: var(--isi-toggle-size);
+  height: var(--isi-toggle-size);
   padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brand-teal-muted, #41748d);
-  transition: color 0.2s, border-color 0.2s;
-  z-index: 2;
+  color: var(--isi-toggle-color);
+  transition: color var(--isi-toggle-transition-duration), border-color var(--isi-toggle-transition-duration);
+  z-index: var(--isi-toggle-z-index);
 }
 
 .isi-bar-toggle:hover {
-  color: var(--link-hover-color, #7ebcc6);
-  border-color: var(--link-hover-color, #7ebcc6);
+  color: var(--isi-toggle-hover-color);
+  border-color: var(--isi-toggle-hover-color);
   background: none;
 }
 
 /* Plus icon (collapsed) */
 .isi-bar-toggle-icon {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: var(--isi-toggle-icon-size);
+  height: var(--isi-toggle-icon-size);
   position: relative;
 }
 
@@ -163,7 +172,7 @@ main .isi a:hover {
   content: '';
   position: absolute;
   background-color: currentcolor;
-  border-radius: 1px;
+  border-radius: var(--isi-toggle-icon-bar-radius);
 }
 
 /* Horizontal bar (always visible) */
@@ -171,7 +180,7 @@ main .isi a:hover {
   top: 50%;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: var(--isi-toggle-icon-bar-thickness);
   transform: translateY(-50%);
 }
 
@@ -179,10 +188,10 @@ main .isi a:hover {
 .isi-bar-toggle-icon::after {
   left: 50%;
   top: 0;
-  width: 2px;
+  width: var(--isi-toggle-icon-bar-thickness);
   height: 100%;
   transform: translateX(-50%);
-  transition: opacity 0.2s;
+  transition: opacity var(--isi-toggle-transition-duration);
 }
 
 .isi-bar.full .isi-bar-toggle-icon::after {
@@ -191,42 +200,19 @@ main .isi a:hover {
 
 /* ── Mobile ≤ 768px ──────────────────────────────────────────── */
 @media (width <= 768px) {
-  .isi-bar {
-    height: 109px;
-    padding: 0;
-  }
-
   .isi-bar-content {
     flex-direction: column;
-    padding: 0 16px;
+    padding: 0 var(--isi-bar-content-padding-x-mobile);
   }
 
   .isi-bar-col {
     flex: 1 1 100%;
   }
-
-  .isi-bar-col h3 {
-    padding-bottom: 8px;
-    color: var(--brand-teal);
-    font-size: 18px;
-  }
-
-  .isi-bar-col p {
-    padding-bottom: 16px;
-  }
-
-  .isi-bar-toggle {
-    right: 16px;
-  }
 }
 
-/* ── Desktop ≥ 900px ─────────────────────────────────────────── */
-@media (width >= 900px) {
+/* ── Desktop ≥ 992px ─────────────────────────────────────────── */
+@media (width >= 992px) {
   .isi-bar-content {
-    padding: 0 32px;
-  }
-
-  .isi-bar-toggle {
-    right: 32px;
+    padding: 0 var(--isi-bar-content-padding-x-desktop);
   }
 }
