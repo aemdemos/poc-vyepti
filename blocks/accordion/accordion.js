@@ -1,23 +1,34 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
-
+/**
+ * loads and decorates the accordion block
+ * @param {Element} block The accordion block element
+ */
 export default function decorate(block) {
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    li.className = 'accordion-item';
-    moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
+  [...block.children].forEach((row, index) => {
+    const [titleCell, bodyCell] = [...row.children];
+    if (!titleCell || !bodyCell) return;
 
-    const [label, body] = [...li.children];
-    if (label !== null && label !== undefined) {
-      label.className = 'accordion-item-label';
-      label.addEventListener('click', () => li.classList.toggle('active'));
-    }
-    if (body !== null && body !== undefined) body.className = 'accordion-item-body';
+    const panelId = `accordion-panel-${crypto.randomUUID()}`;
 
-    ul.append(li);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'accordion-item-label';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', panelId);
+    button.append(...titleCell.childNodes);
+    titleCell.replaceChildren(button);
+    titleCell.className = 'accordion-item-title';
+
+    bodyCell.id = panelId;
+    bodyCell.className = 'accordion-item-body';
+    bodyCell.hidden = true;
+
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      bodyCell.hidden = expanded;
+    });
+
+    row.className = 'accordion-item';
+    row.dataset.index = index;
   });
-
-  block.textContent = '';
-  block.append(ul);
 }
