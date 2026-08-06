@@ -555,3 +555,50 @@ main > .section.hero-pharma-container {
   padding: 10px 40px 10px 24px;
   margin-bottom: 16px;
 }
+
+/* ═══════════════════════════════════════════════════
+   PAGE-TITLE VARIANT — short plain title band used on
+   VyeptiHCP sub-pages (no scrim, no eyebrow ribbon; a
+   photo strip with a single white h1)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma.page-title:not(.hero-pharma-dual) {
+  min-height: 151px;
+}
+
+.hero-pharma.page-title:not(.hero-pharma-dual) > div:last-of-type {
+  min-height: 151px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-pharma.page-title h1 {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+@media (width >= 768px) {
+  .hero-pharma.page-title:not(.hero-pharma-dual),
+  .hero-pharma.page-title:not(.hero-pharma-dual) > div:last-of-type {
+    min-height: 112px;
+  }
+
+  .hero-pharma.page-title h1 {
+    font-size: 38px;
+  }
+}
+
+@media (width >= 992px) {
+  .hero-pharma.page-title:not(.hero-pharma-dual),
+  .hero-pharma.page-title:not(.hero-pharma-dual) > div:last-of-type {
+    min-height: 160px;
+  }
+
+  .hero-pharma.page-title h1 {
+    font-size: 43px;
+    line-height: 52px;
+  }
+}
