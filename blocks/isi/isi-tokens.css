@@ -1,17 +1,29 @@
-/* isi design tokens */
+/* isi design tokens — values lifted from the real VYEPTI (vyepti.com) ISI
+   implementation, the closest functional/stylistic match for this sub-brand.
+   Brand tokens mapped: --brand-primary-dark -> --brand-teal-muted,
+   --brand-primary -> --brand-teal. */
 :root {
   --isi-text-color: #484848;
-  --isi-body-font-size: 16px;
-  --isi-line-height: 1.5;
-  --isi-list-line-height: 1.7;
+  --isi-line-height: 22px;
+  --isi-list-line-height: 24px;
   --isi-list-item-margin-bottom: 10px;
-  --isi-inline-padding-bottom: 64px;
-  --isi-list-item-padding-y: 0px;
+  --isi-section-margin-top: 48px;
+  --isi-section-padding-top: 57px;
+  --isi-section-padding-bottom: 32px;
   --isi-heading-color: var(--brand-teal-muted);
+  --isi-inline-heading-color: var(--brand-teal);
   --isi-heading-font-size: 18px;
   --isi-heading-font-weight: 700;
   --isi-heading-line-height: 22px;
-  --isi-heading-margin-bottom: 0;
+  --isi-inline-heading-padding-bottom: 16px;
+  --isi-inline-paragraph-padding-bottom: 22px;
+  --isi-inline-link-color: var(--brand-teal);
+  --isi-inline-link-hover-color: var(--brand-teal-light);
+  --isi-inline-link-font-size: 18px;
+  --isi-inline-link-font-weight: 700;
+  --isi-inline-link-line-height: 26px;
+  --isi-inline-para-before-heading-padding-bottom: 16px;
+  --isi-inline-list-padding-bottom: 16px;
   --isi-bar-z-index: 5;
   --isi-bar-expanded-z-index: 10;
   --isi-bar-background: var(--background-color);
@@ -19,50 +31,63 @@
   --isi-section-border-color: #d1d1d1;
   --isi-bar-border-width: var(--isi-section-border-width);
   --isi-bar-border-color: var(--isi-section-border-color);
-  --isi-bar-height: 90px;
-  --isi-bar-padding: 13px 13px 8px;
+  --isi-bar-height: 118px;
+  --isi-bar-padding: 13px 0;
   --isi-bar-height-transition-duration: 0.3s;
   --isi-bar-height-transition-easing: ease-in-out;
-  --isi-bar-expanded-max-height: 70vh;
+  --isi-bar-expanded-max-height: 85vh;
   --isi-content-max-width: var(--max-width-site);
   --isi-bar-content-gap: 0 24px;
   --isi-bar-col-flex-basis: 45%;
+  --isi-bar-col-margin-bottom: 0;
+  --isi-bar-heading-color: var(--brand-teal-muted);
   --isi-bar-heading-padding-bottom: 18px;
-  --isi-bar-paragraph-line-height: 24px;
-  --isi-bar-paragraph-padding-bottom: 8px;
+  --isi-bar-paragraph-line-height: 22px;
+  --isi-bar-paragraph-padding-bottom: 16px;
   --isi-bar-list-padding-left: 20px;
-  --isi-bar-list-margin-bottom: 8px;
+  --isi-bar-list-line-height: 27px;
+  --isi-bar-list-padding-bottom: 16px;
+  --isi-bar-list-margin-bottom: 0;
   --isi-bar-link-font-weight: 600;
-  --isi-toggle-right: 15px;
+  --isi-toggle-right: var(--isi-toggle-right-mobile);
   --isi-toggle-top: 13px;
-  --isi-toggle-border-width: 2px;
-  --isi-toggle-size: 24px;
+  --isi-toggle-border-width: 1.5px;
+  --isi-toggle-size: 18px;
   --isi-toggle-color: var(--brand-teal-muted);
   --isi-toggle-hover-color: var(--link-hover-color);
   --isi-toggle-transition-duration: 0.2s;
   --isi-toggle-z-index: 2;
-  --isi-toggle-icon-size: 12px;
-  --isi-toggle-icon-bar-thickness: 2px;
-  --isi-toggle-icon-bar-radius: 1px;
-  --isi-bar-content-padding-x-mobile: 16px;
+  --isi-toggle-icon-size: 8px;
+  --isi-toggle-icon-bar-thickness: 1.5px;
+  --isi-toggle-icon-bar-radius: 0;
+  --isi-bar-content-padding-x-mobile: 15px;
+  --isi-bar-content-padding-x-tablet: 26px;
   --isi-bar-content-padding-x-desktop: 32px;
-  --isi-toggle-right-mobile: 16px;
+  --isi-toggle-right-mobile: 15px;
+  --isi-toggle-right-tablet: 15px;
   --isi-toggle-right-desktop: 32px;
 }
 
-@media (width <= 768px) {
+/* Tablet and up — restore the wider collapsed bar, roomier padding and the
+   two-column popup spacing (mobile-first: base values above are for
+   < 768px). The space below the divider comes solely from the section's
+   padding-top; the inline wrapper adds no padding of its own. */
+@media (width >= 768px) {
   :root {
+    --isi-list-line-height: 27px;
     --isi-bar-height: 109px;
-    --isi-bar-padding: 0;
-    --isi-bar-heading-color: var(--brand-teal);
-    --isi-bar-heading-padding-bottom: 8px;
-    --isi-bar-paragraph-padding-bottom: 16px;
-    --isi-toggle-right: var(--isi-toggle-right-mobile);
+    --isi-bar-padding: 13px 13px 8px;
+    --isi-bar-paragraph-padding-bottom: 22px;
+    --isi-toggle-right: var(--isi-toggle-right-tablet);
+    --isi-section-padding-top: 64px;
+    --isi-section-padding-bottom: 64px;
   }
 }
 
 @media (width >= 992px) {
   :root {
     --isi-toggle-right: var(--isi-toggle-right-desktop);
+    --isi-section-margin-top: 64px;
+    --isi-bar-col-margin-bottom: 24px;
   }
 }

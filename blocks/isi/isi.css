@@ -1,14 +1,25 @@
 @import url('./isi-tokens.css');
 
-/* ── In-page ISI section (matches vyepti.com full-width divider) ─ */
+/* ── In-page ISI section — full-width top divider with generous spacing
+   above (before the divider) and below (before the footer). The border
+   lives on the section (not the inset .isi-container) so it spans the full
+   viewport width with the content inset below it. ─ */
 main .section.isi-container {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: var(--isi-section-padding-top);
+  padding-bottom: var(--isi-section-padding-bottom);
+}
+
+main > .section:has(.isi-container) {
+  margin-top: var(--isi-section-margin-top);
+  margin-bottom: 0;
   border-top: var(--isi-section-border-width) solid var(--isi-section-border-color);
 }
 
 /* ── In-page inline content (Row 2) ───────────────────────────── */
 main .isi .isi-inline {
   display: block;
-  padding-bottom: var(--isi-inline-padding-bottom);
 }
 
 main .isi .isi-inline > div {
@@ -17,31 +28,54 @@ main .isi .isi-inline > div {
 
 main .isi p,
 main .isi li {
-  font-size: var(--isi-body-font-size);
+  font-size: var(--body-font-size-s);
   color: var(--isi-text-color);
   line-height: var(--isi-line-height);
+}
+
+main .isi p {
+  margin: 0;
+  padding-bottom: var(--isi-inline-paragraph-padding-bottom);
+}
+
+/* Paragraph directly before a heading uses the tighter heading gap. */
+main .isi p:has(+ h3) {
+  padding-bottom: var(--isi-inline-para-before-heading-padding-bottom);
+}
+
+main .isi p:last-child {
+  padding-bottom: 0;
+}
+
+main .isi ul {
+  margin: 0;
+  padding-bottom: var(--isi-inline-list-padding-bottom);
 }
 
 main .isi li {
   line-height: var(--isi-list-line-height);
   margin-bottom: var(--isi-list-item-margin-bottom);
-  padding-top: var(--isi-list-item-padding-y);
-  padding-bottom: var(--isi-list-item-padding-y);
 }
 
 main .isi h3 {
-  color: var(--isi-heading-color);
+  color: var(--isi-inline-heading-color);
   font-size: var(--isi-heading-font-size);
   font-weight: var(--isi-heading-font-weight);
   line-height: var(--isi-heading-line-height);
-  margin-bottom: var(--isi-heading-margin-bottom);
+  margin: 0;
+  padding-bottom: var(--isi-inline-heading-padding-bottom);
 }
 
 main .isi a {
+  color: var(--isi-inline-link-color);
+  font-size: var(--isi-inline-link-font-size);
+  font-weight: var(--isi-inline-link-font-weight);
+  line-height: var(--isi-inline-link-line-height);
   text-decoration: underline;
 }
 
 main .isi a:hover {
+  color: var(--isi-inline-link-hover-color);
   text-decoration: underline;
 }
 
@@ -51,13 +85,18 @@ main .isi a:hover {
   bottom: 0;
   left: 0;
   right: 0;
+  box-sizing: border-box;
   z-index: var(--isi-bar-z-index);
   background-color: var(--isi-bar-background);
   border-top: var(--isi-bar-border-width) solid var(--isi-bar-border-color);
-  height: var(--isi-bar-height);
+  height: auto;
+  min-height: 0;
+  max-height: var(--isi-bar-height);
   overflow: hidden;
   padding: var(--isi-bar-padding);
-  transition: height var(--isi-bar-height-transition-duration) var(--isi-bar-height-transition-easing);
+  transition:
+    max-height var(--isi-bar-height-transition-duration) var(--isi-bar-height-transition-easing),
+    min-height var(--isi-bar-height-transition-duration) var(--isi-bar-height-transition-easing);
   color: var(--isi-text-color);
   cursor: pointer;
 }
@@ -66,27 +105,49 @@ main .isi a:hover {
   display: none;
 }
 
-/* Expanded state */
+/* While the panel is open, lock page scroll so only the ISI scrolls
+   internally. Toggled on <body> by isi.js. */
+body.isi-scroll-locked {
+  overflow: hidden;
+}
+
+/* Expanded state — animates max-height (auto is not animatable).
+   Mobile-first (< 992px): the panel opens flush below the header with no
+   gap, filling the space between the header bottom and the viewport
+   bottom regardless of content length. --isi-expanded-offset is the live
+   header height set by isi.js on the .isi-bar element. Desktop (≥992px)
+   resets to the fixed vh token. */
 .isi-bar.full {
-  height: auto;
-  max-height: var(--isi-bar-expanded-max-height);
+  min-height: calc(100vh - var(--isi-expanded-offset, 0px));
+  max-height: calc(100vh - var(--isi-expanded-offset, 0px));
   overflow-y: auto;
   z-index: var(--isi-bar-expanded-z-index);
   cursor: default;
 }
 
-/* Inner content wrapper – two-column on desktop */
+@media (width >= 992px) {
+  .isi-bar.full {
+    min-height: 0;
+    max-height: var(--isi-bar-expanded-max-height);
+  }
+}
+
+/* Inner content wrapper. Mobile-first: single column; two columns from the
+   ≥768px breakpoint below. */
 .isi-bar-content {
   max-width: var(--isi-content-max-width);
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
+  align-items: flex-start;
   gap: var(--isi-bar-content-gap);
+  padding: 0 var(--isi-bar-content-padding-x-mobile);
 }
 
 .isi-bar-col {
-  flex: 1 1 var(--isi-bar-col-flex-basis);
+  flex: 1 1 100%;
   min-width: 0;
+  margin-bottom: var(--isi-bar-col-margin-bottom);
 }
 
 .isi-bar-col h3 {
@@ -112,12 +173,13 @@ main .isi a:hover {
 
 .isi-bar-col ul {
   padding-left: var(--isi-bar-list-padding-left);
+  padding-bottom: var(--isi-bar-list-padding-bottom);
   margin: 0 0 var(--isi-bar-list-margin-bottom);
 }
 
 .isi-bar-col li {
   font-size: var(--body-font-size-s);
-  line-height: var(--isi-list-line-height);
+  line-height: var(--isi-bar-list-line-height);
   margin-bottom: var(--isi-list-item-margin-bottom);
 }
 
@@ -133,10 +195,19 @@ main .isi a:hover {
   text-decoration: underline;
 }
 
-/* ── Toggle button (+/−) ─────────────────────────────────────── */
+/* ── Toggle button (+/−) — thin teal ring with +/− glyph ── */
 .isi-bar-toggle {
   position: absolute;
-  right: var(--isi-toggle-right);
+
+  /* Align to the right edge of the centered content container, not the
+     viewport edge. When the viewport is wider than the content max-width
+     the content is centered, so its right edge sits (100vw − max-width)/2
+     in from the viewport. Floor at the base inset so the toggle stays
+     inset on narrow viewports where content fills the width. */
+  right: max(
+    var(--isi-toggle-right),
+    calc((100vw - var(--isi-content-max-width)) / 2)
+  );
   top: var(--isi-toggle-top);
   background: none;
   border: var(--isi-toggle-border-width) solid var(--isi-toggle-color);
@@ -151,6 +222,17 @@ main .isi a:hover {
   color: var(--isi-toggle-color);
   transition: color var(--isi-toggle-transition-duration), border-color var(--isi-toggle-transition-duration);
   z-index: var(--isi-toggle-z-index);
+}
+
+/* Override global button:focus/:active which would otherwise turn the icon
+   an accent color and give it a filled background after clicking. */
+.isi-bar-toggle:focus,
+.isi-bar-toggle:active,
+.isi-bar-toggle:focus-visible {
+  background: none;
+  color: var(--isi-toggle-color);
+  border-color: var(--isi-toggle-color);
+  outline: none;
 }
 
 .isi-bar-toggle:hover {
@@ -198,15 +280,15 @@ main .isi a:hover {
   opacity: 0;
 }
 
-/* ── Mobile ≤ 768px ──────────────────────────────────────────── */
-@media (width <= 768px) {
+/* ── Tablet ≥ 768px — 2-column with inset content ── */
+@media (width >= 768px) {
   .isi-bar-content {
-    flex-direction: column;
-    padding: 0 var(--isi-bar-content-padding-x-mobile);
+    flex-direction: row;
+    padding: 0 var(--isi-bar-content-padding-x-tablet);
   }
 
   .isi-bar-col {
-    flex: 1 1 100%;
+    flex: 1 1 var(--isi-bar-col-flex-basis);
   }
 }
 
