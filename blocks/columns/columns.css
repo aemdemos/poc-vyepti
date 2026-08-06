@@ -33,3 +33,42 @@
     order: unset;
   }
 }
+
+/* resource-list variant — vertical icon+link lists side by side
+   (VyeptiHCP resource/guide/form/letter download lists) */
+.columns.resource-list > div {
+  align-items: stretch;
+}
+
+.columns.resource-list > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.columns.resource-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  color: var(--brand-teal-muted);
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.columns.resource-list a u {
+  text-decoration: underline;
+}
+
+.columns.resource-list img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media (width >= 900px) {
+  .columns.resource-list > div {
+    gap: 60px;
+  }
+}
