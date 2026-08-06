@@ -218,3 +218,77 @@ instance that does supply a photo (the photo layer is `position:absolute` on top
   arrow-nav icon) spot-checked via `curl -s -o /dev/null -w '%{http_code}'` → 200.
 - Both authored SVGs (download icon, and the rep-cta icon reused from `vyepti-resources`)
   re-verified `grep -c "data:image"` → 0 (the #99 trap).
+
+# Stardust → EDS conversion log — VyeptiHCP copay-support page
+
+Source: `stardust:replica` prototype `stardust/prototypes/copay-support-proposed.html`
+(+ `.css`), already passed the source-fidelity gate against
+`https://www.vyeptihcp.com/copay-support`. Target: `aemdemos/poc-vyepti`, branch
+`stardust-replica`, content path `copay-support.html`.
+
+## Section → block mapping (locked before writing code)
+
+| Prototype section | Block | Notes |
+|---|---|---|
+| `.cs-hero` (photo band + navy diagonal scrim + white h1, no eyebrow) | `hero-pharma` (existing) + new **`scrim-band`** variant | Neither `.vyeptihcp` nor `.page-title` matched exactly — `.page-title` has no scrim at all, and `.vyeptihcp` has a different (bottom-to-side, higher-opacity) scrim + italic eyebrow ribbon this page doesn't use. Added a third small variant, values lifted verbatim from `.cs-hero`/`.cs-hero__scrim`. |
+| `.cs-anchor-nav` (3 same-page `#hash` scroll links, pill row) | new **`anchor-nav`** block | Explicitly NOT the `tabs` block (that's JS panel-switching; these are plain scroll-jump anchors). Authored as a sibling block in the same section as the hero so its negative-margin overlap (`margin-top:-44px`) reads correctly against the hero above it. |
+| `.cs-intro` (h1→h2 + p, centered) | default content, `section-metadata style=center` (existing closed-set value) | Non-repeating prose — D1. Minor accepted deviation: the existing `.center` style only centers on mobile/tablet and left-aligns ≥992px, whereas the source is always centered; not worth a new styles.css addition for one paragraph. |
+| `.cs-copay-card` (teal card: heading, embedded mini-ISI, image+bullets grid, callout) | new **`copay-card`** block | See "Embedded mini-ISI decision" below. |
+| `.cs-accordion` ×2 (Copay T&Cs, VYEPTI CONNECT T&Cs) | `accordion` (existing) | Exact content-model match: block > row > [title cell, body cell]. |
+| `.cs-icon-grid` (claims: 4× icon+label+description) | new **`icon-info-grid`** block, `.claims` variant | |
+| `.cs-cta-card` ("download the brochure" teal band) | new **`cta-band`** block | `columns-cta`'s default treatment is a per-column white shadow-card with a ghost-outline CTA — visually a poor fit for one solid teal band with a filled accent CTA. New small block instead of fighting the default. |
+| `.cs-connect__box` + `.cs-connect__enroll` + `.cs-connect__note-box` (lead sentence + 4-icon grid, fused to a two-tone enroll/note banner) | new **`connect-support`** block | Kept as one block because the enroll and note panels are visually fused (no gap — one continuous rounded shape); D1 bespoke composition, not a repeating pattern reusable elsewhere yet. |
+| `.cs-resources__grid` (3× icon+link) | `icon-info-grid`, `.resources` variant | Same block as claims, different variant class — D9. |
+| `.cs-back-to-top` (fixed icon skip-link) | new **`back-to-top`** block | Trivial, but needed its own CSS home (see file-ownership note below). |
+| `.isi-full` (sitewide full ISI) | `isi` (existing) | Row 1 (abbreviated) content mirrored verbatim from `index-vyeptihcp.html`'s `isi` block for consistency (same product, same facts, same fixed-bar behavior sitewide). |
+| Header/footer | existing `header`/`footer` blocks | Content untouched — page metadata points at `/nav-vyeptihcp` and `/footer-vyeptihcp`. |
+
+## Embedded mini-ISI decision
+
+The copay card contains a SECOND, smaller ISI widget (`.cs-isi.cs-isi--collapsed`,
+`id="copayIsi"`) — collapsed by default, its own "+/−" toggle, nested inside the teal
+card, distinct from the sitewide `isi` block's fixed-bottom-bar pattern. Read
+`blocks/isi/isi.js` before deciding: it always calls `document.body.append(bar)` and
+wires exactly one `IntersectionObserver`/toggle pair — a second instance on the same
+page would collide (two bars appended to `<body>`, ids/observers stepping on each
+other). Rather than reworking a shared, already-deployed sitewide block to support a
+second differently-placed instance (risk to every other page), this is a genuine D1
+exception: unique, inline, always-in-place interactive behavior. Implemented directly
+inside `copay-card.js`'s `decorate()` — a small hand-rolled expand/collapse (button +
+`aria-expanded` + `hidden` on the "more" panel), authored as 3 cells in the block's
+second row: `[title, always-visible teaser, expandable "more" content]`.
+
+## File-ownership / shared-file note
+
+Per this batch's constraint (only touch files specific to `copay-support`, plus any
+NEW block folder), most of this page's bespoke visual needs were solved by creating
+**new** block folders (`anchor-nav`, `copay-card`, `icon-info-grid`, `cta-band`,
+`connect-support`, `back-to-top`) rather than editing `styles/styles.css` — several
+sections needed exact-value styling (colored boxes, specific centering, fused
+two-tone banners) that doesn't fit the existing small closed `section-metadata style`
+set, and adding new entries to that shared file was out of scope for this task. The
+one shared file touched was `blocks/hero-pharma/hero-pharma.css`, additive-only (a
+new `.scrim-band` variant appended at the end, following the same pattern as the
+existing `.vyeptihcp`/`.page-title` variants) — this was explicitly anticipated by
+the task brief. No other shared files (`styles/styles.css`, `blocks/header/*`,
+`blocks/footer/*`, `blocks/columns/*`, `blocks/columns-cta/*`, other pages' drafts)
+were touched.
+
+## David's Model lint
+
+`PASS — 0 🔴, 7 🟡`:
+- `hero-pharma`, `anchor-nav`, `back-to-top`, `isi` flagged as default-content
+  candidates (single-column, prose-only blocks) — all four are genuine bespoke
+  widgets (background-image compositing, scroll-jump pill row with overlap,
+  fixed-position icon, sitewide fixed-bar/observer behavior respectively), not D1
+  violations.
+- `copay-card` and `connect-support` flagged for differing cell counts across rows
+  (D3, span-shaped structure) — intentional: each row is a distinct logical group
+  (heading / mini-ISI / grid / callout for `copay-card`; lead / 4× icon items /
+  enroll / note / cols / fine-print for `connect-support`), not meant to be uniform
+  columns. Splitting further would fragment one cohesive composited widget into
+  several disconnected blocks with no independent reuse value.
+- 8 authored SVG references batch-flagged for the #99 trap — all verified pure-vector
+  via direct `curl | grep -c data:image` → 0 for every one (`Icons_Electronic EDI`,
+  `Icons_Fax`, `Icons_Email`, `Icons_Online`, `icon-location`, `download icon`
+  ×3 references across the resources grid).

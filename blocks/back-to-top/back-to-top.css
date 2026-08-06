@@ -1,0 +1,22 @@
+/* Back to top — small fixed icon link. Position lifted from the
+   prototype's .cs-back-to-top. */
+
+.back-to-top-link {
+  position: fixed;
+  top: 140px;
+  right: 25px;
+  width: 56px;
+  z-index: 5;
+  display: block;
+}
+
+.back-to-top-link img {
+  display: block;
+  width: 100%;
+}
+
+@media (width <= 767px) {
+  .back-to-top-link {
+    display: none;
+  }
+}

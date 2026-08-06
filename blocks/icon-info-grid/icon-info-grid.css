@@ -1,0 +1,131 @@
+/* Icon info grid — base layout: stacked items, icon + content side by side.
+   Variants below carry each of the three copay-support patterns' exact
+   values (claims / connect / resources). */
+
+.icon-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.icon-info-grid-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.icon-info-grid-icon {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.icon-info-grid-icon img {
+  display: block;
+}
+
+.icon-info-grid-content p {
+  margin: 0;
+}
+
+/* ---- claims variant — 4 items, icon + bold label + description ---- */
+.icon-info-grid.claims {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.icon-info-grid.claims .icon-info-grid-icon img {
+  width: 58px;
+  height: 44px;
+}
+
+.icon-info-grid.claims .icon-info-grid-content p:first-child {
+  color: var(--brand-teal);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.icon-info-grid.claims .icon-info-grid-content p {
+  font-size: 15px;
+}
+
+@media (width >= 768px) {
+  .icon-info-grid.claims {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+  }
+
+  .icon-info-grid.claims .icon-info-grid-item {
+    margin-bottom: 0;
+  }
+}
+
+/* ---- connect variant — 4 items, circular icon + single description ---- */
+.icon-info-grid.connect {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.icon-info-grid.connect .icon-info-grid-icon img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.icon-info-grid.connect .icon-info-grid-content p {
+  color: var(--brand-teal);
+  font-size: 15px;
+}
+
+@media (width >= 768px) {
+  .icon-info-grid.connect {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+  }
+}
+
+/* ---- resources variant — 3 items, icon + link, centered flex-wrap row ---- */
+.icon-info-grid.resources {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon-info-grid.resources .icon-info-grid-item {
+  justify-content: center;
+}
+
+.icon-info-grid.resources .icon-info-grid-content {
+  max-width: 240px;
+}
+
+.icon-info-grid.resources .icon-info-grid-content p {
+  margin: 0;
+}
+
+.icon-info-grid.resources .icon-info-grid-content a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand-teal);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.icon-info-grid.resources .icon-info-grid-content img {
+  flex-shrink: 0;
+  width: 20px;
+  height: 21px;
+}
+
+@media (width >= 768px) {
+  .icon-info-grid.resources {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+}
