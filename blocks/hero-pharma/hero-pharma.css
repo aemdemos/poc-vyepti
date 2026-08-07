@@ -655,6 +655,17 @@ main > .section.hero-pharma-container {
   margin: 0;
 }
 
+/* scrim-band eyebrow h3 - used on pages like patient-profiles where a white
+   lead-in line sits above the white h1 (no rose/pill styling, unlike the
+   .vyeptihcp variant's eyebrow) */
+.hero-pharma.scrim-band h3 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+  margin: 0 0 8px;
+}
+
 @media (width >= 992px) {
   .hero-pharma.scrim-band:not(.hero-pharma-dual) {
     min-height: 260px;
@@ -668,5 +679,9 @@ main > .section.hero-pharma-container {
   .hero-pharma.scrim-band h1 {
     font-size: 43px;
     line-height: 52px;
+  }
+
+  .hero-pharma.scrim-band h3 {
+    font-size: 22px;
   }
 }

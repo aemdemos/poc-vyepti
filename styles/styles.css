@@ -658,3 +658,52 @@ body.vyeptihcp main [data-layout="back-to-top"] img {
     display: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   VYEPTIHCP SAFETY-AND-TOLERABILITY PAGE DEFAULT CONTENT —
+   plain content (not blocks, per David's Model D1), scoped to
+   body.vyeptihcp so it never leaks into other pages. Uses a
+   distinctly-named class (st-ae-table) not used by any other
+   page's additions, to avoid colliding with concurrent edits
+   from sibling page conversions. Generalizes the
+   coverage-reimbursement page's .cr-drug-table visual pattern
+   (teal header, bordered) to N data columns, for the pivotal
+   trial / PREVAIL adverse-reaction percentage tables. */
+body.vyeptihcp main .st-ae-table {
+  width: 100%;
+  border: 1px solid teal;
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+
+body.vyeptihcp main .st-ae-table th {
+  background: teal;
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+}
+
+body.vyeptihcp main .st-ae-table th:first-child {
+  text-align: left;
+}
+
+body.vyeptihcp main .st-ae-table td {
+  text-align: center;
+  padding: 8px 16px;
+}
+
+body.vyeptihcp main .st-ae-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+}
+
+@media (width <= 767px) {
+  body.vyeptihcp main .st-ae-table th,
+  body.vyeptihcp main .st-ae-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
