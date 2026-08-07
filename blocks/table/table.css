@@ -67,3 +67,91 @@
 .table.block.bordered table td {
   border: var(--table-row-border-width) solid;
 }
+
+/* cr-drug-table variant — NDC/HCPCS billing table on coverage-reimbursement
+   and infusion-information. Exact values lifted from the live site's own
+   CSS (replica methodology; literal "teal" keyword matches source exactly). */
+.table.block.cr-drug-table table {
+  border: 1px solid teal;
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.table.block.cr-drug-table table thead tr {
+  border: 0;
+}
+
+.table.block.cr-drug-table table th {
+  background: teal;
+  color: #fff;
+  text-align: center;
+  padding: 4px 60px;
+}
+
+.table.block.cr-drug-table table tbody tr {
+  border: 0;
+}
+
+.table.block.cr-drug-table table td {
+  text-align: center;
+  padding: 8px 20px;
+  width: 50%;
+}
+
+@media (width <= 767px) {
+  .table.block.cr-drug-table table th,
+  .table.block.cr-drug-table table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+/* st-ae-table variant — pivotal trial / PREVAIL adverse-reaction percentage
+   tables on safety-and-tolerability. Generalizes the cr-drug-table pattern
+   (teal header, bordered) to N data columns. */
+.table.block.st-ae-table table {
+  border: 1px solid teal;
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.table.block.st-ae-table table thead tr {
+  border: 0;
+}
+
+.table.block.st-ae-table table th {
+  background: teal;
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+}
+
+.table.block.st-ae-table table th:first-child {
+  text-align: left;
+}
+
+.table.block.st-ae-table table tbody tr {
+  border: 0;
+}
+
+.table.block.st-ae-table table td {
+  text-align: center;
+  padding: 8px 16px;
+}
+
+.table.block.st-ae-table table td:first-child {
+  text-align: left;
+  font-weight: 700;
+}
+
+@media (width <= 767px) {
+  .table.block.st-ae-table table th,
+  .table.block.st-ae-table table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
