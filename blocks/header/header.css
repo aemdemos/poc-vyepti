@@ -1039,8 +1039,13 @@ body.vyeptihcp header .nav-links-row {
 body.vyeptihcp header .nav-brand-tagline,
 body.vyeptihcp header .nav-links-list > li,
 body.vyeptihcp header .nav-links-list > li > a,
-body.vyeptihcp header .nav-links-list > li > p {
+body.vyeptihcp header .nav-links-list > li > p,
+body.vyeptihcp header .nav-links-list > li > p > a {
   color: #fff;
+}
+
+body.vyeptihcp header .nav-links-list > li > p > a:hover {
+  color: var(--brand-teal-light);
 }
 
 body.vyeptihcp header .nav-hamburger-icon,
