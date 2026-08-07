@@ -132,6 +132,16 @@ function buildMainFooter(section) {
     rightCol.append(phoneRow);
   }
 
+  if (brandLogoLink) {
+    const logoRow = document.createElement('div');
+    logoRow.className = 'footer-logo-row';
+    brandLogoLink.className = 'footer-brand-logo';
+    brandLogoLink.target = '_blank';
+    brandLogoLink.rel = 'noopener noreferrer';
+    logoRow.append(brandLogoLink);
+    rightCol.append(logoRow);
+  }
+
   const socialRow = document.createElement('div');
   socialRow.className = 'footer-social-row';
 
@@ -144,13 +154,6 @@ function buildMainFooter(section) {
       socialContainer.append(link);
     });
     socialRow.append(socialContainer);
-  }
-
-  if (brandLogoLink) {
-    brandLogoLink.className = 'footer-brand-logo';
-    brandLogoLink.target = '_blank';
-    brandLogoLink.rel = 'noopener noreferrer';
-    socialRow.append(brandLogoLink);
   }
 
   rightCol.append(socialRow);

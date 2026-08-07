@@ -40,10 +40,10 @@ footer .footer .footer-back-to-top a:hover img {
   transform: translateY(-3px);
 }
 
-/* === Section 0: Teal Legal Links Strip === */
+/* === Section 0: Legal Links Row === */
 footer .footer .footer-legal-strip {
-  background-color: var(--brand-teal);
-  padding: 10px 0;
+  border-top: 1px solid #a4a4a4;
+  padding: 20px 0;
   text-align: center;
   line-height: 0;
 }
@@ -56,10 +56,10 @@ footer .footer .footer-legal-strip-inner {
 }
 
 footer .footer .footer-legal-strip a {
-  color: #fff;
+  color: #41748d;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 22px;
   font-family: var(--body-font-family);
   transition: color 0.2s ease;
@@ -73,7 +73,7 @@ footer .footer .footer-legal-strip a:last-child {
 }
 
 footer .footer .footer-legal-strip a:hover {
-  color: var(--brand-teal-light);
+  color: #7ebcc6;
 }
 
 /* === Section 1: Main Footer === */
@@ -169,12 +169,28 @@ footer .footer .footer-phone-icon {
   background-size: contain;
 }
 
-/* Social + brand logo row — 27px below phone row, right-aligned */
+/* Brand logo row — sits above the social icons, right-aligned */
+footer .footer .footer-logo-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+footer .footer .footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+footer .footer .footer-brand-logo img {
+  width: 160px;
+  height: auto;
+}
+
+/* Social icons row — below the logo, right-aligned */
 footer .footer .footer-social-row {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 27px;
 }
 
 footer .footer .footer-social-icons {
@@ -196,17 +212,6 @@ footer .footer .footer-social-icons a:hover {
 footer .footer .footer-social-icons img {
   width: 32px;
   height: 32px;
-}
-
-footer .footer .footer-brand-logo {
-  display: inline-flex;
-  align-items: center;
-  margin: -5px 0 0 19px;
-}
-
-footer .footer .footer-brand-logo img {
-  width: 160px;
-  height: auto;
 }
 
 @media (width >= 768px) {
