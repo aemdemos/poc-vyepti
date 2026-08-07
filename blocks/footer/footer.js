@@ -161,6 +161,30 @@ function buildMainFooter(section) {
 }
 
 /**
+ * Builds the back-to-top button shown at the top of every footer.
+ * @returns {Element} decorated back-to-top element
+ */
+function buildBackToTop() {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'footer-back-to-top';
+
+  const link = document.createElement('a');
+  link.href = '#';
+  link.setAttribute('aria-label', 'Back to top');
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const img = document.createElement('img');
+  img.src = 'https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/vyepti-hcp/icon-back-to-top-desktop.png';
+  img.alt = 'Back to top';
+  link.append(img);
+  wrapper.append(link);
+  return wrapper;
+}
+
+/**
  * Loads and decorates the footer.
  * @param {Element} block The footer block element
  */
@@ -172,6 +196,7 @@ export default async function decorate(block) {
 
   const sections = doc.querySelectorAll(':scope > div');
   if (sections.length >= 2) {
+    block.append(buildBackToTop());
     block.append(buildLegalLinksBar(sections[0]));
     block.append(buildMainFooter(sections[1]));
   }

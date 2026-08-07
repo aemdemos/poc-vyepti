@@ -19,6 +19,27 @@ footer .footer p {
   margin: 0;
 }
 
+/* === Back to top button === */
+footer .footer .footer-back-to-top {
+  text-align: center;
+  padding: 16px 0 0;
+  background-color: var(--brand-teal);
+}
+
+footer .footer .footer-back-to-top a {
+  display: inline-flex;
+}
+
+footer .footer .footer-back-to-top img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+footer .footer .footer-back-to-top a:hover img {
+  transform: translateY(-3px);
+}
+
 /* === Section 0: Teal Legal Links Strip === */
 footer .footer .footer-legal-strip {
   background-color: var(--brand-teal);
